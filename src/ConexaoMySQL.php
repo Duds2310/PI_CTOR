@@ -7,7 +7,7 @@ class ConexaoMySQL
 {
 
     // ATRIBUTOS
-    private $banco = "cursofinanceiros";
+    private $banco = "cursosfinanceiros";
 
     private $user = "root";
 

@@ -26,6 +26,7 @@ $listaTreinamentos = $repositorioTreinamento->listarTreinamento();
 		<td>Nome</td>
 		<td>Descricao</td>
 		<td>Valor</td>
+		<td>Teste GIT</td>
 	</tr>    	
 
  
@@ -39,6 +40,7 @@ if ($listaTreinamentos != false) {
 		<td><?php echo $listaTreinamentos[$i]->getNome() . "<br/>";?></td>
 		<td><?php echo $listaTreinamentos[$i]->getDescricao() . "<br/>";?></td>
 		<td> <?php echo $listaTreinamentos[$i]->getValor() . "<br/>";?></td>
+		<td> <?php echo "GIT" . "<br/>";?></td>
 	</tr> 
            
 <?php
