@@ -34,7 +34,7 @@ $resultado = $repoReceita->cadastrarReceita($Receita);
 if ($resultado == true) {
     header('Location: receita-manter.php');
 } else {
-    echo "DEU RUIM!";
+    echo "DEU RUIM! opa";
 }
 
 
