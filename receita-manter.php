@@ -2,14 +2,21 @@
 
 
 use src\repositorios\RepositorioReceita;
+use src\repositorios\RepositorioCategoriaReceita;
+use src\RepositorioUsuario;
 
 include 'inc.cabecalho.php';
 
+require_once 'src/repositorios/RepositorioUsuario.php';
 require_once 'src/repositorios/RepositorioReceita.php';
+require_once 'src/repositorios/RepositorioCategoriaReceita.php';
 
+$repoUsuario = new RepositorioUsuario();
 $repoReceita = new RepositorioReceita();
+$repoCategoriaReceita = new RepositorioCategoriaReceita();
 
-
+$listaUsuario = $repoUsuario->listarUsuario();
+$listaCategorias = $repoCategoriaReceita->listarCategoriaReceita();
 $listaReceita = $repoReceita->listarReceita();
 $quantidade = count($listaReceita);
 
@@ -53,8 +60,16 @@ $i = 0;
 			</div>
 			<div class="form-group form-row">
 				<div class="col-md-6">
-					<select class="form-control form-control-sm" name="categoria">
-                    	<option>Select pequeno</option>
+					<select class="form-control form-control-sm" name="categoria" >
+						<option value=""> -- Selecione uma Categoria -- </option> 
+                    	<?php while ($i < count($listaCategorias)) { ?>
+                    	
+                    	<option value="<?php echo $listaCategorias[$i]->getId();?>">
+                    	<?php echo $listaCategorias[$i]->getNome();	?>
+                    	</option>
+                    	
+                    	<?php $i++; } 
+                    	$i = 0;?>
                     </select>
 				</div>
 				<div class="col-md-6">
@@ -63,7 +78,17 @@ $i = 0;
 			</div>
 			<div class="form-group form-row">
 				<div class="col-md-6">
-					<input type="text" name="IdUsuarioResponsavel" id="IdUsuarioResponsavel" class="form-control" placeholder="IdUsuarioResponsavel">
+					<select class="form-control form-control-sm" name="idUsuarioResponsavel" >
+						<option value=""> -- Selecione um Usuario -- </option> 
+                    	<?php while ($i < count($listaUsuario)) { ?>
+                    	
+                    	<option value="<?php echo $listaUsuario[$i]->getId();?>">
+                    	<?php echo $listaUsuario[$i]->getNome();                    	
+                    	?>
+                    	</option>
+                    	
+                    	<?php $i++; } $i = 0; ?>
+                    </select>
 				</div>				
 				<div class="col-md-6">
 					<input type="number" name="valor" id="valor" class="form-control" placeholder="Valor">
