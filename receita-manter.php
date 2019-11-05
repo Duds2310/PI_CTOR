@@ -79,7 +79,7 @@ $i = 0;
 			<div class="form-group form-row">
 				<div class="col-md-6">
 					<select class="form-control form-control-sm" name="idUsuarioResponsavel" >
-						<option value=""> -- Selecione um Usuario -- </option> 
+						<option value=""> -- Selecione Usuario -- </option> 
                     	<?php while ($i < count($listaUsuario)) { ?>
                     	
                     	<option value="<?php echo $listaUsuario[$i]->getId();?>">
