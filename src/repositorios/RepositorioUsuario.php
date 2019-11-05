@@ -78,25 +78,21 @@ class RepositorioUsuario
         // verificar se retornou valor
         if ($resultado->num_rows > 0) {
 
-            while ($linha = $resultado->fetch_assoc()) {
-                $Usuario = new Usuario();
+            $linha = $resultado->fetch_assoc();
+            $Usuario = new Usuario();
 
-                $Usuario->setId($linha['USU_ID']);
-                $Usuario->setNome($linha['USU_NOME']);
-                $Usuario->setLogin($linha['USU_LOGIN']);
-                $Usuario->setSenha($linha['USU_SENHA']);
-                $Usuario->setEmail($linha['USU_EMAIL']);
-
-                $Usuarios[$i] = $Usuario;
-                $i ++;
-            }
+            $Usuario->setId($linha['USU_ID']);
+            $Usuario->setNome($linha['USU_NOME']);
+            $Usuario->setLogin($linha['USU_LOGIN']);
+            $Usuario->setSenha($linha['USU_SENHA']);
+            $Usuario->setEmail($linha['USU_EMAIL']);
         } else {
-            $Usuarios = false;
+            $Usuario = false;
         }
 
         $this->ConexaoMySQL->fecharBanco();
 
-        return $Usuarios;
+        return $Usuario;
     }
 
     // Cadastro Usuario
@@ -170,7 +166,7 @@ class RepositorioUsuario
         $UsuarioLogado = null; // so retorno o usuario caso exista, se nao, deverá ser falso.
 
         $query = "SELECT USU_ID, USU_LOGIN, USU_NOME FROM TB_USUARIO WHERE USU_EMAIL = '" . $UsuarioLogin->getEmail() . "' AND USU_SENHA = '" . $UsuarioLogin->getSenha() . "'";
-        
+
         $conexao = $this->ConexaoMySQL->abrirBanco(); // abre o link de conexao
 
         $resultado = $conexao->query($query); // responsavel por executar a query no banco de dados

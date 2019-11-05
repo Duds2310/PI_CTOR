@@ -68,11 +68,38 @@ class RepositorioCategoriaReceita
         return $CategoriasReceita;
     }
 
+    public function consultarCategoriaReceitaId($id)
+    {
+        $categoria = null;
 
+        $query = " SELECT * FROM TB_CATEGORIA_RECEITAS WHERE CAT_REC_ID = " . $id;
+        
+        //echo $query;
+        //die();
+        
 
+        $conexao = $this->ConexaoMySQL->abrirBanco();
+        $resultado = $conexao->query($query);
 
+        if ($resultado->num_rows > 0) {
 
+            $linha = $resultado->fetch_assoc();
+            $categoria = new CategoriaReceita();
 
+            $categoria->setId($linha["CAT_REC_ID"]);
+            $categoria->setNome($linha["CAT_REC_NOME"]);
+            $categoria->setDescricao($linha["CAT_REC_DESCRICAO"]);
+        }
+
+        $this->ConexaoMySQL->fecharBanco();
+        return $categoria;
+    }
 }
+
+
+
+
+
+
 
 

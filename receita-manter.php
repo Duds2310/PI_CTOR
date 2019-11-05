@@ -19,9 +19,19 @@ $listaUsuario = $repoUsuario->listarUsuario();
 $listaCategorias = $repoCategoriaReceita->listarCategoriaReceita();
 $listaReceita = $repoReceita->listarReceita();
 $quantidade = count($listaReceita);
+$i = 0;
+
+while ($i < $quantidade) {
+    $listaAutor[$i] = $listaReceita[$i]->getIdUsuario();
+    $i++;
+}
+
+
 
 
 $i = 0;
+$a = 0;
+
 
 
 ?>
@@ -41,11 +51,11 @@ $i = 0;
 		<form action="receita-manter-cadastrar-action.php" method="post">
 			<div class="form-group form-row">
 				<div class="col-md-2">
-					<label>Data A </label>
+					<label>Data de cadastro </label>
 					<input type="date" name="dataCadastro" id="dataCadastro" class="form-control" placeholder="Data de Cadastro">
 				</div>
 				<div class="col-md-2">
-					<label>Data B </label>
+					<label>Data de pagamento </label>
 					<input type="date" name="dataPagamento" id="dataPagamento" class="form-control" placeholder="Data de Pagamento">
 				</div>
 				<div class="col-md-8">
@@ -78,7 +88,7 @@ $i = 0;
 			</div>
 			<div class="form-group form-row">
 				<div class="col-md-6">
-					<select class="form-control form-control-sm" name="idUsuarioResponsavel" >
+					<select class="form-control form-control-sm" name="IdUsuarioResponsavel" >
 						<option value=""> -- Selecione Usuario -- </option> 
                     	<?php while ($i < count($listaUsuario)) { ?>
                     	
@@ -130,11 +140,30 @@ $i = 0;
 					<tr>
 						<td><?php echo $listaReceita[$i]->getValor(); ?></td>
 						<td><?php echo $listaReceita[$i]->getDescricao(); ?></td>
-						<td><?php echo $listaReceita[$i]->getCategoriaId(); ?></td>
+						<td><?php 
+						
+						          //echo $listaReceita[$i]->getCategoriaId();
+						          $categoria = $repoCategoriaReceita->consultarCategoriaReceitaId($listaReceita[$i]->getCategoriaId());
+						          echo $categoria->getNome();
+						          
+	
+						
+						
+						
+					    ?></td>
 						<td><?php echo $listaReceita[$i]->getDataCadastro(); ?></td>
 						<td><?php echo $listaReceita[$i]->getDataPagamento(); ?></td>
-						<td><?php echo $listaReceita[$i]->getUsuarioResponsavelId(); ?></td>
-						<td><?php echo $listaReceita[$i]->getIdUsuario(); ?></td>
+						<td><?php 
+        						$usuario = $repoUsuario->consultarUsuarioPorID($listaReceita[$i]->getUsuarioResponsavelId());
+        						echo $usuario->getNome();
+						      ?></td>
+						<td><?php 
+						          
+						     $usuario = $repoUsuario->consultarUsuarioPorID($listaReceita[$i]->getIdUsuario());		
+						      
+						      echo $usuario->getNome();
+						
+						?></td>
 						<td><?php echo $listaReceita[$i]->getSituacao(); ?></td>
 						<td><a
 							href="receita-manter-editar.php?id=<?php echo $listaReceita[$i]->getId(); ?>"><i
