@@ -17,7 +17,7 @@ $repoCategoriaReceita = new RepositorioCategoriaReceita();
 
 $listaUsuario = $repoUsuario->listarUsuario();
 $listaCategorias = $repoCategoriaReceita->listarCategoriaReceita();
-$listaReceita = $repoReceita->listarReceita();
+$listaReceita = $repoReceita->listarReceitasAtivas();
 $quantidade = count($listaReceita);
 $i = 0;
 
@@ -112,7 +112,7 @@ $a = 0;
 <!-- Fim formulário de cadastro de usuários -->
 
 
-<!-- DataTables Example -->
+<!-- Inicio DataTables -->
 <div class="card mb-3">
 	<div class="card-header">
 		<i class="fas fa-table"></i> Tabela Receitas
@@ -130,7 +130,6 @@ $a = 0;
 						<th>Data de Pagamento</th>
 						<th>Usuario Responsavel</th>
 						<th>Autor</th>
-						<th>Situacao</th>
 						<th>Ação</th>
 						
 					</tr>
@@ -164,7 +163,6 @@ $a = 0;
 						      echo $usuario->getNome();
 						
 						?></td>
-						<td><?php echo $listaReceita[$i]->getSituacao(); ?></td>
 						<td><a
 							href="receita-manter-editar.php?id=<?php echo $listaReceita[$i]->getId(); ?>"><i
 								class="fa fa-edit"></i></a> |<a
@@ -178,6 +176,8 @@ $a = 0;
 		</div>
 	</div>
 </div>
+
+<!-- Fim DataTables -->
 
 <?php
 

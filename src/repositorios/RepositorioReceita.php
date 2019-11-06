@@ -78,6 +78,44 @@ class RepositorioReceita
 
         return $Receitas;
     }
+    
+    public function listarReceitasAtivas() {
+        $Receita = null;
+        
+        $query = "SELECT * FROM TB_RECEITAS WHERE REC_SITUACAO = 1";
+        
+        $conexao = $this->ConexaoMySQL->abrirBanco();
+        
+        $resultado = $conexao->query($query);
+        
+        $i = 0;
+        
+        if ($resultado->num_rows > 0) {
+            while ($linha = $resultado->fetch_assoc()) {
+                
+                $Receita = new Receita();
+                
+                $Receita->setId($linha["REC_ID"]);
+                $Receita->setCategoriaId($linha["CAT_REC_ID"]);
+                $Receita->setDataCadastro($linha["REC_DATA_CADASTRO"]);
+                $Receita->setDataPagamento($linha["REC_DATA_PAGAMENTO"]);
+                $Receita->setDescricao($linha["REC_DESCRICAO"]);
+                $Receita->setUsuarioResponsavelId($linha["REC_ID_USU_PAGAMENTO"]);
+                $Receita->setValor($linha["REC_VALOR"]);
+                $Receita->setSituacao($linha["REC_SITUACAO"]);
+                $Receita->setIdUsuario($linha["USU_ID"]);
+                
+                $Receitas[$i] = $Receita;
+                $i ++;
+            }
+        } else {
+            $Receitas = false;
+        }
+        
+        $this->ConexaoMySQL->fecharBanco();
+        
+        return $Receitas;
+    }
 
     public function consultarReceitaId($id)
     {
@@ -121,10 +159,7 @@ class RepositorioReceita
     {
         $retorno = false;
 
-        $query = "UPDATE TB_RECEITAS SET REC_SITUACAO = '" . $Receita->getSituacao() . "' WHERE REC_ID = " . $Receita->getId();
-
-        var_dump($query);
-        die();
+        $query = "UPDATE TB_RECEITAS SET REC_SITUACAO = '0' WHERE REC_ID = " . $Receita->getId();
 
         $conexao = $this->ConexaoMySQL->abrirBanco();
 
