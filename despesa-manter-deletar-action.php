@@ -1,10 +1,13 @@
 <?php
 
 
+
+
 use src\RepositorioDespesa;
 
+require_once 'src/repositorios/RepositorioDespesa.php';
+
 include 'inc.cabecalho.php';
-require_once 'src/RepositorioDespesa.php';
 
 $repositorioDespesa = new RepositorioDespesa();
 

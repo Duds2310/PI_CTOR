@@ -16,13 +16,17 @@ $repoReceita = new RepositorioReceita();
 $listaUsuario = $repoUsuario->listarUsuario();
 $listaCategorias = $repoCategoriaReceita->listarCategoriaReceita();
 
+
+
 // recupera o id do usuario
 $idReceita = $_GET['id'];
 
-$categoria = $repoCategoriaReceita->$receita = $repoReceita->consultarReceitaId($idReceita);
+$receita = $repoReceita->consultarReceitaId($idReceita);
 
-// var_dump($usuario);
-// die();
+
+
+ //var_dump($listaCategorias);
+ //die();
 $i = 0;
 ?>
 
@@ -40,33 +44,30 @@ $i = 0;
 				action="receita-manter-editar-action.php?id=<?php echo $idReceita; ?>"
 				method="post">
 
-				<input type="hidden" value="<?php echo $receita[0]->getId();?>"
+				<input type="hidden" value="<?php echo $idReceita?>"
 					name="id">
 				<div class="form-group form-row">
 					<div class="col-md-2">
-						<label>Data de cadastro </label> <input type="date" name="dataCadastro" value="<?php echo $receita[0]->getDataCadastro() ?>" id="dataCadastro" class="form-control"	placeholder="Data de Cadastro">
+						<label>Data de cadastro </label> <input type="date" name="dataCadastro" value="<?php echo $receita->getDataCadastro() ?>" id="dataCadastro" class="form-control"	placeholder="Data de Cadastro">
 					</div>
 					<div class="col-md-2">
 						<label>Data de pagamento </label> <input type="date"
-							name="dataPagamento" value="<?php echo $receita[0]->getDataPagamento() ?>" id="dataPagamento" class="form-control" placeholder="Data de Pagamento">
+							name="dataPagamento" value="<?php echo $receita->getDataPagamento() ?>" id="dataPagamento" class="form-control" placeholder="Data de Pagamento">
 					</div>
 					<div class="col-md-8">
-						<label>&nbsp; </label> <input type="text" name="autor" value="<?php echo $receita[0]->getIdUsuario() ?>" id="autor" class="form-control" placeholder="Autor">
+						<label>&nbsp; </label> <input type="text" name="autor" value="<?php echo $receita->getIdUsuario() ?>" id="autor" class="form-control" placeholder="Autor">
 					</div>
 				</div>
 				<div class="form-group form-row">
 					<div class="col-md-12">
-						<textarea class="form-control" name="descricao" value="<?php echo $receita[0]->getDescricao() ?>" id="descricao" rows="3" placeholder="Descrição"></textarea>
+						<textarea class="form-control" name="descricao" id="descricao" rows="3" placeholder="Descrição"><?php echo $receita->getDescricao() ?></textarea>
 					</div>
 				</div>
 				<div class="form-group form-row">
 					<div class="col-md-6">
-						<select class="form-control form-control-sm" name="categoria">
-							<option value="<?php echo $receita[0]->getId(); ?>">
-								<!-- PAREI AQUI, Falta consultar a categoria da receita propria, Falta o repositorio De categorias (JUNIOR) --></option> 
-                        		
+						<select class="form-control form-control-sm" name="categoria">                        		
 								<?php while ($i < count($listaCategorias)) { ?>
-                        	<option value="<?php echo $listaCategorias[$i]->getId();?>">
+                        	<option value="<?php echo $listaCategorias[$i]->getId();?> <?php if($receita->getId() == $listaCategorias[$i]->getId()) { echo "selected";}?>">
                         		<?php echo $listaCategorias[$i]->getNome();	?>
                         	</option>
                             	<?php
@@ -77,7 +78,7 @@ $i = 0;
                     	</select>
 					</div>
 					<div class="col-md-6">
-						<input type="text" name="situacao" id="situacao" class="form-control" placeholder="Situação">
+						<input type="text" name="situacao" value="<?php //if( $receita->getSituacao() == ) { echo  "";?>" id="situacao" class="form-control" placeholder="Situação">
 					</div>
 				</div>
 				<div class="form-group form-row">

@@ -3,7 +3,7 @@ use src\RepositorioDespesa;
 
 include 'inc.cabecalho.php';
 
-require_once 'src/RepositorioDespesa.php';
+require_once 'src/repositorios/RepositorioDespesa.php';
 
 $repoDespesa = new RepositorioDespesa();
 

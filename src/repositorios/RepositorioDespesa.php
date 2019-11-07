@@ -2,7 +2,7 @@
 namespace src;
 
 require_once 'src/ConexaoMySQL.php';
-require_once 'src/Despesa.php';
+require_once 'src/modelo/Despesa.php';
 
 class RepositorioDespesa
 {

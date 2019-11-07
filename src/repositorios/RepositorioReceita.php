@@ -4,6 +4,7 @@ namespace src\repositorios;
 use src\ConexaoMySQL;
 use src\modelo\Receita;
 use src\Usuario;
+use src\modelo\ReceitaOTD;
 require_once 'src/ConexaoMySQL.php';
 require_once 'src/modelo/Receita.php';
 
@@ -26,7 +27,7 @@ class RepositorioReceita
 
         $query = "  INSERT INTO tb_receitas (REC_DATA_PAGAMENTO,REC_DESCRICAO,REC_VALOR,REC_ID_USU_PAGAMENTO,REC_DATA_CADASTRO,CAT_REC_ID,REC_SITUACAO,USU_ID)
                      values ('" . $Receita->getDataPagamento() . "','" . $Receita->getDescricao() . "'," . $Receita->getValor() . ",'" . $Receita->getUsuarioResponsavelId() . "',
-                        '" . $Receita->getDataCadastro() . "'," . $Receita->getCategoriaId() . ",'" . $Receita->getSituacao() . "', '". $Receita->getIdUsuario() ."'   )";
+                        '" . $Receita->getDataCadastro() . "'," . $Receita->getCategoriaId() . ",'" . $Receita->getSituacao() . "', '" . $Receita->getIdUsuario() . "'   )";
 
         $conexao = $this->ConexaoMySQL->abrirBanco();
 
@@ -78,23 +79,24 @@ class RepositorioReceita
 
         return $Receitas;
     }
-    
-    public function listarReceitasAtivas() {
+
+    public function listarReceitasAtivas()
+    {
         $Receita = null;
-        
+
         $query = "SELECT * FROM TB_RECEITAS WHERE REC_SITUACAO = 1";
-        
+
         $conexao = $this->ConexaoMySQL->abrirBanco();
-        
+
         $resultado = $conexao->query($query);
-        
+
         $i = 0;
-        
+
         if ($resultado->num_rows > 0) {
             while ($linha = $resultado->fetch_assoc()) {
-                
+
                 $Receita = new Receita();
-                
+
                 $Receita->setId($linha["REC_ID"]);
                 $Receita->setCategoriaId($linha["CAT_REC_ID"]);
                 $Receita->setDataCadastro($linha["REC_DATA_CADASTRO"]);
@@ -104,16 +106,16 @@ class RepositorioReceita
                 $Receita->setValor($linha["REC_VALOR"]);
                 $Receita->setSituacao($linha["REC_SITUACAO"]);
                 $Receita->setIdUsuario($linha["USU_ID"]);
-                
+
                 $Receitas[$i] = $Receita;
                 $i ++;
             }
         } else {
             $Receitas = false;
         }
-        
+
         $this->ConexaoMySQL->fecharBanco();
-        
+
         return $Receitas;
     }
 
@@ -200,16 +202,47 @@ class RepositorioReceita
 
         return $retorno;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+    public function listarReceitaTela()
+    {
+        $ReceitaOTD = null;
+
+        $query = " SELECT tb_receitas.*, autor.USU_NOME as col_autor, responsavel.USU_NOME as col_responsavel, tb_categoria_receitas.CAT_REC_NOME 
+                FROM tb_receitas INNER JOIN tb_usuario as autor ON tb_receitas.USU_ID = autor.USU_ID INNER JOIN tb_usuario as responsavel 
+                ON tb_receitas.REC_ID_USU_PAGAMENTO = responsavel.USU_ID INNER JOIN tb_categoria_receitas ON tb_receitas.CAT_REC_ID = tb_categoria_receitas.CAT_REC_ID 
+                WHERE tb_receitas.REC_SITUACAO = 1 ";
+
+        $conexao = $this->ConexaoMySQL->abrirBanco();
+
+        $resultado = $conexao->query($query);
+
+        $i = 0;
+        if ($resultado->num_rows > 0) {
+            while ($linha = $resultado->fetch_assoc()) {
+                $ReceitaOTD = new ReceitaOTD();
+
+                $ReceitaOTD->setId($linha["REC_ID"]);
+                $ReceitaOTD->setCategoriaId($linha["CAT_REC_ID"]);
+                $ReceitaOTD->setDataCadastro($linha["REC_DATA_CADASTRO"]);
+                $ReceitaOTD->setDataPagamento($linha["REC_DATA_PAGAMENTO"]);
+                $ReceitaOTD->setDescricao($linha["REC_DESCRICAO"]);
+                $ReceitaOTD->setUsuarioResponsavelId($linha["REC_ID_USU_PAGAMENTO"]);
+                $ReceitaOTD->setValor($linha["REC_VALOR"]);
+                $ReceitaOTD->setSituacao($linha["REC_SITUACAO"]);
+                $ReceitaOTD->setIdUsuario($linha["USU_ID"]);
+                $ReceitaOTD->setAutor($linha["col_autor"]);
+                $ReceitaOTD->setResponsavel($linha["col_responsavel"]);
+                $ReceitaOTD->setReceitaNome($linha["CAT_REC_NOME"]);
+
+                $ReceitasOTD[$i] = $ReceitaOTD;
+                $i ++;
+            }
+        } else {
+            $ReceitasOTD = false;
+        }
+        $this->ConexaoMySQL->fecharBanco();
+        return $ReceitasOTD;
+    }
 }
 
 

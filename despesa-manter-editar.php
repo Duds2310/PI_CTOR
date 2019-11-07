@@ -4,7 +4,7 @@ use src\RepositorioDespesa;
 
 include 'inc.cabecalho.php';
 
-require_once 'src/RepositorioDespesa.php';
+require_once 'src/repositorios/RepositorioDespesa.php';
 
 // recupera o id do usuario
 $idDespesa = $_GET['id'];

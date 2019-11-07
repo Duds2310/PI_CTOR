@@ -4,7 +4,7 @@ use src\Despesa;
 
 include 'inc.cabecalho.php';
 
-require_once 'src/RepositorioDespesa.php';
+require_once 'src/repositorios/RepositorioDespesa.php';
 
 $nome = $_POST['nome'];
 $valor = $_POST['valor'];

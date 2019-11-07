@@ -74,8 +74,8 @@ $a = 0;
 						<option value=""> -- Selecione uma Categoria -- </option> 
                     	<?php while ($i < count($listaCategorias)) { ?>
                     	
-                    	<option value="<?php echo $listaCategorias[$i]->getId();?>">
-                    	<?php echo $listaCategorias[$i]->getNome();	?>
+                    	<option   value="<?php echo $listaCategorias[$i]->getId();?>">
+                    		<?php echo $listaCategorias[$i]->getNome();	?>
                     	</option>
                     	
                     	<?php $i++; } 
