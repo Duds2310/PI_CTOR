@@ -7,6 +7,7 @@ use src\Usuario;
 use src\modelo\ReceitaOTD;
 require_once 'src/ConexaoMySQL.php';
 require_once 'src/modelo/Receita.php';
+require_once 'src/modelo/ReceitaOTD.php';
 
 class RepositorioReceita
 {
@@ -181,13 +182,12 @@ class RepositorioReceita
     {
         $retorno = false;
 
-        $query = "UPDATE tb_receitas SET REC_DATA_PAGAMENTO = '" . $Receita->getDataPagamento() . "' ,REC_DESCRICAO = '" . $Receita->getDescricao() . "',
-            REC_VALOR = '" . $Receita->getValor() . "',REC_ID_USU_PAGAMENTO='" . $Receita->getUsuarioResponsavelId() . "',REC_DATA_CADASTRO= '" . $Receita->getDataCadastro() . "',
-            REC_SITUACAO = '" . $Receita->getSituacao() . "',CAT_REC_ID = '" . $Receita->getCategoriaId() . "'
-             WHERE REC_ID = " . $Receita->getId() . "' USU_ID = '" . $Receita->getUsuarioResponsavelId();
+        $query = "UPDATE tb_receitas SET REC_DESCRICAO = '" . $Receita->getDescricao() . "', REC_VALOR = " . $Receita->getValor() . ", REC_DATA_CADASTRO= '" . $Receita->getDataCadastro() . "',
+						REC_DATA_PAGAMENTO = '" . $Receita->getDataPagamento() . "' , REC_ID_USU_PAGAMENTO = " . $Receita->getUsuarioResponsavelId() . ", CAT_REC_ID = " . $Receita->getCategoriaId() . ",
+						USU_ID = " . $Receita->getUsuarioResponsavelId() . " WHERE REC_ID = " . $Receita->getId();
 
-        var_dump($query);
-        die();
+        //var_dump($query);
+       // die();
 
         $conexao = $this->ConexaoMySQL->abrirBanco();
 
