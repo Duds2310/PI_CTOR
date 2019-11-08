@@ -221,6 +221,9 @@ class RepositorioUsuario
 	           $Usuario->getCpf() . "', '" . $Usuario->getUf() . "', '" . $Usuario->getCidade() . "', '" . $Usuario->getLogradouro() .
 	           "', '" . $Usuario->getTelefone() . "', '" . $Usuario->getLogin() . "', '" . $Usuario->getEmail() . "', '" . $Usuario->getSenha() . "', '" . 1 . "')";
         
+	           //echo $query;
+	           //die();
+        
        
 	           
         $conexao = $this->ConexaoMySQL->abrirBanco();

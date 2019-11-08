@@ -5,6 +5,7 @@ use src\modelo\Receita;
 
 include 'inc.cabecalho.php';
 require_once 'src/repositorios/RepositorioReceita.php';
+require_once 'src/modelo/Receita.php';
 
 $repoReceita = new RepositorioReceita();
 
