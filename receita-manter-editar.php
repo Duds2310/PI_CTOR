@@ -63,7 +63,7 @@ $receita = $repoReceita->consultarReceitaId($id)?>
 					</div>
 				</div>
 				<div class="form-group form-row">
-					<div class="col-md-6">
+					<div class="col-md-12">
 						<select class="form-control form-control-sm" name="categoria">                        		
 								<?php while ($a < count($listaCategorias)) { ?>
                         	<option
@@ -72,11 +72,6 @@ $receita = $repoReceita->consultarReceitaId($id)?>
                         	</option>
                             	<?php $a ++; } ?>
                     	</select>
-					</div>
-					<div class="col-md-6">
-						<input type="text" name="autor"
-							value="<?php echo $receita->getIdUsuario() ?>" id="autor"
-							class="form-control" placeholder="Autor">
 					</div>
 				</div>
 				<div class="form-group form-row">

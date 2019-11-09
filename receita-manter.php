@@ -5,7 +5,6 @@ use src\RepositorioUsuario;
 
 include 'inc.cabecalho.php';
 
-
 require_once 'src/repositorios/RepositorioReceita.php';
 require_once 'src/repositorios/RepositorioUsuario.php';
 require_once 'src/repositorios/RepositorioCategoriaReceita.php';
@@ -18,10 +17,16 @@ $listaTela = $repoReceita->listarReceitaTela();
 $listaUsuario = $repoUsuario->listarUsuario();
 $listaCategorias = $repoCategoriaReceita->listarCategoriaReceita();
 
-
-
 $i = 0;
 $a = 0;
+$b = 0;
+$c = 0;
+$total = 0;
+
+while ($c < count($listaTela)) {
+    $total = $total + $listaTela[$c]->getValor();
+    $c ++;
+}
 
 ?>
 
@@ -34,7 +39,7 @@ $a = 0;
 <!-- Inicio formulário de cadastro de usuários -->
 <div class="card mb-3">
 	<div class="card-header">
-		<i class="fas fa-address-card"></i> Nova Receita
+		<i class="fas fa-address-card"> Nova Receita</i>
 	</div>
 	<div class="card-body">
 		<form action="receita-manter-cadastrar-action.php" method="post">
@@ -61,25 +66,20 @@ $a = 0;
 				</div>
 			</div>
 			<div class="form-group form-row">
-				<div class="col-md-6">
+				<div class="col-md-12">
 					<select class="form-control form-control-sm" name="categoria">
 						<option value="">-- Selecione uma Categoria --</option> 
-                    	<?php while ($i < count($listaCategorias)) { ?>
+                    	<?php while ($b < count($listaCategorias)) { ?>
                     	
                     	<option
-							value="<?php echo $listaCategorias[$i]->getId();?>">
-                    		<?php echo $listaCategorias[$i]->getNome();	?>
+							value="<?php echo $listaCategorias[$b]->getId();?>">
+                    		<?php echo $listaCategorias[$b]->getNome();	?>
                     	</option>
                     	
-                    	<?php $i ++; }
-                              $i = 0;
-                         ?>
+                    	<?php $b++; } ?>
                     </select>
 				</div>
-				<div class="col-md-6">
-					<input type="text" name="situacao" id="situacao"
-						class="form-control" placeholder="Situação">
-				</div>
+
 			</div>
 			<div class="form-group form-row">
 				<div class="col-md-6">
@@ -87,13 +87,14 @@ $a = 0;
 						name="IdUsuarioResponsavel">
 						<option value="">-- Selecione Usuario --</option> 
 						
-                    	<?php while ($i < count($listaUsuario)) { ?>
+                    	<?php while ($a < count($listaUsuario)) { ?>
                     	
-                    	<option value="<?php echo $listaUsuario[$i]->getId();?>">
+                    	<option
+							value="<?php echo $listaUsuario[$a]->getId();?>">
                     	
-                    	<?php  echo $listaUsuario[$i]->getNome(); ?> </option>
+                    	<?php  echo $listaUsuario[$a]->getNome(); ?> </option>
                     	
-                    	<?php $i++; } $i = 0; ?>
+                    	<?php $a++; }?>
                     </select>
 				</div>
 				<div class="col-md-6">
@@ -112,7 +113,7 @@ $a = 0;
 <!-- Inicio DataTables -->
 <div class="card mb-3">
 	<div class="card-header">
-		<i class="fas fa-table"></i> Tabela Receitas
+		<i class="fas fa-table"> Tabela Receitas</i>
 	</div>
 	<div class="card-body">
 		<div class="table-responsive">
@@ -120,27 +121,38 @@ $a = 0;
 				cellspacing="0">
 				<thead>
 					<tr>
-						<th>Valor</th>
 						<th>Descricao</th>
 						<th>Categoria</th>
 						<th>Data de cadastro</th>
 						<th>Data de Pagamento</th>
 						<th>Usuario Responsavel</th>
 						<th>Autor</th>
+						<th>Valor</th>
 						<th>Ação</th>
-
 					</tr>
 				</thead>
 				<tbody>
 				<?php while($i < count($listaTela)) { ?>
 					<tr>
-						<td><?php echo $listaTela[$i]->getValor(); ?></td>
 						<td><?php echo $listaTela[$i]->getDescricao(); ?></td>
 						<td><?php echo $listaTela[$i]->getReceitaNome();?></td>
-						<td><?php echo $listaTela[$i]->getDataCadastro(); ?></td>
-						<td><?php echo $listaTela[$i]->getDataPagamento(); ?></td>
+						<td><?php
+
+        $data = date_create($listaTela[$i]->getDataCadastro());
+
+        echo date_format($data, 'd/m/y');
+        ?>
+                        </td>
+
+						<td><?php
+        $data = date_create($listaTela[$i]->getDataPagamento());
+
+        echo date_format($data, 'd/m/y');
+        ?>
+                        </td>
 						<td><?php echo $listaTela[$i]->getResponsavel();?></td>
 						<td><?php echo $listaTela[$i]->getAutor();?></td>
+						<td><?php echo $listaTela[$i]->getValor(); ?></td>
 						<td><a
 							href="receita-manter-editar.php?id=<?php echo $listaTela[$i]->getId(); ?>"><i
 								class="fa fa-edit"></i></a> |<a
@@ -148,7 +160,13 @@ $a = 0;
 								<i class="fa fa-trash"></i>
 						</a></td>
 					</tr>
-				<?php $i++; } ?>	
+							<?php $i++; } ?>
+				<tfoot>
+					<tr>
+						<th colspan="6"> Total:</th>
+						<th colspan="2"> <?php echo " $$total";?></th>
+					</tr>
+				</tfoot>
 				</tbody>
 			</table>
 		</div>
@@ -156,6 +174,30 @@ $a = 0;
 </div>
 
 <!-- Fim DataTables -->
+
+
+<!-- Inicio Tabela Total -->
+<div class="card mb-3">
+	<div class="card-header">
+		<i class="fas fa-table"> Total </i>
+		<div class="card-body">
+			<div class="table-responsive">
+				<table class="table table-bordered" id="tableTotal" width="100%"
+					cellspacing="0">
+					<tbody>
+						<tr>
+							<td>Valor total das Receitas:</td>
+							<td><?php echo "$$total";?></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!--  Fim Tabela Total -->
 
 <?php
 

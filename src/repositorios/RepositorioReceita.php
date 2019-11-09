@@ -28,7 +28,7 @@ class RepositorioReceita
 
         $query = "  INSERT INTO tb_receitas (REC_DATA_PAGAMENTO,REC_DESCRICAO,REC_VALOR,REC_ID_USU_PAGAMENTO,REC_DATA_CADASTRO,CAT_REC_ID,REC_SITUACAO,USU_ID)
                      values ('" . $Receita->getDataPagamento() . "','" . $Receita->getDescricao() . "'," . $Receita->getValor() . ",'" . $Receita->getUsuarioResponsavelId() . "',
-                        '" . $Receita->getDataCadastro() . "'," . $Receita->getCategoriaId() . ",'" . $Receita->getSituacao() . "', '" . $Receita->getIdUsuario() . "'   )";
+                        '" . $Receita->getDataCadastro() . "'," . $Receita->getCategoriaId() . ", 1 , '" . $Receita->getIdUsuario() . "'   )";
 
         $conexao = $this->ConexaoMySQL->abrirBanco();
 
@@ -184,7 +184,7 @@ class RepositorioReceita
 
         $query = "UPDATE tb_receitas SET REC_DESCRICAO = '" . $Receita->getDescricao() . "', REC_VALOR = " . $Receita->getValor() . ", REC_DATA_CADASTRO= '" . $Receita->getDataCadastro() . "',
 						REC_DATA_PAGAMENTO = '" . $Receita->getDataPagamento() . "' , REC_ID_USU_PAGAMENTO = " . $Receita->getUsuarioResponsavelId() . ", CAT_REC_ID = " . $Receita->getCategoriaId() . ",
-						USU_ID = " . $Receita->getUsuarioResponsavelId() . " WHERE REC_ID = " . $Receita->getId();
+                         REC_SITUACAO = 1 WHERE REC_ID = " . $Receita->getId();
 
         //var_dump($query);
        // die();

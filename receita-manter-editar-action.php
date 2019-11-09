@@ -15,7 +15,6 @@ $dataCadastro = $_POST['dataCadastro'];
 $dataPagamento = $_POST['dataPagamento'];
 $idUsuarioResponsavel = $_POST['IdUsuarioResponsavel'];
 $categoria = $_POST['categoria'];
-$autor = $_POST['autor'];
 $id = $_GET['id'];
 
 $repoReceita = new RepositorioReceita();
@@ -28,7 +27,6 @@ $Receita->setDataCadastro($dataCadastro);
 $Receita->setDataPagamento($dataPagamento);
 $Receita->setUsuarioResponsavelId($idUsuarioResponsavel);
 $Receita->setCategoriaId($categoria);
-$Receita->setIdUsuario($autor);
 $Receita->setId($id);
 
 $resultado = $repoReceita->alterarReceita($Receita);
