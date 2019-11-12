@@ -58,10 +58,10 @@ $despesa = $repositorioDespesa->consultarDespesaPorID($idDespesa);
 					</div>
 				</div>
 				<div class="form-group">
+				<div class="form-row">
+				<div class="col-md-6">
 				<label>Categoria</label>
-					<div class="form-row">
-						<div class="col-md-6">
-							<div class="form-label-group">								 
+					<div class="form-label-group">								 
 								<input type="text" name="categoria" id="categoria" value="<?php echo $despesa[0]->getCategoria();?>" class="form-control"
 									placeholder="Categoria" required="required">
 							</div>
@@ -73,7 +73,7 @@ $despesa = $repositorioDespesa->consultarDespesaPorID($idDespesa);
 									placeholder="Situacao" required="required"> 
 							</div>
 						</div>
-						<div class="col-md-6">
+						<div class="col-md-12">
 						<label>Data de Vencimento</label>
 							<div class="form-label-group">
 								<input type="date" name="datavencimento" id="datavencimento" value="<?php echo $despesa[0]->getDatavencimento();?>" class="form-control"
