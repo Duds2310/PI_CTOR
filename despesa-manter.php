@@ -8,8 +8,16 @@ require_once 'src/repositorios/RepositorioDespesa.php';
 $repoDespesa = new RepositorioDespesa();
 
 $ListaDespesas = $repoDespesa->listarDespesa();
-$quantidade = count($ListaDespesas);
-$i = 0;
+
+$temRegistro = $ListaDespesas == false ? false : $ListaDespesas;
+
+
+
+
+
+
+$i=0;
+
 ?>
 
 <!-- Breadcrumbs-->
@@ -67,6 +75,7 @@ $i = 0;
 	</div>
 	<div class="card-body">
 		<div class="table-responsive">
+		<?php if($temRegistro) {?>
 			<table class="table table-bordered" id="MyTableID" width="100%"
 				cellspacing="0">
 				<thead>
@@ -81,7 +90,9 @@ $i = 0;
 					</tr>
 				</thead>
 				<tbody>
-				<?php while($i < $quantidade) { ?>
+				<?php
+				$quantidade = count($ListaDespesas);
+				while($i < $quantidade) { ?>
 					<tr>
 						<td><?php echo $ListaDespesas[$i]->getNome(); ?></td>
 						<td><?php echo $ListaDespesas[$i]->getValor(); ?></td>
@@ -95,6 +106,10 @@ $i = 0;
 				<?php $i++; } ?>	
 				</tbody>
 			</table>
+			<?php } else  {?>
+			        <center><h1> Não há despesas cadastradas!</h1> </center>
+				
+			<?php }?>
 		</div>
 	</div>
 </div>
