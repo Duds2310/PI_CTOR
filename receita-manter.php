@@ -2,6 +2,8 @@
 use src\repositorios\RepositorioReceita;
 use src\repositorios\RepositorioCategoriaReceita;
 use src\RepositorioUsuario;
+use src\modelo\Receita;
+use src\modelo\ReceitaOTD;
 
 include 'inc.cabecalho.php';
 
@@ -23,17 +25,25 @@ $b = 0;
 $c = 0;
 $total = 0;
 
-while ($c < count($listaTela)) {
-    $total = $total + $listaTela[$c]->getValor();
-    $c ++;
+// var_dump($listaTela);
+// die();
+
+$validador = $listaTela == false ? false : $listaTela;
+
+if ($validador) {
+    while ($c < count($listaTela)) {
+        $total = $total + $listaTela[$c]->getValor();
+        $c ++;
+    }
 }
 
 ?>
 
+
 <!-- Breadcrumbs-->
 <ol class="breadcrumb">
 	<li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-	<li class="breadcrumb-item active">Tabela Usuarios</li>
+	<li class="breadcrumb-item active">Tabela Receitas</li>
 </ol>
 
 <!-- Inicio formulário de cadastro de usuários -->
@@ -110,6 +120,9 @@ while ($c < count($listaTela)) {
 <!-- Fim formulário de cadastro de usuários -->
 
 
+
+
+
 <!-- Inicio DataTables -->
 <div class="card mb-3">
 	<div class="card-header">
@@ -117,6 +130,7 @@ while ($c < count($listaTela)) {
 	</div>
 	<div class="card-body">
 		<div class="table-responsive">
+						<?php if ($validador) { ?>
 			<table class="table table-bordered" id="MyTableID" width="100%"
 				cellspacing="0">
 				<thead>
@@ -138,17 +152,16 @@ while ($c < count($listaTela)) {
 						<td><?php echo $listaTela[$i]->getReceitaNome();?></td>
 						<td><?php
 
-        $data = date_create($listaTela[$i]->getDataCadastro());
-
-        echo date_format($data, 'd/m/y');
-        ?>
+                            $data = date_create($listaTela[$i]->getDataCadastro());
+                            echo date_format($data, 'd/m/y');
+                            ?>
                         </td>
 
 						<td><?php
-        $data = date_create($listaTela[$i]->getDataPagamento());
 
-        echo date_format($data, 'd/m/y');
-        ?>
+                            $data = date_create($listaTela[$i]->getDataPagamento());
+                            echo date_format($data, 'd/m/y');
+                            ?>
                         </td>
 						<td><?php echo $listaTela[$i]->getResponsavel();?></td>
 						<td><?php echo $listaTela[$i]->getAutor();?></td>
@@ -161,14 +174,22 @@ while ($c < count($listaTela)) {
 						</a></td>
 					</tr>
 							<?php $i++; } ?>
+
+				
+				
+				
+				
+				
+				
 				<tfoot>
 					<tr>
-						<th colspan="6"> Total:</th>
+						<th colspan="6">Total:</th>
 						<th colspan="2"> <?php echo " $$total";?></th>
 					</tr>
 				</tfoot>
 				</tbody>
 			</table>
+			<?php } else { echo "<center><h1> Não há receitas cadastradas!</h1></center>"; } ?>
 		</div>
 	</div>
 </div>
@@ -176,28 +197,34 @@ while ($c < count($listaTela)) {
 <!-- Fim DataTables -->
 
 
-<!-- Inicio Tabela Total -->
-<div class="card mb-3">
-	<div class="card-header">
-		<i class="fas fa-table"> Total </i>
-		<div class="card-body">
-			<div class="table-responsive">
-				<table class="table table-bordered" id="tableTotal" width="100%"
-					cellspacing="0">
-					<tbody>
-						<tr>
-							<td>Valor total das Receitas:</td>
-							<td><?php echo "$$total";?></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-</div>
 
 
-<!--  Fim Tabela Total -->
+
+
+
+
+<!-- Inicio Tabela Total 
+					<div class="card mb-3">
+						<div class="card-header">
+							<i class="fas fa-table"> Total </i>
+							<div class="card-body">
+								<div class="table-responsive">
+									<table class="table table-bordered" id="tableTotal"
+										width="100%" cellspacing="0">
+										<tbody>
+											<tr>
+												<td>Valor total das Receitas:</td>
+												<td><?php echo "$$total";?></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<!--  Fim Tabela Total -->
 
 <?php
 

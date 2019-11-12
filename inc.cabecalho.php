@@ -78,10 +78,10 @@
 					class="fas fa-user-circle fa-fw"></i> <span>Manter Usuarios</span></a>
 			</li>
 			<li class="nav-item"><a class="nav-link" href="receita-manter.php"> <i
-					class="fas fa-user-circle fa-fw"></i> <span>Manter Receita</span></a>
+					class="fas fa-coins "></i> <span>Manter Receita</span></a>
 			</li>
 			<li class="nav-item"><a class="nav-link" href="despesa-manter.php"> <i
-					class="fas fa-user-circle fa-fw"></i> <span>Manter Despesa</span></a>
+					class="fas fa-coins "></i> <span>Manter Despesa</span></a>
 			</li>
 			<li class="nav-item"><a class="nav-link" href="membro-manter.php"> <i
 					class="fas fa-user-circle fa-fw"></i> <span>Manter Membro</span></a>
