@@ -36,7 +36,7 @@ if (isset($_GET['login'])) {
           <p class="alert alert-danger" role="alert">Usuario nao existe!
 		</p>
 	  <?php }?>
-      <img class="mb-4" src="/src/img/eu.png"
+      <img class="mb-4" src="src/ctor.jpg"
 			alt="" width="72" height="72">
 		<h1 class="h3 mb-3 font-weight-normal">Area Restrita</h1>
 		<label for="inputEmail" class="sr-only">Email</label> <input
