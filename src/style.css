@@ -1,0 +1,34 @@
+.card-largura {
+	width: 18rem;
+}
+
+.carrossel-img-um {
+	/* responsável por ajustar o elemento em acordo com o seu conteiner, respeitando sua proporção*/
+	object-fit: cover;
+	/* como ele respeita o tamanho do elemento a imagem pode passar do tamanho do conteiner deixando-a cortada*/
+	/* posiciona o elemento dentro do conteiner nos eixos x, y respectivamente (esq. dir. : cima. baixo.)*/
+	height: 400px;
+}
+
+.carrossel-img-dois {
+	/* responsável por ajustar o elemento em acordo com o seu conteiner, respeitando sua proporção*/
+	object-fit: cover;
+	/* como ele respeita o tamanho do elemento a imagem pode passar do tamanho do conteiner deixando-a cortada*/
+	object-position: 0% 80%;
+	/* posiciona o elemento dentro do conteiner nos eixos x, y respectivamente*/
+	height: 400px;
+}
+
+.fonte-titulo {
+	font-family: 'Rufina', serif;
+	color: black;
+}
+
+.borda-cor-preto {
+	border-color: black;
+}
+
+.altura-img-cards {
+	object-fit: cover;
+	height: 200px;
+}
