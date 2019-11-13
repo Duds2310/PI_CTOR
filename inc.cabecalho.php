@@ -30,7 +30,7 @@
 
 	<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-		<a class="navbar-brand mr-1" href="index.html">CTOR</a>
+		<a class="navbar-brand mr-1" href="dashboard.php">CTOR</a>
 
 		<button class="btn btn-link btn-sm text-white order-1 order-sm-0"
 			id="sidebarToggle" href="#">
@@ -77,15 +77,14 @@
 			<li class="nav-item"><a class="nav-link" href="usuario-manter.php"> <i
 					class="fas fa-user-circle fa-fw"></i> <span>Manter Usuarios</span></a>
 			</li>
-			<li class="nav-item"><a class="nav-link" href="receita-manter.php"> <i
-					class="fas fa-coins "></i> <span>Manter Receita</span></a>
-			</li>
-			<li class="nav-item"><a class="nav-link" href="despesa-manter.php"> <i
-					class="fas fa-coins "></i> <span>Manter Despesa</span></a>
-			</li>
 			<li class="nav-item"><a class="nav-link" href="membro-manter.php"> <i
 					class="fas fa-user-circle fa-fw"></i> <span>Manter Membro</span></a>
 			</li>
+			<li class="nav-item"><a class="nav-link" href="receita-manter.php"> <i
+					class="fas fa-coins "></i> <span>Manter Receita</span></a></li>
+			<li class="nav-item"><a class="nav-link" href="despesa-manter.php"> <i
+					class="fas fa-coins "></i> <span>Manter Despesa</span></a></li>
+
 		</ul>
 
 		<div id="content-wrapper">

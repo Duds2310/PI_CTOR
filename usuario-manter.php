@@ -8,8 +8,10 @@ require_once 'src/repositorios/RepositorioUsuario.php';
 $repoUsuario = new RepositorioUsuario();
 
 $ListaUsuarios = $repoUsuario->listarUsuario();
-$quantidade = count($ListaUsuarios);
+
 $i = 0;
+
+$validador = $ListaUsuarios == false ? false : $ListaUsuarios;
 ?>
 
 <!-- Breadcrumbs-->
@@ -61,6 +63,7 @@ $i = 0;
 	</div>
 	<div class="card-body">
 		<div class="table-responsive">
+		<?php if ($validador) {  $quantidade = count($ListaUsuarios);?>
 			<table class="table table-bordered" id="MyTableID" width="100%"
 				cellspacing="0">
 				<thead>
@@ -87,6 +90,7 @@ $i = 0;
 				<?php $i++; } ?>	
 				</tbody>
 			</table>
+			<?php } else { echo "<center><h1> Não há usuarios cadastrados!</h1></center>"; } ?>
 		</div>
 	</div>
 </div>
