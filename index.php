@@ -94,7 +94,11 @@ $repositorio = new RepositorioTreinamento();
  
     <?php
     $listaTreinamentos = $repositorio->listarTreinamento();
+    
+    $validador = $listaTreinamentos == false ? false : $listaTreinamentos;
     $i = 0;
+    
+    if ($validador) {
     while ($i < count($listaTreinamentos)) {
         ?>
       
@@ -112,6 +116,8 @@ $repositorio = new RepositorioTreinamento();
      <?php
         $i ++;
     }
+    
+    } else { echo "<center><h1> Não há Treinamentos cadastrados!</h1></center>"; }
     ?>
      </div>
 	</section>
