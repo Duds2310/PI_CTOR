@@ -11,12 +11,16 @@ $ListaDespesas = $repoDespesa->listarDespesa();
 
 $temRegistro = $ListaDespesas == false ? false : $ListaDespesas;
 
+$i = 0;
+$a = 0;
+$b = 0;
+$c = 0;
+$total = 0;
 
-
-
-
-
-$i=0;
+while ($c < count ($ListaDespesas)){
+    $total = $total + $ListaDespesas[$c]->getValor();
+    $c ++;
+}
 
 ?>
 
@@ -103,7 +107,15 @@ $i=0;
 						<td><a href="despesa-manter-editar.php?id=<?php echo $ListaDespesas[$i]->getID(); ?>"><i
 								class="fa fa-edit"></i></a> |<a href="despesa-manter-deletar-action.php?id=<?php echo $ListaDespesas[$i]->getID(); ?>"> <i class="fa fa-trash"></i></a></td>
 					</tr>
-				<?php $i++; } ?>	
+				<?php $i++; } ?>
+				<tfoot>
+				<tr>
+				
+				<th colspan="6"> Total: </th>
+				<th colspan="2"> <?php echo " $total"; ?></th>
+				
+				</tr>
+				</tfoot>	
 				</tbody>
 			</table>
 			<?php } else  {?>

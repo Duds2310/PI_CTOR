@@ -11,7 +11,7 @@ $repositorio = new RepositorioTreinamento();
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8" />
+<meta http-equiv="content-Type" content="text/html; charset=iso-8859-1" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Educando & Financiando</title>
 <link href="https://fonts.googleapis.com/css?family=Rufina&display=swap"
@@ -24,7 +24,7 @@ $repositorio = new RepositorioTreinamento();
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="#">Educando & Financiando</a>
+		<a class="navbar-brand" href="#">CTOR</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
 			aria-expanded="false" aria-label="Toggle navigation">
@@ -53,10 +53,10 @@ $repositorio = new RepositorioTreinamento();
 			</ol>
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<img src="src/img/carrossel-img1.webp"
+					<img src="src/ctor.jpg"
 						class="d-block w-100 carrossel-img-um" alt="...">
 					<div class="carousel-caption d-none d-md-block h-50">
-						<h1 class="fonte-titulo display-4">Curso de Trades</h1>
+						<h1 class="fonte-titulo display-4">CTOR</h1>
 					</div>
 				</div>
 				<div class="carousel-item">
@@ -91,6 +91,7 @@ $repositorio = new RepositorioTreinamento();
 
 	<section class="container-fluid">
 		<div class="row justify-content-md-center bg-light"> 
+ 
     <?php
     $listaTreinamentos = $repositorio->listarTreinamento();
     $i = 0;
@@ -99,7 +100,7 @@ $repositorio = new RepositorioTreinamento();
       
         <article
 				class="card borda-cor-preto card-largura p-0 m-4 col-12 col-sm-2">
-				<img src="src/img/curso-invest1.jpg"
+				<img src="src/img/flash.jpg"
 					class="card-img-top altura-img-cards" alt="...">
 				<div class="card-body">
 					<h5 class="card-title"><?php echo $listaTreinamentos[$i]->getNome() . "<br/>";?></h5>
