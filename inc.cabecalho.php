@@ -3,8 +3,7 @@
 
 <head>
 
-
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"">
+<meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -30,7 +29,7 @@
 
 	<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-		<a class="navbar-brand mr-1" href="index.html">CTOR</a>
+		<a class="navbar-brand mr-1" href="index.php">CTOR</a>
 
 		<button class="btn btn-link btn-sm text-white order-1 order-sm-0"
 			id="sidebarToggle" href="#">

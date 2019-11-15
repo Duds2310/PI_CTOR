@@ -1,19 +1,9 @@
-<?php
-use src\RepositorioTreinamento;
-
-require_once 'src/repositorios/RepositorioTreinamento.php';
-require_once 'src/modelo/Treinamento.php';
-
-$repositorio = new RepositorioTreinamento();
-
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="content-Type" content="text/html; charset=iso-8859-1" />
+<meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Educando & Financiando</title>
+<title>CTOR</title>
 <link href="https://fonts.googleapis.com/css?family=Rufina&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet"
@@ -22,7 +12,11 @@ $repositorio = new RepositorioTreinamento();
 	crossorigin="anonymous" />
 <link rel="stylesheet" type="text/css" href="src/style.css" />
 </head>
+
+
 <body>
+
+	<!-- Inicio Navbar -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="#">CTOR</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -33,16 +27,19 @@ $repositorio = new RepositorioTreinamento();
 		<div class="collapse navbar-collapse justify-content-end"
 			id="navbarNavAltMarkup">
 			<div class="navbar-nav">
-				<a class="nav-item nav-link active" href="#">Home <span
-					class="sr-only">(current)</span></a> <a class="nav-item nav-link"
-					href="#">Cursos</a> <a class="nav-item nav-link" href="#">Quem
-					Somos</a> <a class="nav-item nav-link" data-toggle="modal"
-					data-target="#modalContato" href="#">Contato</a> <a
-					class="nav-item nav-link" href="login.php">Area membros</a>
+				<a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+				<a class="nav-item nav-link" href="#">Valores</a> 
+				<a class="nav-item nav-link" href="#">Missão</a>
+				<a class="nav-item nav-link" href="#">Quem Somos</a>
+				<a class="nav-item nav-link" data-toggle="modal" data-target="#modalContato" href="#">Contato</a>
+				<a class="nav-item nav-link" href="login.php">Area membros</a>
 			</div>
 		</div>
 	</nav>
+	<!-- Fim Navbar -->
 
+
+	<!-- Inicio Carrosel -->
 	<div class="bd-example">
 		<div id="carouselExampleCaptions" class="carousel slide"
 			data-ride="carousel" data-interval="3000">
@@ -53,8 +50,8 @@ $repositorio = new RepositorioTreinamento();
 			</ol>
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<img src="src/ctor.jpg"
-						class="d-block w-100 carrossel-img-um" alt="...">
+					<img src="src/ctor.jpg" class="d-block w-100 carrossel-img-um"
+						alt="...">
 					<div class="carousel-caption d-none d-md-block h-50">
 						<h1 class="fonte-titulo display-4">CTOR</h1>
 					</div>
@@ -63,8 +60,7 @@ $repositorio = new RepositorioTreinamento();
 					<img src="src/img/carrossel-img2.webp"
 						class="d-block w-100 carrossel-img-dois" alt="...">
 					<div class="carousel-caption d-none d-md-block h-50">
-						<h1 class="fonte-titulo display-4">Curso de carteira
-							previdenciaria</h1>
+						<h1 class="fonte-titulo display-4">Curso de carteira previdenciaria</h1>
 					</div>
 				</div>
 			</div>
@@ -79,54 +75,33 @@ $repositorio = new RepositorioTreinamento();
 			</a>
 		</div>
 	</div>
+	<!-- Fim Carrosel -->
 
-	<!--<h1>Saiba onde e como investir para viver melhor!</h1>
-    <h1>Economize e ganhe em saúde!</h1>-->
 
-	<h1 class="text-center fonte-titulo pt-5">Saiba onde e como investir
-		para viver melhor!</h1>
-	<p class="text-center text-secondary pb-5">Nossas consultorias ajudam
-		você a aproveitar melhor o seu dinheiro, economizar, ganhar tempo e
-		praticidade</p>
+	<!-- Inicio Titulo -->
+	<h1 class="text-center fonte-titulo pt-5">CTOR</h1>
+	<p class="text-center text-secondary pb-5">Centro de Treinamento Oscar Rodrigues</p>
+	<!-- Fim Titulo -->
 
 	<section class="container-fluid">
-		<div class="row justify-content-md-center bg-light"> 
- 
-    <?php
-    $listaTreinamentos = $repositorio->listarTreinamento();
-    
-    $validador = $listaTreinamentos == false ? false : $listaTreinamentos;
-    $i = 0;
-    
-    if ($validador) {
-    while ($i < count($listaTreinamentos)) {
-        ?>
-      
-        <article
+		<div class="row justify-content-md-center bg-light">
+			<article
 				class="card borda-cor-preto card-largura p-0 m-4 col-12 col-sm-2">
-				<img src="src/img/flash.jpg"
-					class="card-img-top altura-img-cards" alt="...">
+				<img src="src/img/flash.jpg" class="card-img-top altura-img-cards"
+					alt="...">
 				<div class="card-body">
-					<h5 class="card-title"><?php echo $listaTreinamentos[$i]->getNome() . "<br/>";?></h5>
-					<p class="card-text"><?php echo $listaTreinamentos[$i]->getDescricao() . "<br/>";?></p>
+					<h5 class="card-title">Teste</h5>
+					<p class="card-text">testestesr</p>
 					<a href="#" class="btn btn-primary">Conheça o curso</a>
 				</div>
-			</article>      
-     
-     <?php
-        $i ++;
-    }
-    
-    } else { echo "<center><h1> N�o h� Treinamentos cadastrados!</h1></center>"; }
-    ?>
-     </div>
+			</article>
+		</div>
 	</section>
 
 	<section id="quem-somos">
 		<div class="py-5 px-2">
 			<h2 class="text-center texto-cor-especial fonte-titulo">Quem somos</h2>
-			<p class="text-center text-secondary">Conheça a comunidade por trás
-				da iniciativa</p>
+			<p class="text-center text-secondary">Conheça a comunidade por trás da iniciativa</p>
 		</div>
 		<ul
 			class="list-unstyled list-inline text-center d-lg-flex justify-content-lg-around">
@@ -152,7 +127,7 @@ $repositorio = new RepositorioTreinamento();
 	</footer>
 
 
-	<!-- Modal -->
+	<!-- Inicio Modal -->
 	<div class="modal fade" id="modalContato" tabindex="-1" role="dialog"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
@@ -184,13 +159,23 @@ $repositorio = new RepositorioTreinamento();
 					</form>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary"
-						data-dismiss="modal">Fechar</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
 					<button type="button" class="btn btn-primary">Enviar</button>
 				</div>
 			</div>
 		</div>
 	</div>
+	<!-- Fim Modal -->
+
+	<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Título do card</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Subtitulo do card</h6>
+    <p class="card-text">Um exemplo de texto rápido para construir o título do card e fazer preencher o conteúdo do card.</p>
+    <a href="#" class="card-link">Link do card</a>
+    <a href="#" class="card-link">Outro link</a>
+  </div>
+</div>
 
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

@@ -22,7 +22,7 @@ $i = 0;
 	<li class="breadcrumb-item active">Informacoes do Treino</li>
 </ol>
 
-<!-- Inicio formulário de cadastro de Treinamentos -->
+<!-- Inicio formulï¿½rio de cadastro de Treinamentos -->
 <div class="card mb-3">
 	<div class="card-header">
 		<i class="fas fa-address-card"></i> Novo Treino
@@ -88,7 +88,7 @@ $i = 0;
 						<th>Categoria</th>
 						<th>Situacao</th>
 						<th>Data</th>
-						<th>Acoes</th>
+						<th>AÃ§Ãµes</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -121,7 +121,7 @@ include 'inc.rodape.php';
 	<li class="breadcrumb-item active">Tabela de Disparos</li>
 </ol>
 -->
-<!-- Inicio formulário de cadastro de disparos
+<!-- Inicio formulï¿½rio de cadastro de disparos
 <div class="card mb-3">
 	<div class="card-header">
 		<i class="fas fa-address-card"></i>  Disparos

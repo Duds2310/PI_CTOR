@@ -99,7 +99,7 @@ if ($temRegistro) {
 						<th>Categoria</th>
 						<th>Situacao</th>
 						<th>Data de Vencimento</th>
-						<th>ações</th>
+						<th>Ações</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -137,7 +137,7 @@ if ($temRegistro) {
 			</table>
 			<?php } else  {?>
 			        <center>
-				<h1>Não há despesas cadastradas!</h1>
+				<h1>Nï¿½o hï¿½ despesas cadastradas!</h1>
 			</center>
 				
 			<?php }?>

@@ -46,7 +46,7 @@ if ($validador) {
 	<li class="breadcrumb-item active">Tabela Receitas</li>
 </ol>
 
-<!-- Inicio formulário de cadastro de usuários -->
+<!-- Inicio formulï¿½rio de cadastro de usuï¿½rios -->
 <div class="card mb-3">
 	<div class="card-header">
 		<i class="fas fa-address-card"> Nova Receita</i>
@@ -72,7 +72,7 @@ if ($validador) {
 			<div class="form-group form-row">
 				<div class="col-md-12">
 					<textarea class="form-control" name="descricao" id="descricao"
-						rows="3" placeholder="Descrição"></textarea>
+						rows="3" placeholder="Descriï¿½ï¿½o"></textarea>
 				</div>
 			</div>
 			<div class="form-group form-row">
@@ -117,7 +117,7 @@ if ($validador) {
 	</div>
 </div>
 
-<!-- Fim formulário de cadastro de usuários -->
+<!-- Fim formulï¿½rio de cadastro de usuï¿½rios -->
 
 
 
@@ -142,7 +142,7 @@ if ($validador) {
 						<th>Usuario Responsavel</th>
 						<th>Autor</th>
 						<th>Valor</th>
-						<th>Ação</th>
+						<th>AÃ§Ãµes</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -189,7 +189,7 @@ if ($validador) {
 				</tfoot>
 				</tbody>
 			</table>
-			<?php } else { echo "<center><h1> Não há receitas cadastradas!</h1></center>"; } ?>
+			<?php } else { echo "<center><h1> Nï¿½o hï¿½ receitas cadastradas!</h1></center>"; } ?>
 		</div>
 	</div>
 </div>

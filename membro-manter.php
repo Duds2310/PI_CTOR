@@ -124,7 +124,7 @@ $validador = $ListaUsuarios == false ? false : $ListaUsuarios;
 						<th>Nome</th>
 						<th>Email</th>
 						<th>Login</th>
-						<th>Acoes</th>
+						<th>AÃ§Ãµes</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -145,7 +145,7 @@ $validador = $ListaUsuarios == false ? false : $ListaUsuarios;
 				<?php $i++; } ?>	
 				</tbody>
 			</table>
-			<?php } else { echo "<center><h1> Não há membros cadastrados!</h1></center>"; } ?>
+			<?php } else { echo "<center><h1> Nï¿½o hï¿½ membros cadastrados!</h1></center>"; } ?>
 		</div>
 	</div>
 </div>

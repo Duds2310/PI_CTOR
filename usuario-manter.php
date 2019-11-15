@@ -20,10 +20,10 @@ $validador = $ListaUsuarios == false ? false : $ListaUsuarios;
 	<li class="breadcrumb-item active">Tabela Usuarios</li>
 </ol>
 
-<!-- Inicio formulário de cadastro de usuários -->
+<!-- Inicio formulï¿½rio de cadastro de usuï¿½rios -->
 <div class="card mb-3">
 	<div class="card-header">
-		<i class="fas fa-address-card"></i> Novo Usuário
+		<i class="fas fa-address-card"></i> Novo UsuÃ¡rio
 	</div>
 	<div class="card-body">
 		<form action="usuario-manter-cadastrar-action.php" method="post">
@@ -53,7 +53,7 @@ $validador = $ListaUsuarios == false ? false : $ListaUsuarios;
 	</div>
 </div>
 
-<!-- Fim formulário de cadastro de usuários -->
+<!-- Fim formulï¿½rio de cadastro de usuï¿½rios -->
 
 
 <!-- DataTables Example -->
@@ -71,7 +71,7 @@ $validador = $ListaUsuarios == false ? false : $ListaUsuarios;
 						<th>Nome</th>
 						<th>Email</th>
 						<th>Login</th>
-						<th>ações</th>
+						<th>AÃ§Ãµes</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -90,7 +90,7 @@ $validador = $ListaUsuarios == false ? false : $ListaUsuarios;
 				<?php $i++; } ?>	
 				</tbody>
 			</table>
-			<?php } else { echo "<center><h1> Não há usuarios cadastrados!</h1></center>"; } ?>
+			<?php } else { echo "<center><h1> Nï¿½o hï¿½ usuarios cadastrados!</h1></center>"; } ?>
 		</div>
 	</div>
 </div>
