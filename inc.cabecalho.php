@@ -3,7 +3,7 @@
 
 <head>
 
-<meta charset="UTF-8"/>
+<meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -81,18 +81,18 @@
 			</li>
 			<li class="nav-item"><a class="nav-link" href="receita-manter.php"> <i
 					class="fas fa-coins "></i> <span>Manter Receita</span></a></li>
-			
-
+					
+			<li class="nav-item"><a class="nav-link" href="despesa-manter.php"> <i
+					class="fas fa-coins"></i> <span>Manter Despesa</span></a>
+			</li>
 					
 			<li class="nav-item"><a class="nav-link" href="provas-manter.php"> <i
 					class="fas fa-user-circle fa-fw"></i> <span>Manter Provas</span></a>
-					
 			</li>
-
-					class="fas fa-coins "></i> <span>Manter Despesa</span></a></li>
-			<li class="nav-item"><a class="nav-link"
-				href="treinamento-manter.php"> <i class="fas fa-bullseye"></i> <span>Manter
-						Treino</span></a></li>
+			
+			<li class="nav-item"><a class="nav-link" href="treinamento-manter.php"> <i 
+					class="fas fa-bullseye"></i> <span>Manter Treino</span></a>
+			</li>
 		</ul>
 
 		<div id="content-wrapper">
