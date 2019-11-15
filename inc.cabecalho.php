@@ -3,8 +3,7 @@
 
 <head>
 
-
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -30,7 +29,7 @@
 
 	<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-		<a class="navbar-brand mr-1" href="index.html">CTOR</a>
+		<a class="navbar-brand mr-1" href="index.php">CTOR</a>
 
 		<button class="btn btn-link btn-sm text-white order-1 order-sm-0"
 			id="sidebarToggle" href="#">
@@ -77,16 +76,23 @@
 			<li class="nav-item"><a class="nav-link" href="usuario-manter.php"> <i
 					class="fas fa-user-circle fa-fw"></i> <span>Manter Usuarios</span></a>
 			</li>
+			<li class="nav-item"><a class="nav-link" href="membro-manter.php"> <i
+					class="fas fa-user-circle fa-fw"></i> <span>Manter Membro</span></a>
+			</li>
 			<li class="nav-item"><a class="nav-link" href="receita-manter.php"> <i
-					class="fas fa-user-circle fa-fw"></i> <span>Manter Receita</span></a>
-			</li>
-			<li class="nav-item"><a class="nav-link" href="despesa-manter.php"> <i
-					class="fas fa-user-circle fa-fw"></i> <span>Manter Despesa</span></a>
-			</li>
+					class="fas fa-coins "></i> <span>Manter Receita</span></a></li>
+			
+
+					
 			<li class="nav-item"><a class="nav-link" href="provas-manter.php"> <i
 					class="fas fa-user-circle fa-fw"></i> <span>Manter Provas</span></a>
 					
 			</li>
+
+					class="fas fa-coins "></i> <span>Manter Despesa</span></a></li>
+			<li class="nav-item"><a class="nav-link"
+				href="treinamento-manter.php"> <i class="fas fa-bullseye"></i> <span>Manter
+						Treino</span></a></li>
 		</ul>
 
 		<div id="content-wrapper">

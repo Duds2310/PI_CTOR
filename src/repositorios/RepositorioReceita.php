@@ -7,6 +7,7 @@ use src\Usuario;
 use src\modelo\ReceitaOTD;
 require_once 'src/ConexaoMySQL.php';
 require_once 'src/modelo/Receita.php';
+require_once 'src/modelo/ReceitaOTD.php';
 
 class RepositorioReceita
 {
@@ -27,7 +28,7 @@ class RepositorioReceita
 
         $query = "  INSERT INTO tb_receitas (REC_DATA_PAGAMENTO,REC_DESCRICAO,REC_VALOR,REC_ID_USU_PAGAMENTO,REC_DATA_CADASTRO,CAT_REC_ID,REC_SITUACAO,USU_ID)
                      values ('" . $Receita->getDataPagamento() . "','" . $Receita->getDescricao() . "'," . $Receita->getValor() . ",'" . $Receita->getUsuarioResponsavelId() . "',
-                        '" . $Receita->getDataCadastro() . "'," . $Receita->getCategoriaId() . ",'" . $Receita->getSituacao() . "', '" . $Receita->getIdUsuario() . "'   )";
+                        '" . $Receita->getDataCadastro() . "'," . $Receita->getCategoriaId() . ", 1 , '" . $Receita->getIdUsuario() . "'   )";
 
         $conexao = $this->ConexaoMySQL->abrirBanco();
 
@@ -181,13 +182,12 @@ class RepositorioReceita
     {
         $retorno = false;
 
-        $query = "UPDATE tb_receitas SET REC_DATA_PAGAMENTO = '" . $Receita->getDataPagamento() . "' ,REC_DESCRICAO = '" . $Receita->getDescricao() . "',
-            REC_VALOR = '" . $Receita->getValor() . "',REC_ID_USU_PAGAMENTO='" . $Receita->getUsuarioResponsavelId() . "',REC_DATA_CADASTRO= '" . $Receita->getDataCadastro() . "',
-            REC_SITUACAO = '" . $Receita->getSituacao() . "',CAT_REC_ID = '" . $Receita->getCategoriaId() . "'
-             WHERE REC_ID = " . $Receita->getId() . "' USU_ID = '" . $Receita->getUsuarioResponsavelId();
+        $query = "UPDATE tb_receitas SET REC_DESCRICAO = '" . $Receita->getDescricao() . "', REC_VALOR = " . $Receita->getValor() . ", REC_DATA_CADASTRO= '" . $Receita->getDataCadastro() . "',
+						REC_DATA_PAGAMENTO = '" . $Receita->getDataPagamento() . "' , REC_ID_USU_PAGAMENTO = " . $Receita->getUsuarioResponsavelId() . ", CAT_REC_ID = " . $Receita->getCategoriaId() . ",
+                         REC_SITUACAO = 1 WHERE REC_ID = " . $Receita->getId();
 
-        var_dump($query);
-        die();
+        //var_dump($query);
+       // die();
 
         $conexao = $this->ConexaoMySQL->abrirBanco();
 

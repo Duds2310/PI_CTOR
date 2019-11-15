@@ -1,7 +1,7 @@
 <?php
 use src\repositorios\RepositorioReceita;
 use src\modelo\Receita;
-use src\RepositorioProva;
+
 
 include 'src/repositorios/RepositorioReceita.php';
 include 'src/repositorios/RepositorioProva.php';
@@ -10,6 +10,7 @@ $repo = new RepositorioReceita();
 $rec = new Receita();
 $repositorioprova = new RepositorioProva();
 $lista = $repositorioprova->listarProvas();
+
 
 /**
  * LISTAR
@@ -66,6 +67,8 @@ $resultado = $repo->deletarReceita($rec);
  * 
  */
 
+/**
+ 
 $rec->setId("2");
 $rec->setCategoriaId("1");
 $rec->setDataCadastro("2019-10-31");
@@ -76,6 +79,13 @@ $rec->setValor("280");
 $rec->setSituacao("true");
 
 $resultado = $repo->alterarReceita($rec);
+*/
+
+$receitasTela = $repo->listarReceitaTela();
+var_dump($receitasTela);
+die();
+
+
 
 
 

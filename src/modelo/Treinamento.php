@@ -9,22 +9,31 @@ class Treinamento
 
     private $id;
 
-    private $nome;
+    private $categoria;
 
-    private $periodo;
+    private $data;
 
-    private $valor;
+    private $situacao;
 
     private $IdUsuario;
 
-    // CONSTRUTOR
-    public function __construct()
-    {}
-
-    // METODOS
+    /**
+     * @return mixed
+     */
+    public function getSituacao()
+    {
+        return $this->situacao;
+    }
 
     /**
-     *
+     * @param mixed $situacao
+     */
+    public function setSituacao($situacao)
+    {
+        $this->situacao = $situacao;
+    }
+
+    /**
      * @return mixed
      */
     public function getDescricao()
@@ -33,7 +42,6 @@ class Treinamento
     }
 
     /**
-     *
      * @return mixed
      */
     public function getId()
@@ -42,34 +50,22 @@ class Treinamento
     }
 
     /**
-     *
      * @return mixed
      */
-    public function getNome()
+    public function getCategoria()
     {
-        return $this->nome;
+        return $this->categoria;
     }
 
     /**
-     *
      * @return mixed
      */
-    public function getPeriodo()
+    public function getData()
     {
-        return $this->periodo;
+        return $this->data;
     }
 
     /**
-     *
-     * @return mixed
-     */
-    public function getValor()
-    {
-        return $this->valor;
-    }
-
-    /**
-     *
      * @return mixed
      */
     public function getIdUsuario()
@@ -78,7 +74,6 @@ class Treinamento
     }
 
     /**
-     *
      * @param mixed $descricao
      */
     public function setDescricao($descricao)
@@ -87,7 +82,6 @@ class Treinamento
     }
 
     /**
-     *
      * @param mixed $id
      */
     public function setId($id)
@@ -96,39 +90,35 @@ class Treinamento
     }
 
     /**
-     *
-     * @param mixed $nome
+     * @param mixed $categoria
      */
-    public function setNome($nome)
+    public function setCategoria($categoria)
     {
-        $this->nome = $nome;
+        $this->categoria = $categoria;
     }
 
     /**
-     *
-     * @param mixed $periodo
+     * @param mixed $data
      */
-    public function setPeriodo($periodo)
+    public function setData($data)
     {
-        $this->periodo = $periodo;
+        $this->data = $data;
     }
 
     /**
-     *
-     * @param mixed $valor
-     */
-    public function setValor($valor)
-    {
-        $this->valor = $valor;
-    }
-
-    /**
-     *
      * @param mixed $IdUsuario
      */
     public function setIdUsuario($IdUsuario)
     {
         $this->IdUsuario = $IdUsuario;
     }
+
+    // CONSTRUTOR
+    public function __construct()
+    {}
+
+    // METODOS
+
+   
 }
 

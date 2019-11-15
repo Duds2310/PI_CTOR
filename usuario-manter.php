@@ -8,8 +8,10 @@ require_once 'src/repositorios/RepositorioUsuario.php';
 $repoUsuario = new RepositorioUsuario();
 
 $ListaUsuarios = $repoUsuario->listarUsuario();
-$quantidade = count($ListaUsuarios);
+
 $i = 0;
+
+$validador = $ListaUsuarios == false ? false : $ListaUsuarios;
 ?>
 
 <!-- Breadcrumbs-->
@@ -18,10 +20,10 @@ $i = 0;
 	<li class="breadcrumb-item active">Tabela Usuarios</li>
 </ol>
 
-<!-- Inicio formulário de cadastro de usuários -->
+<!-- Inicio formulï¿½rio de cadastro de usuï¿½rios -->
 <div class="card mb-3">
 	<div class="card-header">
-		<i class="fas fa-address-card"></i> Novo Usuário
+		<i class="fas fa-address-card"></i> Novo UsuÃ¡rio
 	</div>
 	<div class="card-body">
 		<form action="usuario-manter-cadastrar-action.php" method="post">
@@ -51,7 +53,7 @@ $i = 0;
 	</div>
 </div>
 
-<!-- Fim formulário de cadastro de usuários -->
+<!-- Fim formulï¿½rio de cadastro de usuï¿½rios -->
 
 
 <!-- DataTables Example -->
@@ -61,6 +63,7 @@ $i = 0;
 	</div>
 	<div class="card-body">
 		<div class="table-responsive">
+		<?php if ($validador) {  $quantidade = count($ListaUsuarios);?>
 			<table class="table table-bordered" id="MyTableID" width="100%"
 				cellspacing="0">
 				<thead>
@@ -68,7 +71,7 @@ $i = 0;
 						<th>Nome</th>
 						<th>Email</th>
 						<th>Login</th>
-						<th>ações</th>
+						<th>AÃ§Ãµes</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -87,6 +90,7 @@ $i = 0;
 				<?php $i++; } ?>	
 				</tbody>
 			</table>
+			<?php } else { echo "<center><h1> Nï¿½o hï¿½ usuarios cadastrados!</h1></center>"; } ?>
 		</div>
 	</div>
 </div>

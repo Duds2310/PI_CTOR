@@ -33,16 +33,36 @@ class RepositorioTreinamento
         $this->Treinamento = new Treinamento();
     }
 
-    public function cadastrarTreinamento()
-    {}
+    //CADASTRAR TREINAMENTO
+    public function cadastrarTreinamento($Treinamento)
+    {  
+        $retorno = true;
+    
+    $query = "INSERT INTO TB_TREINO(TRE_CATEGORIA, TRE_SITUACAO, TRE_DESCRICAO, TRE_DATA, USU_ID)VALUES
+	           ('" . $Treinamento->getCategoria() . "', '" . $Treinamento->getSituacao() . "', '" . $Treinamento->getDescricao() . "',
+                     '" . $Treinamento->getData() . "', '" . $Treinamento->getIdUsuario() . "')";
+    
+    $conexao = $this->ConexaoMySQL->abrirBanco();
+    
+    if ($conexao->query($query) == true) {
+        $retorno = true;
+    } else {
+        echo mysqli_error($conexao);
+    }
+    
+    $conexao = $this->ConexaoMySQL->fecharBanco();
+    
+    return $retorno;
+    }
 
+    
     public function listarTreinamento()
     {
         $ListaTreinamentos = null;
 
         $conexao = $this->ConexaoMySQL->abrirBanco();
 
-        $query = "SELECT * FROM TB_TREINAMENTO";
+        $query = "SELECT * FROM TB_TREINO";
 
         $resultado = $conexao->query($query);
 
@@ -53,10 +73,10 @@ class RepositorioTreinamento
                 $Treinamento = new Treinamento();
 
                 $Treinamento->setId($linha["TRE_ID"]);
-                $Treinamento->setNome($linha["TRE_NOME"]);
+                $Treinamento->setCategoria($linha["TRE_CATEGORIA"]);
+                $Treinamento->setSituacao($linha["TRE_SITUACAO"]);
                 $Treinamento->setDescricao($linha["TRE_DESCRICAO"]);
-                $Treinamento->setPeriodo($linha["TRE_PERIODO"]);
-                $Treinamento->setValor($linha["TRE_VALOR"]);
+                $Treinamento->setData($linha["TRE_DATA"]);
                 $Treinamento->setIdUsuario($linha["USU_ID"]);
 
                 $ListaTreinamentos[$i] = $Treinamento;
@@ -75,26 +95,27 @@ class RepositorioTreinamento
 
         $conexao = $this->ConexaoMySQL->abrirBanco();
 
-        $query = "SELECT * FROM TB_TREINAMENTO WHERE TRE_ID = $Id";
+        $query = "SELECT * FROM TB_TREINO WHERE TRE_ID = $Id";
 
         $resultado = $conexao->query($query);
 
-        $i = 0;
+//        $i = 0;
         if ($resultado->num_rows > 0) {
             // acessando dados retornados do banco
             $linha = $resultado->fetch_assoc();
             $Treinamento = new Treinamento();
 
             $Treinamento->setId($linha["TRE_ID"]);
-            $Treinamento->setNome($linha["TRE_NOME"]);
+            $Treinamento->setData($linha["TRE_DATA"]);
             $Treinamento->setDescricao($linha["TRE_DESCRICAO"]);
-            $Treinamento->setPeriodo($linha["TRE_PERIODO"]);
-            $Treinamento->setValor($linha["TRE_VALOR"]);
+            $Treinamento->setCategoria($linha["TRE_CATEGORIA"]);
+            $Treinamento->setSituacao($linha["TRE_SITUACAO"]);
             $Treinamento->setIdUsuario($linha["USU_ID"]);
         } else {
             $Treinamento = false;
         }
-
+        //var_dump($Treinamento);
+     // die("FimRepo");
         return $Treinamento;
     }
 
