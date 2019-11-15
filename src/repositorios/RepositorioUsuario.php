@@ -36,6 +36,9 @@ class RepositorioUsuario
         $query = "SELECT * FROM TB_USUARIO"; // variavel reponsavel por armazenar a query do banco
 
         $conexao = $this->ConexaoMySQL->abrirBanco(); // abre o link de conexao
+        
+        
+
 
         $resultado = $conexao->query($query); // responsavel por executar a query no banco de dados
 

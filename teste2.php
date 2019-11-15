@@ -1,13 +1,15 @@
 <?php
 use src\repositorios\RepositorioReceita;
 use src\modelo\Receita;
-use src\modelo\ReceitaOTD;
+
 
 include 'src/repositorios/RepositorioReceita.php';
+include 'src/repositorios/RepositorioProva.php';
 
 $repo = new RepositorioReceita();
 $rec = new Receita();
-
+$repositorioprova = new RepositorioProva();
+$lista = $repositorioprova->listarProvas();
 
 
 /**

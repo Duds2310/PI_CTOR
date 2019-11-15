@@ -29,6 +29,9 @@ $despesa->setSituacao($situacao);
 
 $cadastrado = $repoDespesa->cadastrarDespesa($despesa);
 
+var_dump($cadastrado);
+die();
+
 if ($cadastrado == true) {
     header('Location: despesa-manter.php');
 } else{

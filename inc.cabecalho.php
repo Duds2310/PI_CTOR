@@ -81,7 +81,14 @@
 			</li>
 			<li class="nav-item"><a class="nav-link" href="receita-manter.php"> <i
 					class="fas fa-coins "></i> <span>Manter Receita</span></a></li>
-			<li class="nav-item"><a class="nav-link" href="despesa-manter.php"> <i
+			
+
+					
+			<li class="nav-item"><a class="nav-link" href="provas-manter.php"> <i
+					class="fas fa-user-circle fa-fw"></i> <span>Manter Provas</span></a>
+					
+			</li>
+
 					class="fas fa-coins "></i> <span>Manter Despesa</span></a></li>
 			<li class="nav-item"><a class="nav-link"
 				href="treinamento-manter.php"> <i class="fas fa-bullseye"></i> <span>Manter
