@@ -27,12 +27,13 @@
 		<div class="collapse navbar-collapse justify-content-end"
 			id="navbarNavAltMarkup">
 			<div class="navbar-nav">
-				<a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-				<a class="nav-item nav-link" href="#">Valores</a> 
-				<a class="nav-item nav-link" href="#">Missão</a>
-				<a class="nav-item nav-link" href="#">Quem Somos</a>
-				<a class="nav-item nav-link" data-toggle="modal" data-target="#modalContato" href="#">Contato</a>
-				<a class="nav-item nav-link" href="login.php">Area membros</a>
+				<a class="nav-item nav-link active" href="#">Home <span
+					class="sr-only">(current)</span></a> <a class="nav-item nav-link"
+					href="#">Valores</a> <a class="nav-item nav-link" href="#">Missão</a>
+				<a class="nav-item nav-link" href="#">Quem Somos</a> <a
+					class="nav-item nav-link" data-toggle="modal"
+					data-target="#modalContato" href="#">Contato</a> <a
+					class="nav-item nav-link" href="login.php">Area membros</a>
 			</div>
 		</div>
 	</nav>
@@ -60,7 +61,8 @@
 					<img src="src/img/carrossel-img2.webp"
 						class="d-block w-100 carrossel-img-dois" alt="...">
 					<div class="carousel-caption d-none d-md-block h-50">
-						<h1 class="fonte-titulo display-4">Curso de carteira previdenciaria</h1>
+						<h1 class="fonte-titulo display-4">Curso de carteira
+							previdenciaria</h1>
 					</div>
 				</div>
 			</div>
@@ -80,9 +82,115 @@
 
 	<!-- Inicio Titulo -->
 	<h1 class="text-center fonte-titulo pt-5">CTOR</h1>
-	<p class="text-center text-secondary pb-5">Centro de Treinamento Oscar Rodrigues</p>
+	<p class="text-center text-secondary pb-5">Centro de Treinamento Oscar
+		Rodrigues</p>
 	<!-- Fim Titulo -->
 
+	<!-- Inicio valores -->
+	<section class="container-fluid">
+		<div class="row justify-content-md-center">
+			<article class="col-6">
+				<div class="jumbotron">
+					<h1 class="display-4 text-center">Valores</h1>
+					<p class="lead">O incentivo ao avanço tecnológico, assim como o
+						comprometimento entre as equipes oferece uma interessante
+						oportunidade para verificação das condições inegavelmente
+						apropriadas. Do mesmo modo, a hegemonia do ambiente político exige
+						a precisão e a definição do fluxo de informações. No entanto, não
+						podemos esquecer que a valorização de fatores subjetivos aponta
+						para a melhoria dos relacionamentos verticais entre as
+						hierarquias. No mundo atual, a percepção das dificuldades estende
+						o alcance e a importância do levantamento das variáveis
+						envolvidas. Todavia, o acompanhamento das preferências de consumo
+						faz parte de um processo de gerenciamento dos modos de operação
+						convencionais. A nível organizacional, a expansão dos mercados
+						mundiais garante a contribuição de um grupo importante na
+						determinação do retorno esperado a longo prazo. Caros amigos, o
+						fenômeno da Internet representa uma abertura para a melhoria dos
+						conhecimentos estratégicos para atingir a excelência.</p>
+				</div>
+			</article>
+		</div>
+	</section>
+	<!-- Fim valores -->
+	<!-- Inicio valores -->
+	<section class="container-fluid">
+		<div class="row justify-content-md-center">
+			<article class="col-6">
+				<div class="jumbotron">
+					<h1 class="display-4 text-center">Valores</h1>
+					<p class="lead">O incentivo ao avanço tecnológico, assim como o
+						comprometimento entre as equipes oferece uma interessante
+						oportunidade para verificação das condições inegavelmente
+						apropriadas. Do mesmo modo, a hegemonia do ambiente político exige
+						a precisão e a definição do fluxo de informações. No entanto, não
+						podemos esquecer que a valorização de fatores subjetivos aponta
+						para a melhoria dos relacionamentos verticais entre as
+						hierarquias. No mundo atual, a percepção das dificuldades estende
+						o alcance e a importância do levantamento das variáveis
+						envolvidas. Todavia, o acompanhamento das preferências de consumo
+						faz parte de um processo de gerenciamento dos modos de operação
+						convencionais. A nível organizacional, a expansão dos mercados
+						mundiais garante a contribuição de um grupo importante na
+						determinação do retorno esperado a longo prazo. Caros amigos, o
+						fenômeno da Internet representa uma abertura para a melhoria dos
+						conhecimentos estratégicos para atingir a excelência.</p>
+				</div>
+			</article>
+		</div>
+	</section>
+	<!-- Fim valores -->
+	
+		<!-- Inicio valores 
+	<section class="container-fluid">
+		<div class="row justify-content-md-center">
+			<article class="col-6">
+				<div class="jumbotron">
+					<h1 class="display-4 text-center">Valores</h1>
+					<p class="lead">O incentivo ao avanço tecnológico, assim como o
+						comprometimento entre as equipes oferece uma interessante
+						oportunidade para verificação das condições inegavelmente
+						apropriadas. Do mesmo modo, a hegemonia do ambiente político exige
+						a precisão e a definição do fluxo de informações. No entanto, não
+						podemos esquecer que a valorização de fatores subjetivos aponta
+						para a melhoria dos relacionamentos verticais entre as
+						hierarquias. No mundo atual, a percepção das dificuldades estende
+						o alcance e a importância do levantamento das variáveis
+						envolvidas. Todavia, o acompanhamento das preferências de consumo
+						faz parte de um processo de gerenciamento dos modos de operação
+						convencionais. A nível organizacional, a expansão dos mercados
+						mundiais garante a contribuição de um grupo importante na
+						determinação do retorno esperado a longo prazo. Caros amigos, o
+						fenômeno da Internet representa uma abertura para a melhoria dos
+						conhecimentos estratégicos para atingir a excelência.</p>
+				</div>
+			</article>
+			<article class="col-6">
+				<div class="jumbotron">
+					<h1 class="display-4 text-center">Missão</h1>
+					<p class="lead">O incentivo ao avanço tecnológico, assim como o
+						comprometimento entre as equipes oferece uma interessante
+						oportunidade para verificação das condições inegavelmente
+						apropriadas. Do mesmo modo, a hegemonia do ambiente político exige
+						a precisão e a definição do fluxo de informações. No entanto, não
+						podemos esquecer que a valorização de fatores subjetivos aponta
+						para a melhoria dos relacionamentos verticais entre as
+						hierarquias. No mundo atual, a percepção das dificuldades estende
+						o alcance e a importância do levantamento das variáveis
+						envolvidas. Todavia, o acompanhamento das preferências de consumo
+						faz parte de um processo de gerenciamento dos modos de operação
+						convencionais. A nível organizacional, a expansão dos mercados
+						mundiais garante a contribuição de um grupo importante na
+						determinação do retorno esperado a longo prazo. Caros amigos, o
+						fenômeno da Internet representa uma abertura para a melhoria dos
+						conhecimentos estratégicos para atingir a excelência.</p>
+				</div>
+			</article>
+		</div>
+	</section>
+	 Fim valores -->
+
+	<!-- Inicio Card Atletas -->
 	<section class="container-fluid">
 		<div class="row justify-content-md-center bg-light">
 			<article
@@ -97,11 +205,14 @@
 			</article>
 		</div>
 	</section>
+	<!-- Fim card Atletas -->
 
+	<!-- Inicio Quem somos -->
 	<section id="quem-somos">
 		<div class="py-5 px-2">
 			<h2 class="text-center texto-cor-especial fonte-titulo">Quem somos</h2>
-			<p class="text-center text-secondary">Conheça a comunidade por trás da iniciativa</p>
+			<p class="text-center text-secondary">Conheça a comunidade por trás
+				da iniciativa</p>
 		</div>
 		<ul
 			class="list-unstyled list-inline text-center d-lg-flex justify-content-lg-around">
@@ -119,6 +230,7 @@
 			</li>
 		</ul>
 	</section>
+	<!-- Fim Quem somos -->
 
 	<footer class="bg-secondary p-3">
 		<p class="text-light m-0 text-center">
@@ -159,7 +271,8 @@
 					</form>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Fechar</button>
 					<button type="button" class="btn btn-primary">Enviar</button>
 				</div>
 			</div>
@@ -167,15 +280,7 @@
 	</div>
 	<!-- Fim Modal -->
 
-	<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Título do card</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Subtitulo do card</h6>
-    <p class="card-text">Um exemplo de texto rápido para construir o título do card e fazer preencher o conteúdo do card.</p>
-    <a href="#" class="card-link">Link do card</a>
-    <a href="#" class="card-link">Outro link</a>
-  </div>
-</div>
+
 
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
