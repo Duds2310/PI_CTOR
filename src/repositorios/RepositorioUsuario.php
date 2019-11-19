@@ -333,9 +333,9 @@ class RepositorioUsuario
     // metodo responsavel por realizar o login do usuario
     public function login($UsuarioLogin) {      
         $UsuarioLogado = null; //so retorno o usuario caso exista, se nao, dever� ser falso. 
+
         
-        $query = "SELECT USU_ID, USU_LOGIN, USU_NOME FROM TB_USUARIO WHERE USU_EMAIL = '".$UsuarioLogin->getEmail()."' AND USU_SENHA = '".$UsuarioLogin->getSenha()."'"; 
-        
+        $query = "SELECT USU_ID, USU_EMAIL, USU_NOME, CAT_ID FROM TB_USUARIO WHERE USU_EMAIL = '".$UsuarioLogin->getEmail()."' AND USU_SENHA = '".$UsuarioLogin->getSenha()."'"; 
         
         $conexao = $this->ConexaoMySQL->abrirBanco(); // abre o link de conexao
         
@@ -346,8 +346,9 @@ class RepositorioUsuario
             
             $Usuario = new Usuario();//cria uma instancia do usuario         
             $Usuario->setId($linha['USU_ID']);
+            $Usuario->setEmail($linha['USU_EMAIL']);
             $Usuario->setNome($linha['USU_NOME']);
-            $Usuario->setLogin($linha['USU_LOGIN']);
+            $Usuario->setCategoriaid($linha['CAT_ID']);
             
             $UsuarioLogado = $Usuario;
                 

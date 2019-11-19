@@ -8,7 +8,7 @@ include 'src/repositorios/RepositorioProva.php';
 
 $repo = new RepositorioReceita();
 $rec = new Receita();
-$repositorioprova = new RepositorioProva();
+//$repositorioprova = new RepositorioProva();
 $lista = $repositorioprova->listarProvas();
 
 

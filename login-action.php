@@ -2,6 +2,8 @@
 use src\RepositorioUsuario;
 use src\Usuario;
 
+
+define("seila", 1234);
 // recebendo parametros login e password da pagina login.html
 
 require_once 'src/repositorios/RepositorioUsuario.php';
@@ -18,14 +20,24 @@ $Usuario->setSenha($senha);
 // cria um novo repositorio usuario
 $repoUsuario = new RepositorioUsuario();
 
-// com o repositorio usuario chama a função login, passando usuario
+// com o repositorio usuario chama a funï¿½ï¿½o login, passando usuario
 $UsuarioLogado = $repoUsuario->login($Usuario);
 
+
 if ($UsuarioLogado != false) {
-    // caso usuario exista então redireciona para pagina inicial
+    //caiu aqui o usuario existe
+    session_start();
+    
+    //armazenando informacoes do usuario logado na sessap
+    $_SESSION['idUsuario'] = $UsuarioLogado->getId();
+    $_SESSION['emailUsuario'] = $UsuarioLogado->getEmail();
+    $_SESSION['nomeUsuario'] = $UsuarioLogado->getNome();
+    $_SESSION['catUsuario'] = $UsuarioLogado->getCategoriaid();
+    
+    // caso usuario exista entï¿½o redireciona para pagina inicial
     header("Location: dashboard.php?usuario=" . $UsuarioLogado->getNome());
 } else {
-    // caso não exista deverá voltar a pagina de login passando parametro login = 0
+    // caso nï¿½o exista deverï¿½ voltar a pagina de login passando parametro login = 0
     header('Location: login.php?login=0');
 }
 
