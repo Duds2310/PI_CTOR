@@ -116,7 +116,7 @@ $i = 0;
 						<td><?php echo $ListaUsuarios[$i]->getLogin(); ?></td>
 						<td>
 							<a href="membro-manter-editar.php?id=<?php echo $ListaUsuarios[$i]->getId(); ?>"><i class="fa fa-edit"></i></a> | 
-							<a href="usuario-manter-deletar-action.php?id=<?php echo $ListaUsuarios[$i]->getId(); ?>"><i class="fa fa-trash"></i> 
+							<a href="membro-manter-deletar-action.php?id=<?php echo $ListaUsuarios[$i]->getId(); ?>"><i class="fa fa-trash"></i> 
 						</td>
 					</tr>
 				<?php $i++; } ?>	

@@ -6,7 +6,7 @@ require_once 'src/modelo/Usuario.php';
 
 /**
  * Classe reponsavel por realizar o mapeamento da base de dados
- * com as classes da nossa aplicação Usuario, Treinamento e etc...
+ * com as classes da nossa aplicaï¿½ï¿½o Usuario, Treinamento e etc...
  * Neste caso esta classe fara o mapeamento para o Usuario
  */
 class RepositorioUsuario
@@ -31,7 +31,7 @@ class RepositorioUsuario
     // Listar Usuario
     public function listarUsuario()
     {
-        $Usuarios = null; // variável reponsavel por armazezar a lista de usuarios
+        $Usuarios = null; // variï¿½vel reponsavel por armazezar a lista de usuarios
 
         $query = "SELECT * FROM TB_USUARIO"; // variavel reponsavel por armazenar a query do banco
 
@@ -67,7 +67,7 @@ class RepositorioUsuario
     // Listar Membro
     public function listarMembro()
     {
-        $Usuarios = null; // variável reponsavel por armazezar a lista de usuarios
+        $Usuarios = null; // variï¿½vel reponsavel por armazezar a lista de usuarios
         
         $query = "SELECT * FROM TB_USUARIO"; // variavel reponsavel por armazenar a query do banco
         
@@ -111,7 +111,7 @@ class RepositorioUsuario
     // Consultar por ID
     public function consultarUsuarioPorID($Id)
     {
-        $Usuarios = null; // variável reponsavel por armazezar a lista de usuarios
+        $Usuarios = null; // variï¿½vel reponsavel por armazezar a lista de usuarios
 
         $query = "SELECT * FROM TB_USUARIO WHERE USU_ID = $Id"; // variavel reponsavel por armazenar a query do banco
 
@@ -147,7 +147,7 @@ class RepositorioUsuario
     // Consultar Membro por ID    
     public function consultarMembroPorID($Id)
     {
-        $Usuarios = null; // variável reponsavel por armazezar a lista de usuarios
+        $Usuarios = null; // variï¿½vel reponsavel por armazezar a lista de usuarios
         
         $query = "SELECT * FROM TB_USUARIO WHERE USU_ID = $Id"; // variavel reponsavel por armazenar a query do banco
         
@@ -261,7 +261,7 @@ class RepositorioUsuario
 
         return $retorno;
     }
-    
+     
     // Alterar Membro    
     public function alterarMembro($Usuario){
         $retorno = true;
@@ -307,12 +307,12 @@ class RepositorioUsuario
     }
     
     // Deletar Membro    
-    public function deletarMembro($Usuario) {
+    public function deletarMembro($Membro) {
         $retorno = true;
         
-        $query = "DELETE FROM TB_MEMBRO WHERE USU_ID = " .  $Usuario->getId();
+        $query = "DELETE FROM TB_USUARIO WHERE USU_ID = " .  $Membro->getId();
         
-        $conexao = $this->ConexaoMySQL->fecharBanco();
+        $conexao = $this->ConexaoMySQL->abrirBanco();
         
         if ($conexao->query($query) == true) {
             $retorno = true;
@@ -329,7 +329,7 @@ class RepositorioUsuario
     
     // metodo responsavel por realizar o login do usuario
     public function login($UsuarioLogin) {      
-        $UsuarioLogado = null; //so retorno o usuario caso exista, se nao, deverá ser falso. 
+        $UsuarioLogado = null; //so retorno o usuario caso exista, se nao, deverï¿½ ser falso. 
         
         $query = "SELECT USU_ID, USU_LOGIN, USU_NOME FROM TB_USUARIO WHERE USU_EMAIL = '".$UsuarioLogin->getEmail()."' AND USU_SENHA = '".$UsuarioLogin->getSenha()."'"; 
         
@@ -358,29 +358,22 @@ class RepositorioUsuario
     }
     
     
+    // Selecionar Atletas em destaque
+    
+    public function listar()
+    {
+        $Usuarios = null; // variï¿½vel reponsavel por armazezar a lista de usuarios
+        
+        $query = "SELECT * FROM TB_USUARIO WHERE TB_DESTAQUE = 1"; // variavel reponsavel por armazenar a query do banco
+        
+        $conexao = $this->ConexaoMySQL->abrirBanco(); // abre o link de conexao
+        
+        $resultado = $conexao->query($query); // responsavel por executar a query no banco de dados
+        
+        $i = 0;
     
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    }
 }
-

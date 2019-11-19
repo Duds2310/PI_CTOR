@@ -18,32 +18,37 @@ $i = 0;
 	<li class="breadcrumb-item active">Tabela Usuarios</li>
 </ol>
 
-<!-- Inicio formulário de cadastro de usuários -->
+<!-- Inicio formulÃ¡rio de cadastro de usuÃ¡rios -->
 <div class="card mb-3">
 	<div class="card-header">
-		<i class="fas fa-address-card"></i> Novo Usuário
+		<i class="fas fa-address-card"></i> Novo UsuÃ¡rio
 	</div>
 	<div class="card-body">
 		<form action="usuario-manter-cadastrar-action.php" method="post">
 			<div class="form-group form-row">
 				<div class="col-md-6">
-					<input type="text" name="nome" id="nome" class="form-control" placeholder="Nome">
+					<input type="text" name="nome" id="nome" class="form-control"
+						placeholder="Nome">
 				</div>
 				<div class="col-md-6">
-					<input type="text" name="login" id="login" class="form-control" placeholder="Login">
+					<input type="text" name="login" id="login" class="form-control"
+						placeholder="Login">
 				</div>
 			</div>
 			<div class="form-group form-row">
 				<div class="col-md-12">
-					<input type="email" name="email" id="email" class="form-control" placeholder="Email">
+					<input type="email" name="email" id="email" class="form-control"
+						placeholder="Email">
 				</div>
 			</div>
 			<div class="form-group form-row">
 				<div class="col-md-6">
-					<input type="password" name="senha" id="senha" class="form-control" placeholder="Senha">
+					<input type="password" name="senha" id="senha" class="form-control"
+						placeholder="Senha">
 				</div>
 				<div class="col-md-6">
-					<input type="password" name="confirmarSenha" id="confirmarSenha" class="form-control" placeholder="Confirmar Senha">
+					<input type="password" name="confirmarSenha" id="confirmarSenha"
+						class="form-control" placeholder="Confirmar Senha">
 				</div>
 			</div>
 			<button class="btn btn-primary btn-block" type="submit">Cadastrar</button>
@@ -51,7 +56,7 @@ $i = 0;
 	</div>
 </div>
 
-<!-- Fim formulário de cadastro de usuários -->
+<!-- Fim formulÃ¡rio de cadastro de usuÃ¡rios -->
 
 
 <!-- DataTables Example -->
@@ -68,7 +73,7 @@ $i = 0;
 						<th>Nome</th>
 						<th>Email</th>
 						<th>Login</th>
-						<th>ações</th>
+						<th>aÃ§Ãµes</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -80,8 +85,10 @@ $i = 0;
 						<td><a
 							href="usuario-manter-editar.php?id=<?php echo $ListaUsuarios[$i]->getID(); ?>"><i
 								class="fa fa-edit"></i></a> |<a
+								
 							href="usuario-manter-deletar-action.php?id=<?php echo $ListaUsuarios[$i]->getID(); ?>">
 								<i class="fa fa-trash"></i>
+
 						</a></td>
 					</tr>
 				<?php $i++; } ?>	
