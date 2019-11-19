@@ -99,7 +99,7 @@ if ($temRegistro) {
 						<th>Categoria</th>
 						<th>Situacao</th>
 						<th>Data de Vencimento</th>
-						<th>Ações</th>
+						<th>AÃ§Ãµes</th>
 					</tr>
 				</thead>
 				<tbody>

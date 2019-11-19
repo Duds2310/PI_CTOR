@@ -115,39 +115,3 @@ $i = 0;
 
 include 'inc.rodape.php';
 ?>
-<!-- Breadcrumbs
-<ol class="breadcrumb">
-	<li class="breadcrumb-item"><a href="dashboard.php">Treino</a></li>
-	<li class="breadcrumb-item active">Tabela de Disparos</li>
-</ol>
--->
-<!-- Inicio formul�rio de cadastro de disparos
-<div class="card mb-3">
-	<div class="card-header">
-		<i class="fas fa-address-card"></i>  Disparos
-	</div>
-	<div class="card-body">
-		<form action="usuario-manter-cadastrar-action.php" method="post">
-			<div class="form-group form-row">
-				<div class="col-md-6">
-					<input type="text" name="nome" id="round" class="form-control" placeholder="Round">
-				</div>
-				<div class="col-md-6">
-					<input type="text" name="login" id="ordem" class="form-control" placeholder="Ordem">
-				</div>
-			</div>
-			<div class="form-group form-row">
-				<div class="col-md-6">
-					<input type="text" name="email" id="end" class="form-control" placeholder="End">
-				</div>
-			
-			
-				<div class="col-md-6">
-					<input type="text" name="data" id="pontuacao" class="form-control" placeholder="Pontuacao">
-				</div>
-				
-			</div>
-			  <button type="submit" class="btn btn-primary mb-2">Cadastrar</button>
-		</form>
-	</div>
-</div> -->
