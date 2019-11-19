@@ -6,7 +6,7 @@ require_once 'src/modelo/Usuario.php';
 
 /**
  * Classe reponsavel por realizar o mapeamento da base de dados
- * com as classes da nossa aplicação Usuario, Treinamento e etc...
+ * com as classes da nossa aplicaï¿½ï¿½o Usuario, Treinamento e etc...
  * Neste caso esta classe fara o mapeamento para o Usuario
  */
 class RepositorioUsuario
@@ -31,7 +31,7 @@ class RepositorioUsuario
     // Listar Usuario
     public function listarUsuario()
     {
-        $Usuarios = null; // variável reponsavel por armazezar a lista de usuarios
+        $Usuarios = null; // variï¿½vel reponsavel por armazezar a lista de usuarios
 
         $query = "SELECT * FROM TB_USUARIO"; // variavel reponsavel por armazenar a query do banco
 
@@ -70,7 +70,7 @@ class RepositorioUsuario
     // Listar Membro
     public function listarMembro()
     {
-        $Usuarios = null; // variável reponsavel por armazezar a lista de usuarios
+        $Usuarios = null; // variï¿½vel reponsavel por armazezar a lista de usuarios
         
         $query = "SELECT * FROM TB_USUARIO"; // variavel reponsavel por armazenar a query do banco
         
@@ -114,7 +114,7 @@ class RepositorioUsuario
     // Consultar por ID
     public function consultarUsuarioPorID($Id)
     {
-        $Usuarios = null; // variável reponsavel por armazezar a lista de usuarios
+        $Usuarios = null; // variï¿½vel reponsavel por armazezar a lista de usuarios
 
         $query = "SELECT * FROM TB_USUARIO WHERE USU_ID = $Id"; // variavel reponsavel por armazenar a query do banco
 
@@ -150,7 +150,7 @@ class RepositorioUsuario
     // Consultar Membro por ID    
     public function consultarMembroPorID($Id)
     {
-        $Usuarios = null; // variável reponsavel por armazezar a lista de usuarios
+        $Usuarios = null; // variï¿½vel reponsavel por armazezar a lista de usuarios
         
         $query = "SELECT * FROM TB_USUARIO WHERE USU_ID = $Id"; // variavel reponsavel por armazenar a query do banco
         
@@ -332,10 +332,9 @@ class RepositorioUsuario
     
     // metodo responsavel por realizar o login do usuario
     public function login($UsuarioLogin) {      
-        $UsuarioLogado = null; //so retorno o usuario caso exista, se nao, deverá ser falso. 
+        $UsuarioLogado = null; //so retorno o usuario caso exista, se nao, deverï¿½ ser falso. 
         
-        $query = "SELECT USU_ID, USU_LOGIN, USU_NOME FROM TB_USUARIO WHERE USU_EMAIL = '".$UsuarioLogin->getEmail()."' AND USU_SENHA = '".$UsuarioLogin->getSenha()."'"; 
-        
+        $query = "SELECT USU_ID, USU_EMAIL, USU_NOME, CAT_ID FROM TB_USUARIO WHERE USU_EMAIL = '".$UsuarioLogin->getEmail()."' AND USU_SENHA = '".$UsuarioLogin->getSenha()."'"; 
         
         $conexao = $this->ConexaoMySQL->abrirBanco(); // abre o link de conexao
         
@@ -346,8 +345,9 @@ class RepositorioUsuario
             
             $Usuario = new Usuario();//cria uma instancia do usuario         
             $Usuario->setId($linha['USU_ID']);
+            $Usuario->setEmail($linha['USU_EMAIL']);
             $Usuario->setNome($linha['USU_NOME']);
-            $Usuario->setLogin($linha['USU_LOGIN']);
+            $Usuario->setCategoriaid($linha['CAT_ID']);
             
             $UsuarioLogado = $Usuario;
                 
