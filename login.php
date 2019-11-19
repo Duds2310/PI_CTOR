@@ -2,7 +2,7 @@
 <?php
 $loginError = false;
 
-// verifica se essa pagina recebeu parametro 'login' via url, neste caso usuario não existe
+// verifica se essa pagina recebeu parametro 'login' via url, neste caso usuario nï¿½o existe
 if (isset($_GET['login'])) {
     $loginError = true;
 }
@@ -32,12 +32,12 @@ if (isset($_GET['login'])) {
 <body class="text-center">
 
 	<form class="form-signin" action="login-action.php" method="post">
-      <?php if($loginError){ //verifica se $loginError é true, se for exibe o seguinte alerta?>
+      <?php if($loginError){ //verifica se $loginError ï¿½ true, se for exibe o seguinte alerta?>
           <p class="alert alert-danger" role="alert">Usuario nao existe!
 		</p>
 	  <?php }?>
       <img class="mb-4" src="src/ctor.jpg"
-			alt="" width="72" height="72">
+			alt="" width="150" height="80">
 		<h1 class="h3 mb-3 font-weight-normal">Area Restrita</h1>
 		<label for="inputEmail" class="sr-only">Email</label> <input
 			type="email" id="email" name="email" class="form-control"
