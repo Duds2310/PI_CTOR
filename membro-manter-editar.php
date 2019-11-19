@@ -141,6 +141,7 @@ $usuario = $repositorioUsuario->consultarMembroPorID($idUsuario);
      </div>  
       <button type="submit" class="btn btn-primary btn-block"> Alterar</button>
       <!-- <a class="btn btn-primary btn-block" href="login.html">Alterar</a> -->
+      
     </form>
   </div>
 </div>
