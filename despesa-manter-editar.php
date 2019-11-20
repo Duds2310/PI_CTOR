@@ -12,6 +12,8 @@ $repositorioDespesa = new RepositorioDespesa();
 
 $despesa = $repositorioDespesa->consultarDespesaPorID($idDespesa);
 
+
+
 // var_dump($usuario);
 // die();
 
@@ -108,7 +110,7 @@ $despesa = $repositorioDespesa->consultarDespesaPorID($idDespesa);
 				<div class="form-group">
 					<div class="form-row">
 						<div class="col-md-1">
-							<input type="checkbox" name="parcelado" id="parcelado" <?php if($despesa[0]->getParcelado() == true){echo "checked"; } ?> class="form-control" placeholder="Situacao" required="required"> Parcelado
+							<input type="checkbox" name="parcelado" id="parcelado" <?php if($despesa[0]->getParcelado() == 1){echo "checked"; } ?> class="form-control" placeholder="Situacao"> Parcelado
 						</div>
 					</div>
 				</div>

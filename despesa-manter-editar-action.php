@@ -31,7 +31,7 @@ $despesa->setQtdParcelas($qtdParcelas);
 $despesa->setDescricao($descricao);
 $despesa->setId($id);
 
-if ($parcelado == "1") {
+if ($parcelado == true) {
     $despesa->setParcelado(1);
 } else {
     $despesa->setParcelado(0);

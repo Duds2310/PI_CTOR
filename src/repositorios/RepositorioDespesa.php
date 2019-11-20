@@ -142,8 +142,8 @@ class RepositorioDespesa
                      DES_PARCELADO = '" . $Despesa->getParcelado() . "' WHERE DES_ID = " . $Despesa->getId();
 
         
-        var_dump($query);
-        die();
+        //var_dump($query);
+        //die();
         $conexao = $this->ConexaoMySQL->abrirBanco();
 
         if ($conexao->query($query) == true) {
@@ -158,11 +158,11 @@ class RepositorioDespesa
     }
 
     // DELETAR
-    public function deletarDespesa($Despesa)
+    public function deletarDespesa($id)
     {
         $retorno = true;
 
-        $query = "DELETE FROM TB_DESPESAS WHERE DES_ID = " . $Despesa->getId();
+        $query = "DELETE FROM TB_DESPESAS WHERE DES_ID = " . $id;
 
         // die($query);
         $conexao = $this->ConexaoMySQL->abrirBanco();

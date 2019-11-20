@@ -59,7 +59,7 @@ $receita = $repoReceita->consultarReceitaId($id)?>
 				<div class="form-group form-row">
 					<div class="col-md-12">
 						<textarea class="form-control" name="descricao" id="descricao"
-							rows="3" placeholder="Descrição"><?php echo $receita->getDescricao() ?></textarea>
+							rows="3" placeholder="DescriÃ§Ã£o"><?php echo $receita->getDescricao() ?></textarea>
 					</div>
 				</div>
 				<div class="form-group form-row">

@@ -86,7 +86,7 @@ if ($temRegistro) {
 					<input type="number" class="form-control" id="qtdParcela" name="qtdParcela" placeholder="Quantidade de parcelas">
 				</div>
 				<div class="form-group col-md-6">
-					<input type="checkbox" name="parcelado" value="1"> <label>Parcelado</label>
+					<input type="checkbox" name="parcelado" value="true"> <label>Parcelado</label>
 				</div>
 			</div>
 			<button type="submit" class="btn btn-primary">Cadastrar</button>
@@ -109,10 +109,12 @@ if ($temRegistro) {
 				<thead>
 					<tr>
 						<th>Nome</th>
+						<th>Descrição</th>
 						<th>Data de Pagamento</th>
 						<th>Categoria</th>
 						<th>Situacao</th>
 						<th>Data de Vencimento</th>
+						<th>Quantidade de parcelas</th>
 						<th>Valor</th>
 						<th>Ações</th>
 					</tr>
@@ -124,10 +126,12 @@ if ($temRegistro) {
                     ?>
 					<tr>
 						<td><?php echo $ListaDespesas[$i]->getNome(); ?></td>
+						<td><?php echo $ListaDespesas[$i]->getDescricao(); ?></td>
 						<td><?php echo $ListaDespesas[$i]->getDatapagamento(); ?></td>
 						<td><?php echo $ListaDespesas[$i]->getCategoria(); ?></td>
 						<td><?php echo $ListaDespesas[$i]->getSituacao(); ?></td>
 						<td><?php echo $ListaDespesas[$i]->getDatavencimento(); ?></td>
+						<td><?php echo $ListaDespesas[$i]->getQtdParcelas(); ?></td>
 						<td><?php echo $ListaDespesas[$i]->getValor(); ?></td>
 						<td><a
 							href="despesa-manter-editar.php?id=<?php echo $ListaDespesas[$i]->getID(); ?>"><i
@@ -141,7 +145,7 @@ if ($temRegistro) {
 				
 				<tfoot>
 					<tr>
-						<th colspan="5">Total:</th>
+						<th colspan="7">Total:</th>
 						<th colspan="2"> <?php echo " $$total"; ?></th>
 					</tr>
 				</tfoot>
