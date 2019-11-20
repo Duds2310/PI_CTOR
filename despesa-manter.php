@@ -44,40 +44,55 @@ if ($temRegistro) {
 		<form action="despesa-manter-cadastrar-action.php" method="post">
 			<div class="form-row">
 				<div class="form-group col-md-6">
-					<input type="text" class="form-control" id="nome" name="nome"
-						placeholder="Nome">
+					<input type="text" class="form-control" id="nome" name="nome" placeholder="Nome">
 				</div>
 				<div class="form-group col-md-6">
-					<input type="text" name="valor" id="valor" class="form-control"
-						name="valor" placeholder="valor" min="1">
+					<select class="form-control form-control-sm" name="categoria" id="categoria">
+						<option>--Selecione a Categoria--</option>
+						<option>Produto de limpeza</option>
+						<option>Produto de consumo</option>
+						<option>Contas</option>
+						<option>Comida</option>
+					</select>
 				</div>
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-12">
-					<label> Data de Pagamento </label> <input type="date"
-						class="form-control" id="datapagamento" name="datapagamento"
-						placeholder="Data de Pagamento">
+					<textarea class="form-control" name="descricao" id="descricao" rows="3" placeholder="Descrição"></textarea>
 				</div>
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-6">
-					<input type="text" class="form-control" id="categoria"
-						name="categoria" placeholder="Categoria">
+					<label> Data de Pagamento </label> <input type="date" class="form-control" id="datapagamento" name="datapagamento" placeholder="Data de Pagamento">
 				</div>
 				<div class="form-group col-md-6">
-					<input type="text" class="form-control" id="situacao"
-						name="situacao" placeholder="Situacao">
+					<label> Data de Vencimento </label> <input type="date" class="form-control" id="datavencimento" name="datavencimento" placeholder="Data de Vencimento">
 				</div>
 			</div>
 			<div class="form-row">
-				<div class="form-group col-md-12">
-					<label> Data de Vencimento </label> <input type="date"
-						class="form-control" id="datavencimento" name="datavencimento"
-						placeholder="Data de Vencimento">
+				<div class="form-group col-md-6">
+					<input type="text" name="valor" id="valor" class="form-control" name="valor" placeholder="valor" min="1">
+				</div>
+				<div class="form-group col-md-6">
+					<select class="form-control form-control-sm" name="situacao" id="situacao">
+						<option>--Selecione a situação--</option>
+						<option>Em aberto</option>
+						<option>Pago</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<input type="number" class="form-control" id="qtdParcela" name="qtdParcela" placeholder="Quantidade de parcelas">
+				</div>
+				<div class="form-group col-md-6">
+					<input type="checkbox" name="parcelado" value="1"> <label>Parcelado</label>
 				</div>
 			</div>
 			<button type="submit" class="btn btn-primary">Cadastrar</button>
 		</form>
+		<!-- Fim formulário -->
+
 	</div>
 </div>
 
@@ -94,52 +109,46 @@ if ($temRegistro) {
 				<thead>
 					<tr>
 						<th>Nome</th>
-						<th>Valor</th>
 						<th>Data de Pagamento</th>
 						<th>Categoria</th>
 						<th>Situacao</th>
 						<th>Data de Vencimento</th>
+						<th>Valor</th>
 						<th>Ações</th>
 					</tr>
 				</thead>
 				<tbody>
 				<?php
-    $quantidade = count($ListaDespesas);
-    while ($i < $quantidade) {
-        ?>
+                $quantidade = count($ListaDespesas);
+                while ($i < $quantidade) {
+                    ?>
 					<tr>
 						<td><?php echo $ListaDespesas[$i]->getNome(); ?></td>
-						<td><?php echo $ListaDespesas[$i]->getValor(); ?></td>
 						<td><?php echo $ListaDespesas[$i]->getDatapagamento(); ?></td>
 						<td><?php echo $ListaDespesas[$i]->getCategoria(); ?></td>
 						<td><?php echo $ListaDespesas[$i]->getSituacao(); ?></td>
 						<td><?php echo $ListaDespesas[$i]->getDatavencimento(); ?></td>
+						<td><?php echo $ListaDespesas[$i]->getValor(); ?></td>
 						<td><a
 							href="despesa-manter-editar.php?id=<?php echo $ListaDespesas[$i]->getID(); ?>"><i
 								class="fa fa-edit"></i></a> |<a
 							href="despesa-manter-deletar-action.php?id=<?php echo $ListaDespesas[$i]->getID(); ?>">
 								<i class="fa fa-trash"></i>
 						</a></td>
+
 					</tr>
 				<?php $i++; } ?>
 				
-				
-				
 				<tfoot>
 					<tr>
-
-						<th colspan="6">Total:</th>
-						<th colspan="2"> <?php echo " $total"; ?></th>
-
+						<th colspan="5">Total:</th>
+						<th colspan="2"> <?php echo " $$total"; ?></th>
 					</tr>
 				</tfoot>
 				</tbody>
 			</table>
 			<?php } else  {?>
-			        <center>
-				<h1>N�o h� despesas cadastradas!</h1>
-			</center>
-				
+	        	<center> <h1>Não há despesas cadastradas!</h1> </center>
 			<?php }?>
 		</div>
 	</div>

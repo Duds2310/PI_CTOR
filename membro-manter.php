@@ -11,6 +11,8 @@ $ListaUsuarios = $repoUsuario->listarUsuario();
 $i = 0;
 
 $validador = $ListaUsuarios == false ? false : $ListaUsuarios;
+
+
 ?>
 
 <!-- Breadcrumbs-->
@@ -27,11 +29,11 @@ $validador = $ListaUsuarios == false ? false : $ListaUsuarios;
 	<div class="card-body">
 
 		<!-- inicio formulario -->
-		<form action="membro-manter-cadastrar-action.php" method="post">
+		<form action="membro-manter-cadastrar-action.php" method="post" name="formMembro" id="formMembro">
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<input type="text" class="form-control" id="nome" name="nome"
-						placeholder="Nome">
+						placeholder="Nome" >
 				</div>
 
 				<div class="form-group col-md-6">
@@ -92,17 +94,17 @@ $validador = $ListaUsuarios == false ? false : $ListaUsuarios;
 						class="form-control" placeholder="Confirmar Senha">
 				</div>
 			</div>
-	
+			
+			<button type="button" onclick="teste()" class="btn btn-primary">Cadastrar</button>
+			</form>
 	</div>
 
 
 
-	<button type="submit" class="btn btn-primary">Cadastrar</button>
-	</form>
+
 
 </div>
 
-</div>
 
 
 <!-- DataTables Example -->
@@ -114,9 +116,9 @@ $validador = $ListaUsuarios == false ? false : $ListaUsuarios;
 		<div class="table-responsive">
 			<?php
 
-            if ($validador) { 
-                $quantidade = count($ListaUsuarios);
-                ?>
+if ($validador) {
+    $quantidade = count($ListaUsuarios);
+    ?>
 			<table class="table table-bordered" id="MyTableID" width="100%"
 				cellspacing="0">
 				<thead>
@@ -130,8 +132,8 @@ $validador = $ListaUsuarios == false ? false : $ListaUsuarios;
 				<tbody>
 				<?php
 
-                    while ($i < $quantidade) {
-                        ?>
+    while ($i < $quantidade) {
+        ?>
 					<tr>
 						<td><?php echo $ListaUsuarios[$i]->getNome(); ?></td>
 						<td><?php echo $ListaUsuarios[$i]->getEmail(); ?></td>
@@ -149,6 +151,20 @@ $validador = $ListaUsuarios == false ? false : $ListaUsuarios;
 		</div>
 	</div>
 </div>
+
+
+<script>
+function teste() {
+
+	var nome = document.getElementById("nome").value;
+
+	if(nome == ""){
+		alert('Digita um nome danado');
+	}
+	
+    document.getElementById("formMembro").submit();
+}
+</script>
 
 <?php
 

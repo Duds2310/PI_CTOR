@@ -30,7 +30,7 @@
 				<a class="nav-item nav-link active" href="#">Home <span
 					class="sr-only">(current)</span></a> <a class="nav-item nav-link"
 					href="#">Valores</a> <a class="nav-item nav-link" href="#">Missão</a>
-				<a class="nav-item nav-link" href="#">Quem Somos</a> <a
+				<a class="nav-item nav-link" href="#quem-somos">Quem Somos</a> <a
 					class="nav-item nav-link" data-toggle="modal"
 					data-target="#modalContato" href="#">Contato</a> <a
 					class="nav-item nav-link" href="login.php">Area membros</a>
