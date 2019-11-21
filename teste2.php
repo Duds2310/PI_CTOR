@@ -12,12 +12,15 @@ $rec = new Receita();
 $lista = $repositorioprova->listarProvas();
 
 
+
+
 /**
  * LISTAR
  * 
  * var_dump($repo->listarReceita());
  */
 
+var_dump($repo->listarReceita());
 
 /**
  * CONSULTAR POR ID

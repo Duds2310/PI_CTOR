@@ -13,15 +13,12 @@ $repositorioDespesa = new RepositorioDespesa();
 
 $id = $_GET['id'];
 
-$DespesaDeletar = $repositorioDespesa->consultarDespesaPorID($id);
-
-
-$resultado = $repositorioDespesa->deletarDespesa($DespesaDeletar[0]);
+$resultado = $repositorioDespesa->deletarDespesa($id);
 
 if ($resultado == true) {
     header('Location: despesa-manter.php');
 } else {
-    echo "Erro na exclusão";
+    echo "Erro na exclusï¿½o";
 }
 
 

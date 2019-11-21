@@ -235,6 +235,7 @@ class RepositorioUsuario
             $retorno = true;
         } else {
             echo mysqli_error($conexao);
+            $retorno = mysqli_error($conexao);
         }
         
         $conexao = $this->ConexaoMySQL->fecharBanco();

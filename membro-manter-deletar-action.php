@@ -18,7 +18,7 @@ $UsuarioDeletar->setId($id);
 $resultado = $repositorioUsuario->deletarUsuario($UsuarioDeletar);
 
 if ($resultado == true) {
-    header('Location: usuario-manter.php');
+    header('Location: membro-manter.php');
 } else {
     echo "Erro na exclusão";
 }

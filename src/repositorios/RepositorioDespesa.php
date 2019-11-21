@@ -113,7 +113,7 @@ class RepositorioDespesa
         $query = "INSERT INTO TB_DESPESAS(DES_NOME, DES_VALOR, DES_DATA_PAGAMENTO, DES_CATEGORIA, DES_DATA_VENCIMENTO, DES_SITUACAO, DES_DESCRICAO, DES_QTD_PARCELA, DES_PARCELADO)VALUES
                     ('" . $Despesa->getNome() . "' , " . $Despesa->getValor() . " , '" . $Despesa->getDatapagamento() . "' , '" . $Despesa->getCategoria() . "' ,
                      '" . $Despesa->getDatavencimento() . "' , '" . $Despesa->getSituacao() . "', '" . $Despesa->getDescricao() . "' , '" . $Despesa->getQtdParcelas() . "' ,
-                        '" . $Despesa->getParcelado . "')";
+                        '" . $Despesa->getParcelado() . "')";
         
        
         
@@ -138,7 +138,7 @@ class RepositorioDespesa
         $query = "UPDATE TB_DESPESAS SET DES_NOME = '" . $Despesa->getNome() . "', DES_VALOR = '" . $Despesa->getValor() . "',
                      DES_DATA_PAGAMENTO = '" . $Despesa->getDatapagamento() . "', DES_CATEGORIA = '" . $Despesa->getCategoria() . "' ,
                      DES_DATA_VENCIMENTO = '" . $Despesa->getDatavencimento() . "' , DES_SITUACAO = '" . $Despesa->getSituacao() . "' ,
-                     DES_DESCRICAO = '" . $Despesa->getDescricao() . "' , DES_QTD_PARCELA = " . $Despesa->getQtdParcela() . " ,
+                     DES_DESCRICAO = '" . $Despesa->getDescricao() . "' , DES_QTD_PARCELA = " . $Despesa->getQtdParcelas() . " ,
                      DES_PARCELADO = '" . $Despesa->getParcelado() . "' WHERE DES_ID = " . $Despesa->getId();
 
         
@@ -158,11 +158,11 @@ class RepositorioDespesa
     }
 
     // DELETAR
-    public function deletarDespesa($Despesa)
+    public function deletarDespesa($id)
     {
         $retorno = true;
 
-        $query = "DELETE FROM TB_DESPESAS WHERE DES_ID = " . $Despesa->getId();
+        $query = "DELETE FROM TB_DESPESAS WHERE DES_ID = " . $id;
 
         // die($query);
         $conexao = $this->ConexaoMySQL->abrirBanco();

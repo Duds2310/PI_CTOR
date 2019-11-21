@@ -40,8 +40,9 @@ $Usuario->setSenha($senha);
 
 $cadastrado = $repositorioUsuario->cadastrarMembro($Usuario);
 
-if($cadastrado){
+
+if($cadastrado === true){
     header("location: membro-manter.php");
 }else {
-    echo "Deu ruim :D"  ;
+    header("location: membro-manter.php");
 }
