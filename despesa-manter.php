@@ -51,10 +51,10 @@ if ($temRegistro) {
 				<div class="form-group col-md-6">
 					<select class="form-control form-control-sm" name="categoria" id="categoria">
 						<option value="-1">--Selecione a Categoria--</option>
-						<option>Produto de limpeza</option>
-						<option>Produto de consumo</option>
-						<option>Contas</option>
-						<option>Comida</option>
+						<option value="Produto de limpeza">Produto de limpeza</option>
+						<option value="Produto de consumo">Produto de consumo</option>
+						<option value="Contas">Contas</option>
+						<option value="Comida">Comida</option>
 					</select>
 				</div>
 			</div>
@@ -81,8 +81,8 @@ if ($temRegistro) {
 				<div class="form-group col-md-6">
 					<select class="form-control form-control-sm" name="situacao" id="situacao">
 						<option value="-1">--Selecione a situação--</option>
-						<option>Em aberto</option>
-						<option>Pago</option>
+						<option value="Em aberto">Em aberto</option>
+						<option value="Pago">Pago</option>
 					</select>
 				</div>
 			</div>
@@ -208,12 +208,6 @@ if ($temRegistro) {
 			document.dados.datavencimento.focus();
 			return false;
 		}
-
-
-
-
-
-
 	}
 </script>
 

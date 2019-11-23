@@ -1,4 +1,5 @@
 <?php
+
 use src\repositorios\RepositorioReceita;
 use src\repositorios\RepositorioCategoriaReceita;
 use src\RepositorioUsuario;
@@ -26,15 +27,15 @@ $c = 0;
 $total = 0;
 
 //var_dump($idUsuarioLogado);
- //die();
+//die();
 
 $validador = $listaTela == false ? false : $listaTela;
 
 if ($validador) {
-    while ($c < count($listaTela)) {
-        $total = $total + $listaTela[$c]->getValor();
-        $c ++;
-    }
+	while ($c < count($listaTela)) {
+		$total = $total + $listaTela[$c]->getValor();
+		$c++;
+	}
 }
 
 ?>
@@ -52,72 +53,65 @@ if ($validador) {
 		<i class="fas fa-address-card"> Nova Receita</i>
 	</div>
 	<div class="card-body">
-		<form action="receita-manter-cadastrar-action.php" method="post">
-			<div class="form-group form-row">
-				<div class="col-md-6">
-					<label>Data de cadastro </label> <input type="date"
-						name="dataCadastro" id="dataCadastro" class="form-control"
-						placeholder="Data de Cadastro">
-				</div>
-				<div class="col-md-6">
-					<label>Data de pagamento </label> <input type="date"
-						name="dataPagamento" id="dataPagamento" class="form-control"
-						placeholder="Data de Pagamento">
-				</div>
-			</div>
-			<div class="form-group form-row">
-				<div class="col-md-12">
-					<textarea class="form-control" name="descricao" id="descricao"
-						rows="3" placeholder="Descrição"></textarea>
-				</div>
-			</div>
-			<div class="form-group form-row">
-				<div class="col-md-12">
-					<select class="form-control form-control-sm" name="categoria">
-						<option value="">-- Selecione uma Categoria --</option> 
-                    	<?php while ($b < count($listaCategorias)) { ?>
-                    	
-                    	<option
-							value="<?php echo $listaCategorias[$b]->getId();?>">
-                    		<?php echo $listaCategorias[$b]->getNome();	?>
-                    	</option>
-                    	
-                    	<?php $b++; } ?>
-                    </select>
-				</div>
 
-			</div>
+		<form action="receita-manter-cadastrar-action.php" method="post" name="dados" onsubmit="return enviar();">
+
 			<div class="form-group form-row">
 				<div class="col-md-6">
-					<select class="form-control form-control-sm"
-						name="IdUsuarioResponsavel">
-						<option value="">-- Selecione Usuario --</option> 
-						
-                    	<?php while ($a < count($listaUsuario)) { ?>
-                    	
-                    	<option
-							value="<?php echo $listaUsuario[$a]->getId();?>">
-                    	
-                    	<?php  echo $listaUsuario[$a]->getNome(); ?> </option>
-                    	
-                    	<?php $a++; }?>
-                    </select>
+					<label>Data de cadastro </label> <input type="date" name="dataCadastro" id="dataCadastro" class="form-control" placeholder="Data de Cadastro">
 				</div>
 				<div class="col-md-6">
-					<input type="number" name="valor" id="valor" class="form-control"
-						placeholder="Valor">
+					<label>Data de pagamento </label> <input type="date" name="dataPagamento" id="dataPagamento" class="form-control" placeholder="Data de Pagamento">
 				</div>
 			</div>
-			<button class="btn btn-primary btn-block" type="submit">Cadastrar</button>
+
+			<div class="form-group form-row">
+				<div class="col-md-12">
+					<textarea class="form-control" name="descricao" id="descricao" rows="3" placeholder="Descrição"></textarea>
+				</div>
+			</div>
+
+			<div class="form-group form-row">
+				<div class="col-md-12">
+					<select class="form-control form-control-sm" name="categoria" id="categoria">
+						<option value="-1">-- Selecione uma Categoria --</option>
+						<?php while ($b < count($listaCategorias)) { ?>
+
+							<option value="<?php echo $listaCategorias[$b]->getId(); ?>">
+								<?php echo $listaCategorias[$b]->getNome();	?>
+							</option>
+
+						<?php $b++;
+						} ?>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group form-row">
+				<div class="col-md-6">
+					<select class="form-control form-control-sm" name="IdUsuarioResponsavel" id="IdUsuarioResponsavel">
+						<option value="-1">-- Selecione Usuario --</option>
+
+						<?php while ($a < count($listaUsuario)) { ?>
+
+							<option value="<?php echo $listaUsuario[$a]->getId(); ?>">
+
+								<?php echo $listaUsuario[$a]->getNome(); ?> </option>
+
+						<?php $a++;
+						} ?>
+					</select>
+				</div>
+				<div class="col-md-6">
+					<input type="number" name="valor" id="valor" class="form-control" placeholder="Valor">
+				</div>
+			</div>
+
+			<button class="btn btn-primary btn-block" name="Submit" type="submit" value="">Cadastrar</button>
 		</form>
 	</div>
 </div>
-
 <!-- Fim formul�rio de cadastro de usu�rios -->
-
-
-
-
 
 <!-- Inicio DataTables -->
 <div class="card mb-3">
@@ -126,103 +120,114 @@ if ($validador) {
 	</div>
 	<div class="card-body">
 		<div class="table-responsive">
-						<?php if ($validador) { ?>
-			<table class="table table-bordered" id="MyTableID" width="100%"
-				cellspacing="0">
-				<thead>
-					<tr>
-						<th>Descricao</th>
-						<th>Categoria</th>
-						<th>Data de cadastro</th>
-						<th>Data de Pagamento</th>
-						<th>Usuario Responsavel</th>
-						<th>Autor</th>
-						<th>Valor</th>
-						<th>Ações</th>
-					</tr>
-				</thead>
-				<tbody>
-				<?php while($i < count($listaTela)) { ?>
-					<tr>
-						<td><?php echo $listaTela[$i]->getDescricao(); ?></td>
-						<td><?php echo $listaTela[$i]->getReceitaNome();?></td>
-						<td><?php
+			<?php if ($validador) { ?>
+				<table class="table table-bordered" id="MyTableID" width="100%" cellspacing="0">
+					<thead>
+						<tr>
+							<th>Descricao</th>
+							<th>Categoria</th>
+							<th>Data de cadastro</th>
+							<th>Data de Pagamento</th>
+							<th>Usuario Responsavel</th>
+							<th>Autor</th>
+							<th>Valor</th>
+							<th>Ações</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php while ($i < count($listaTela)) { ?>
+							<tr>
+								<td><?php echo $listaTela[$i]->getDescricao(); ?></td>
+								<td><?php echo $listaTela[$i]->getReceitaNome(); ?></td>
+								<td><?php
 
-                            $data = date_create($listaTela[$i]->getDataCadastro());
-                            echo date_format($data, 'd/m/y');
-                            ?>
-                        </td>
+											$data = date_create($listaTela[$i]->getDataCadastro());
+											echo date_format($data, 'd/m/y');
+											?>
+								</td>
 
-						<td><?php
+								<td><?php
 
-                            $data = date_create($listaTela[$i]->getDataPagamento());
-                            echo date_format($data, 'd/m/y');
-                            ?>
-                        </td>
-						<td><?php echo $listaTela[$i]->getResponsavel();?></td>
-						<td><?php echo $listaTela[$i]->getAutor();?></td>
-						<td><?php echo $listaTela[$i]->getValor(); ?></td>
-						<td><a
-							href="receita-manter-editar.php?id=<?php echo $listaTela[$i]->getId(); ?>"><i
-								class="fa fa-edit"></i></a> |<a
-							href="receita-manter-deletar-action.php?id=<?php echo $listaTela[$i]->getId(); ?>">
-								<i class="fa fa-trash"></i>
-						</a></td>
-					</tr>
-							<?php $i++; } ?>
+											$data = date_create($listaTela[$i]->getDataPagamento());
+											echo date_format($data, 'd/m/y');
+											?>
+								</td>
+								<td><?php echo $listaTela[$i]->getResponsavel(); ?></td>
+								<td><?php echo $listaTela[$i]->getAutor(); ?></td>
+								<td><?php echo $listaTela[$i]->getValor(); ?></td>
+								<td><a href="receita-manter-editar.php?id=<?php echo $listaTela[$i]->getId(); ?>"><i class="fa fa-edit"></i></a> |<a href="receita-manter-deletar-action.php?id=<?php echo $listaTela[$i]->getId(); ?>">
+										<i class="fa fa-trash"></i>
+									</a></td>
+							</tr>
+						<?php $i++;
+							} ?>
 
-				
-				
-				
-				
-				
-				
-				<tfoot>
-					<tr>
-						<th colspan="6">Total:</th>
-						<th colspan="2"> <?php echo " $$total";?></th>
-					</tr>
-				</tfoot>
-				</tbody>
-			</table>
-			<?php } else { echo "<center><h1> N�o h� receitas cadastradas!</h1></center>"; } ?>
+
+
+
+
+
+
+					<tfoot>
+						<tr>
+							<th colspan="6">Total:</th>
+							<th colspan="2"> <?php echo " $$total"; ?></th>
+						</tr>
+					</tfoot>
+					</tbody>
+				</table>
+			<?php } else {
+				echo "<center><h1> N�o h� receitas cadastradas!</h1></center>";
+			} ?>
 		</div>
 	</div>
 </div>
-
 <!-- Fim DataTables -->
 
+<script language="JavaScript">
+	function enviar() {
+
+		if (document.dados.dataCadastro.value == "") {
+			alert("Preencha campo DATA DE CADASTRO corretamente!");
+			document.dados.dataCadastro.focus();
+			return false;
+		}
+
+		if (document.dados.dataPagamento.value == "") {
+			alert("Preencha campo DATA DE PAGAMENTO corretamente!");
+			document.dados.dataPagamento.focus();
+			return false;
+		}
+
+		if (document.dados.descricao.value == "") {
+			alert("Preencha o campo DESCRIÇÃO corretamente!");
+			document.dados.descricao.focus();
+			return false;
+		}
+
+		if (document.dados.categoria.value == "-1") {
+			alert("Preencha o campo CATEGORiA corretamente!");
+			document.dados.categoria.focus();
+			return false;
+		}
+
+		if (document.dados.IdUsuarioResponsavel.value == "-1") {
+			alert("Preencha o campo USUÁRIO corretamente!");
+			document.dados.IdUsuarioResponsavel.focus();
+			return false;
+		}
+
+		if (document.dados.valor.value == "" ||
+			document.dados.valor.length < 0) {
+			alert("Preencha o campo VALOR corretamente!");
+			document.dados.valor.focus();
+			return false;
+		}
+
+	}
+</script>
 
 
 
 
-
-
-
-<!-- Inicio Tabela Total 
-					<div class="card mb-3">
-						<div class="card-header">
-							<i class="fas fa-table"> Total </i>
-							<div class="card-body">
-								<div class="table-responsive">
-									<table class="table table-bordered" id="tableTotal"
-										width="100%" cellspacing="0">
-										<tbody>
-											<tr>
-												<td>Valor total das Receitas:</td>
-												<td><?php echo "$$total";?></td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-
-
-					<!--  Fim Tabela Total -->
-
-<?php
-
-include 'inc.rodape.php';
-?>
+<?php include 'inc.rodape.php'; ?>

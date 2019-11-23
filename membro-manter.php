@@ -30,7 +30,8 @@ $validador = $ListaUsuarios == false ? false : $ListaUsuarios;
 	<div class="card-body">
 
 		<!-- inicio formulario -->
-		<form action="membro-manter-cadastrar-action.php" method="post" name="formMembro" id="formMembro">
+		<form action="membro-manter-cadastrar-action.php" method="post" name="dados" onsubmit="return enviar();">
+
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<input type="text" class="form-control" id="nome" name="nome" placeholder="Nome">
@@ -86,7 +87,7 @@ $validador = $ListaUsuarios == false ? false : $ListaUsuarios;
 				</div>
 			</div>
 
-			<button type="button" onclick="teste()" class="btn btn-primary">Cadastrar</button>
+			<button type="button" class="btn btn-primary">Cadastrar</button>
 		</form>
 	</div>
 
@@ -142,20 +143,65 @@ $validador = $ListaUsuarios == false ? false : $ListaUsuarios;
 </div>
 
 
-<script>
-	function teste() {
+<script language="JavaScript">
+	function enviar() {
 
-		var nome = document.getElementById("nome").value;
-
-		if (nome == "") {
-			alert('Digita um nome danado');
+		if (document.dados.nome.value == "" ||
+			document.dados.nome.length < 3) {
+			alert("Preencha campo NOME corretamente!");
+			document.dados.nome.focus();
+			return false;
 		}
 
-		document.getElementById("formMembro").submit();
+		if (document.dados.rg.value == "" ||
+			document.dados.rg.length < 9){
+			alert("Preencha campo RG corretamente!");
+			document.dados.rg.focus();
+			return false;
+		}
+
+		if (document.dados.cep.value == "") {
+			alert("Preencha o campo CEP corretamente!");
+			document.dados.cep.focus();
+			return false;
+		}
+
+		if (document.dados.cpf.value == "" || 
+			document.dados.cpf.length != 11) {
+			alert("Preencha o campo CPF corretamente!");
+			document.dados.cpf.focus();
+			return false;
+		}
+
+		if (document.dados.uf.value == "" || 
+			document.dados.uf.length != 2) {
+			alert("Preencha o campo UF corretamente!");
+			document.dados.uf.focus();
+			return false;
+		}
+
+		if (document.dados.cidade.value == "") {
+			alert("Preencha o campo CIDADE corretamente!");
+			document.dados.cidade.focus();
+			return false;
+		}
+
+		if (document.dados.logradouro.value == "") {
+			alert("Preencha o campo LOGRADOURO corretamente!");
+			document.dados.logradouro.focus();
+			return false;
+		}
+
+		if (document.dados.telefone.value == "" || 
+			document.dados.telefone.length < 11) {
+			alert("Preencha o campo TELEFONE corretamente!");
+			document.dados.telefone.focus();
+			return false;
+		}
+
+		
+
 	}
 </script>
 
-<?php
-
-include 'inc.rodape.php';
-?>
+<?php include 'inc.rodape.php'; ?>
