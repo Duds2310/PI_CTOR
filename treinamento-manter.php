@@ -75,7 +75,7 @@ $i = 0;
 			<div class="form-group form-row">
 				<div class="col-md-4">
 					<input type="text" name="idusuario" id="idusuario" class="form-control"
-						placeholder="id Usuario">
+						placeholder="id Usuário">
 				</div>
 
 			</div>

@@ -37,6 +37,7 @@ $validador = $ListaUsuarios == false ? false : $ListaUsuarios;
 					<input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" required="required" autofocus="autofocus">
 				</div>
 				<div class="form-group col-md-6">
+
 					<input type="text" class="form-control" id="rg" name="rg" placeholder="Rg">
 				</div>
 			</div>

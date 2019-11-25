@@ -50,6 +50,7 @@ $receita = $repoReceita->consultarReceitaId($id) ?>
 				</div>
 				<div class="form-group form-row">
 					<div class="col-md-12">
+
 						<textarea class="form-control" name="descricao" id="descricao" rows="3" placeholder="Descrição" required="required" autofocus="autofocus"><?php echo $receita->getDescricao() ?></textarea>
 					</div>
 				</div>

@@ -33,7 +33,7 @@
 				<a class="nav-item nav-link" href="#quem-somos">Quem Somos</a> <a
 					class="nav-item nav-link" data-toggle="modal"
 					data-target="#modalContato" href="#">Contato</a> <a
-					class="nav-item nav-link" href="login.php">Area membros</a>
+					class="nav-item nav-link" href="login.php">Área membros</a>
 			</div>
 		</div>
 	</nav>

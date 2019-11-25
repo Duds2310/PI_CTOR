@@ -57,6 +57,7 @@ if ($validador) {
 		<form action="receita-manter-cadastrar-action.php" method="post" name="dados" onsubmit="return enviar();">
 
 			<div class="form-group form-row">
+
 				<div class="col-md-6">
 					<label>Data de cadastro </label> <input type="date" name="dataCadastro" id="dataCadastro" class="form-control" placeholder="Data de Cadastro" required="required" autofocus="autofocus">
 				</div>
@@ -67,7 +68,9 @@ if ($validador) {
 
 			<div class="form-group form-row">
 				<div class="col-md-12">
+
 					<textarea class="form-control" name="descricao" id="descricao" rows="3" placeholder="Descrição" required="required" autofocus="autofocus"></textarea>
+
 				</div>
 			</div>
 
@@ -120,6 +123,7 @@ if ($validador) {
 	</div>
 	<div class="card-body">
 		<div class="table-responsive">
+
 			<?php if ($validador) { ?>
 				<table class="table table-bordered" id="MyTableID" width="100%" cellspacing="0">
 					<thead>
