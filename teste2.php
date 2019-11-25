@@ -8,8 +8,10 @@ include 'src/repositorios/RepositorioProva.php';
 
 $repo = new RepositorioReceita();
 $rec = new Receita();
-$repositorioprova = new RepositorioProva();
+//$repositorioprova = new RepositorioProva();
 $lista = $repositorioprova->listarProvas();
+
+
 
 
 /**
@@ -18,6 +20,7 @@ $lista = $repositorioprova->listarProvas();
  * var_dump($repo->listarReceita());
  */
 
+var_dump($repo->listarReceita());
 
 /**
  * CONSULTAR POR ID

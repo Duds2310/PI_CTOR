@@ -1,4 +1,5 @@
 <?php
+
 use src\RepositorioUsuario;
 
 include 'inc.cabecalho.php';
@@ -29,23 +30,20 @@ $usuario = $repositorioUsuario->consultarUsuarioPorID($idUsuario);
 		<div class="card-header">Editar Usuario</div>
 		<div class="card-body">
 			<form action="usuario-manter-editar-action.php?id=<?php echo $idUsuario; ?>" method="post">
-				<input type="hidden" value="<?php echo $usuario[0]->getId();?>" name="id">
+				<input type="hidden" value="<?php echo $usuario[0]->getId(); ?>" name="id">
 				<div class="form-group">
 					<div class="form-row">
 						<div class="col-md-6">
-						<label>Nome:</label>
+							<label>Nome:</label>
 							<div class="form-label-group">
-								
-								<input type="text" name="nome" id="nome" value="<?php echo $usuario[0]->getNome();?>" class="form-control"
-									 required="required" 
-									autofocus="autofocus">
+
+								<input type="text" name="nome" id="nome" value="<?php echo $usuario[0]->getNome(); ?>" class="form-control" required="required" autofocus="autofocus">
 							</div>
 						</div>
 						<div class="col-md-6">
 							<label>Login</label>
 							<div class="form-label-group">
-								<input type="text" name="login" id="login" value="<?php echo $usuario[0]->getLogin();?>" class="form-control"
-									placeholder="Last name" required="required"> 
+								<input type="text" name="login" id="login" value="<?php echo $usuario[0]->getLogin(); ?>" class="form-control" placeholder="Last name" required="required">
 							</div>
 						</div>
 					</div>
@@ -53,24 +51,21 @@ $usuario = $repositorioUsuario->consultarUsuarioPorID($idUsuario);
 				<div class="form-group">
 					<label>Email:</label>
 					<div class="form-label-group">
-						<input type="email" name="email" id="email" value="<?php echo $usuario[0]->getEmail();?>" class="form-control"
-							placeholder="Email address" required="required"> 
+						<input type="email" name="email" id="email" value="<?php echo $usuario[0]->getEmail(); ?>" class="form-control" placeholder="Email address" required="required">
 					</div>
 				</div>
 				<div class="form-group">
-				<label>Password</label>
+					<label>Password</label>
 					<div class="form-row">
 						<div class="col-md-6">
-							<div class="form-label-group">								 
-								<input type="password" name="senha" id="senha" value="<?php echo $usuario[0]->getSenha();?>" class="form-control"
-									placeholder="Password" required="required">
+							<div class="form-label-group">
+								<input type="password" name="senha" id="senha" value="<?php echo $usuario[0]->getSenha(); ?>" class="form-control" placeholder="Password" required="required">
 							</div>
 						</div>
 						<div class="col-md-6">
-						<label>Confirmar password</label>
+							<label>Confirmar password</label>
 							<div class="form-label-group">
-								<input type="password" id="confirmPassword" value="<?php echo $usuario[0]->getSenha();?>" class="form-control"
-									placeholder="Confirm password" required="required"> 
+								<input type="password" id="confirmPassword" value="<?php echo $usuario[0]->getSenha(); ?>" class="form-control" placeholder="Confirm password" required="required">
 							</div>
 						</div>
 					</div>
@@ -82,7 +77,15 @@ $usuario = $repositorioUsuario->consultarUsuarioPorID($idUsuario);
 
 </div>
 
-<?php
+<script language="JavaScript">
+	function enviar() {
 
-include 'inc.rodape.php';
-?>
+		if (document.dados.confirmarSenha.value != document.dados.senha.value) {
+			alert("As senhas não coincidem!");
+			document.dados.confirmarSenha.focus();
+			return false;
+		}
+	}
+</script>
+
+<?php include 'inc.rodape.php'; ?>

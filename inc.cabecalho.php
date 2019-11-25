@@ -1,3 +1,23 @@
+<?php 
+// $usuarioLogado = $_GET['usuario'];
+
+session_start();
+
+
+//verificando se tem valores na sessap
+if( !(isset($_SESSION['idUsuario']) && isset($_SESSION['emailUsuario']) 
+    && isset($_SESSION['nomeUsuario']) && isset($_SESSION['catUsuario'])) ){
+    header("Location: login.php");      
+}
+
+
+$idUsuarioLogado = $_SESSION['idUsuario'];
+$emailUsuarioLogado = $_SESSION['emailUsuario'];
+$nomeUsuarioLogado = $_SESSION['nomeUsuario'];
+$catUsuarioLogado = $_SESSION['catUsuario'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,23 +71,26 @@
 
 		<!-- Navbar -->
 		<ul class="navbar-nav ml-auto ml-md-0">
-			<li class="nav-item dropdown no-arrow"><a
+			<li class="nav-item dropdown no-arrow">
+			<a
 				class="nav-link dropdown-toggle" href="#" id="userDropdown"
 				role="button" data-toggle="dropdown" aria-haspopup="true"
 				aria-expanded="false"> <i class="fas fa-user-circle fa-fw"></i>
 			</a>
-				<div class="dropdown-menu dropdown-menu-right"
-					aria-labelledby="userDropdown">
-					<!-- <div class="dropdown-divider"></div> -->
-					<a class="dropdown-item" href="#" data-toggle="modal"
-						data-target="#logoutModal">Logout</a>
-				</div></li>
+			<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+				<!-- <div class="dropdown-divider"></div> -->
+				<!-- <!--  data-toggle="modal" data-target="#logoutModal"  -->
+				<a  data-toggle="modal" data-target="#logoutModal"  class="dropdown-item" >Logout</a>
+			</div>
+			</li>
 		</ul>
 
 	</nav>
 
 	<div id="wrapper">
-
+	
+	
+		<?php if ($catUsuarioLogado == '2') { ?>
 		<!-- Sidebar - Menu Lateral -->
 		<ul class="sidebar navbar-nav">
 			<li class="nav-item"><a class="nav-link" href="dashboard.php"> <i
@@ -93,6 +116,21 @@
 					class="fas fa-dollar-sign"></i> <span>Consultar Mensalidades</span></a>
 			</li>
 		</ul>
+		
+		<?php } ?>
+		
+		
+		<?php if ($catUsuarioLogado == '1') { ?>
+		<!-- Sidebar - Menu Lateral -->
+		<ul class="sidebar navbar-nav">
+
+			
+			<li class="nav-item"><a class="nav-link" href="treinamento-manter.php"> <i 
+					class="fas fa-bullseye"></i> <span>Manter Treino</span></a>
+			</li>
+		</ul>
+		
+		<?php } ?>
 
 		<div id="content-wrapper">
 

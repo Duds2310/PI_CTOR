@@ -33,12 +33,12 @@ if (isset($_GET['login'])) {
 
 	<form class="form-signin" action="login-action.php" method="post">
       <?php if($loginError){ //verifica se $loginError � true, se for exibe o seguinte alerta?>
-          <p class="alert alert-danger" role="alert">Usuário Não Existe!
+          <p class="alert alert-danger" role="alert">Usuario nao existe!
 		</p>
 	  <?php }?>
       <img class="mb-4" src="src/ctor.jpg"
-			alt="" width="72" height="72">
-		<h1 class="h3 mb-3 font-weight-normal">Área Restrita</h1>
+			alt="" width="150" height="80">
+		<h1 class="h3 mb-3 font-weight-normal">Area Restrita</h1>
 		<label for="inputEmail" class="sr-only">Email</label> <input
 			type="email" id="email" name="email" class="form-control"
 			placeholder="Endereço Email" required autofocus> <label

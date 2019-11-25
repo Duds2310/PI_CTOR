@@ -1,4 +1,5 @@
 <?php
+
 use src\RepositorioUsuario;
 
 include 'inc.cabecalho.php';
@@ -11,6 +12,8 @@ $ListaUsuarios = $repoUsuario->listarUsuario();
 $i = 0;
 
 $validador = $ListaUsuarios == false ? false : $ListaUsuarios;
+
+
 ?>
 
 <!-- Breadcrumbs-->
@@ -27,82 +30,74 @@ $validador = $ListaUsuarios == false ? false : $ListaUsuarios;
 	<div class="card-body">
 
 		<!-- inicio formulario -->
-		<form action="membro-manter-cadastrar-action.php" method="post">
+		<form action="membro-manter-cadastrar-action.php" method="post" name="dados" onsubmit="return enviar();">
+
 			<div class="form-row">
 				<div class="form-group col-md-6">
-					<input type="text" class="form-control" id="nome" name="nome"
-						placeholder="Nome">
+					<input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" required="required" autofocus="autofocus">
 				</div>
-
 				<div class="form-group col-md-6">
-					<input type="text" class="form-control" id="rg" name="rg"
-						placeholder="RG">
-				</div>
 
-				<div class="form-group col-md-6">
-					<input type="text" class="form-control" id="cep" name="cep"
-						placeholder="CEP">
-				</div>
-
-				<div class="form-group col-md-6">
-					<input type="text" class="form-control" id="cpf" name="cpf"
-						placeholder="CPF">
-				</div>
-
-				<div class="form-group col-md-6">
-					<input type="text" class="form-control" id="uf" name="uf"
-						placeholder="UF">
-				</div>
-
-				<div class="form-group col-md-6">
-					<input type="text" class="form-control" id="cidade" name="cidade"
-						placeholder="Cidade">
-				</div>
-
-				<div class="form-group col-md-6">
-					<input type="text" class="form-control" id="logradouro"
-						name="logradouro" placeholder="Logradouro">
-				</div>
-
-				<div class="form-group col-md-6">
-					<input type="text" class="form-control" id="telefone"
-						name="telefone" placeholder="Telefone">
-				</div>
-
-				<div class="form-group col-md-6">
-					<input type="text" id="login" name="login" class="form-control"
-						placeholder="Login">
-				</div>
-
-
-
-				<div class="form-group col-md-6">
-					<input type="email" id="email" name="email" class="form-control"
-						placeholder="Email">
+					<input type="text" class="form-control" id="rg" name="rg" placeholder="Rg">
 				</div>
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-6">
-					<input type="password" id="senha" name="senha" class="form-control"
-						placeholder="Senha">
+					<input type="text" class="form-control" id="cep" name="cep" placeholder="Cep">
+				</div>
+				<div class="form-group col-md-6">
+					<input type="text" class="form-control" id="cpf" name="cpf" placeholder="Cpf" required="required" autofocus="autofocus">
+				</div>
+			</div>
+
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<input type="text" class="form-control" id="uf" name="uf" placeholder="Uf">
+				</div>
+				<div class="form-group col-md-6">
+					<input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade">
+				</div>
+			</div>
+
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<input type="text" class="form-control" id="logradouro" name="logradouro" placeholder="Logradouro">
+				</div>
+				<div class="form-group col-md-6">
+					<input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone">
+				</div>
+			</div>
+
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<input type="text" id="login" name="login" class="form-control" placeholder="Login" required="required" autofocus="autofocus">
+				</div>
+				<div class="form-group col-md-6">
+					<input type="email" id="email" name="email" class="form-control" placeholder="Email" required="required" autofocus="autofocus">
+				</div>
+			</div>
+
+
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<input type="password" id="senha" name="senha" class="form-control" placeholder="Senha" required="required" autofocus="autofocus">
 				</div>
 
 				<div class="form-group col-md-6">
-					<input type="password" id="senhaConfirma" name="senhaConfirma"
-						class="form-control" placeholder="Confirmar Senha">
+					<input type="password" id="senhaConfirma" name="senhaConfirma" class="form-control" placeholder="Confirmar Senha" required="required" autofocus="autofocus">
 				</div>
 			</div>
-	
+
+			<button type="submit" class="btn btn-primary">Cadastrar</button>
+		</form>
 	</div>
 
 
 
-	<button type="submit" class="btn btn-primary">Cadastrar</button>
-	</form>
+
 
 </div>
 
-</div>
 
 
 <!-- DataTables Example -->
@@ -114,43 +109,60 @@ $validador = $ListaUsuarios == false ? false : $ListaUsuarios;
 		<div class="table-responsive">
 			<?php
 
-            if ($validador) { 
-                $quantidade = count($ListaUsuarios);
-                ?>
-			<table class="table table-bordered" id="MyTableID" width="100%"
-				cellspacing="0">
-				<thead>
-					<tr>
-						<th>Nome</th>
-						<th>Email</th>
-						<th>Login</th>
-						<th>Ações</th>
-					</tr>
-				</thead>
-				<tbody>
-				<?php
+			if ($validador) {
+				$quantidade = count($ListaUsuarios);
+				?>
+				<table class="table table-bordered" id="MyTableID" width="100%" cellspacing="0">
+					<thead>
+						<tr>
+							<th>Nome</th>
+							<th>Email</th>
+							<th>Login</th>
+							<th>Ações</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php
 
-                    while ($i < $quantidade) {
-                        ?>
-					<tr>
-						<td><?php echo $ListaUsuarios[$i]->getNome(); ?></td>
-						<td><?php echo $ListaUsuarios[$i]->getEmail(); ?></td>
-						<td><?php echo $ListaUsuarios[$i]->getLogin(); ?></td>
-						<td><a
-							href="membro-manter-editar.php?id=<?php echo $ListaUsuarios[$i]->getId(); ?>"><i
-								class="fa fa-edit"></i></a> | <a
-							href="usuario-manter-deletar-action.php?id=<?php echo $ListaUsuarios[$i]->getId(); ?>"><i
-								class="fa fa-trash"></i></td>
-					</tr>
-				<?php $i++; } ?>	
-				</tbody>
-			</table>
-			<?php } else { echo "<center><h1> N�o h� membros cadastrados!</h1></center>"; } ?>
+							while ($i < $quantidade) {
+								?>
+							<tr>
+								<td><?php echo $ListaUsuarios[$i]->getNome(); ?></td>
+								<td><?php echo $ListaUsuarios[$i]->getEmail(); ?></td>
+								<td><?php echo $ListaUsuarios[$i]->getLogin(); ?></td>
+								<td><a href="membro-manter-editar.php?id=<?php echo $ListaUsuarios[$i]->getId(); ?>"><i class="fa fa-edit"></i></a> | <a href="membro-manter-deletar-action.php?id=<?php echo $ListaUsuarios[$i]->getId(); ?>"><i class="fa fa-trash"></i></td>
+							</tr>
+						<?php $i++;
+							} ?>
+					</tbody>
+				</table>
+			<?php } else {
+				echo "<center><h1> Não há membros cadastrados!</h1></center>";
+			} ?>
 		</div>
 	</div>
 </div>
 
-<?php
 
-include 'inc.rodape.php';
-?>
+<script language="JavaScript">
+	function enviar() {
+
+		if (document.dados.cpf.value == "" ||
+			document.dados.cpf.value.length != 11) {
+			alert("Preencha o campo CPF corretamente!");
+			document.dados.cpf.focus();
+			return false;
+		}
+
+		if (document.dados.senhaConfirma.value != document.dados.senha.value) {
+			alert("As senhas não coincidem!");
+			document.dados.senhaConfirma.focus();
+			return false;
+		}
+	}
+</script>
+
+
+
+
+<?php include 'inc.rodape.php'; ?>

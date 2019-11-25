@@ -30,7 +30,7 @@
 				<a class="nav-item nav-link active" href="#">Home <span
 					class="sr-only">(current)</span></a> <a class="nav-item nav-link"
 					href="#">Valores</a> <a class="nav-item nav-link" href="#">Missão</a>
-				<a class="nav-item nav-link" href="#">Quem Somos</a> <a
+				<a class="nav-item nav-link" href="#quem-somos">Quem Somos</a> <a
 					class="nav-item nav-link" data-toggle="modal"
 					data-target="#modalContato" href="#">Contato</a> <a
 					class="nav-item nav-link" href="login.php">Área membros</a>
@@ -44,38 +44,21 @@
 	<div class="bd-example">
 		<div id="carouselExampleCaptions" class="carousel slide"
 			data-ride="carousel" data-interval="3000">
-			<ol class="carousel-indicators">
-				<li data-target="#carouselExampleCaptions" data-slide-to="0"
-					class="active"></li>
-				<li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-			</ol>
+			<ol class="carousel-indicators"></ol>
 			<div class="carousel-inner">
 				<div class="carousel-item active">
 					<img src="src/ctor.jpg" class="d-block w-100 carrossel-img-um"
 						alt="...">
 					<div class="carousel-caption d-none d-md-block h-50">
-						<h1 class="fonte-titulo display-4">CTOR</h1>
+						<h1 class="fonte-titulo display-4"></h1>
 					</div>
 				</div>
-				<div class="carousel-item">
-					<img src="src/img/carrossel-img2.webp"
-						class="d-block w-100 carrossel-img-dois" alt="...">
-					<div class="carousel-caption d-none d-md-block h-50">
-						<h1 class="fonte-titulo display-4">Curso de carteira
-							previdenciaria</h1>
-					</div>
-				</div>
+
 			</div>
-			<a class="carousel-control-prev" href="#carouselExampleCaptions"
-				role="button" data-slide="prev"> <span
-				class="carousel-control-prev-icon" aria-hidden="true"></span> <span
-				class="sr-only">Previous</span>
-			</a> <a class="carousel-control-next" href="#carouselExampleCaptions"
-				role="button" data-slide="next"> <span
-				class="carousel-control-next-icon" aria-hidden="true"></span> <span
-				class="sr-only">Next</span>
-			</a>
 		</div>
+	</div>
+
+	</div>
 	</div>
 	<!-- Fim Carrosel -->
 
@@ -86,7 +69,34 @@
 		Rodrigues</p>
 	<!-- Fim Titulo -->
 
-	<!-- Inicio valores -->
+	<!-- Inicio valores 
+	<section class="container-fluid">
+		<div class="row justify-content-md-center">
+			<article class="col-6">
+				<div class="jumbotron">
+					<h1 class="display-4 text-center">Valores</h1>
+					<p class="lead">O incentivo ao avanço tecnológico, assim como o
+						comprometimento entre as equipes oferece uma interessante
+						oportunidade para verificação das condições inegavelmente
+						apropriadas. Do mesmo modo, a hegemonia do ambiente político exige
+						a precisão e a definição do fluxo de informações. No entanto, não
+						podemos esquecer que a valorização de fatores subjetivos aponta
+						para a melhoria dos relacionamentos verticais entre as
+						hierarquias. No mundo atual, a percepção das dificuldades estende
+						o alcance e a importância do levantamento das variáveis
+						envolvidas. Todavia, o acompanhamento das preferências de consumo
+						faz parte de um processo de gerenciamento dos modos de operação
+						convencionais. A nível organizacional, a expansão dos mercados
+						mundiais garante a contribuição de um grupo importante na
+						determinação do retorno esperado a longo prazo. Caros amigos, o
+						fenômeno da Internet representa uma abertura para a melhoria dos
+						conhecimentos estratégicos para atingir a excelência.</p>
+				</div>
+			</article>
+		</div>
+	</section>
+	<!-- Fim valores 
+	<!-- Inicio valores 
 	<section class="container-fluid">
 		<div class="row justify-content-md-center">
 			<article class="col-6">
@@ -113,6 +123,7 @@
 		</div>
 	</section>
 	<!-- Fim valores -->
+
 	<!-- Inicio valores -->
 	<section class="container-fluid">
 		<div class="row justify-content-md-center">
@@ -122,47 +133,20 @@
 					<p class="lead">O incentivo ao avanço tecnológico, assim como o
 						comprometimento entre as equipes oferece uma interessante
 						oportunidade para verificação das condições inegavelmente
-						apropriadas. Do mesmo modo, a hegemonia do ambiente político exige
-						a precisão e a definição do fluxo de informações. No entanto, não
-						podemos esquecer que a valorização de fatores subjetivos aponta
-						para a melhoria dos relacionamentos verticais entre as
-						hierarquias. No mundo atual, a percepção das dificuldades estende
-						o alcance e a importância do levantamento das variáveis
-						envolvidas. Todavia, o acompanhamento das preferências de consumo
-						faz parte de um processo de gerenciamento dos modos de operação
-						convencionais. A nível organizacional, a expansão dos mercados
-						mundiais garante a contribuição de um grupo importante na
-						determinação do retorno esperado a longo prazo. Caros amigos, o
-						fenômeno da Internet representa uma abertura para a melhoria dos
-						conhecimentos estratégicos para atingir a excelência.</p>
-				</div>
-			</article>
-		</div>
-	</section>
-	<!-- Fim valores -->
-	
-		<!-- Inicio valores 
-	<section class="container-fluid">
-		<div class="row justify-content-md-center">
-			<article class="col-6">
-				<div class="jumbotron">
-					<h1 class="display-4 text-center">Valores</h1>
-					<p class="lead">O incentivo ao avanço tecnológico, assim como o
-						comprometimento entre as equipes oferece uma interessante
-						oportunidade para verificação das condições inegavelmente
-						apropriadas. Do mesmo modo, a hegemonia do ambiente político exige
-						a precisão e a definição do fluxo de informações. No entanto, não
-						podemos esquecer que a valorização de fatores subjetivos aponta
-						para a melhoria dos relacionamentos verticais entre as
-						hierarquias. No mundo atual, a percepção das dificuldades estende
-						o alcance e a importância do levantamento das variáveis
-						envolvidas. Todavia, o acompanhamento das preferências de consumo
-						faz parte de um processo de gerenciamento dos modos de operação
-						convencionais. A nível organizacional, a expansão dos mercados
-						mundiais garante a contribuição de um grupo importante na
-						determinação do retorno esperado a longo prazo. Caros amigos, o
-						fenômeno da Internet representa uma abertura para a melhoria dos
-						conhecimentos estratégicos para atingir a excelência.</p>
+						apropriadas. Do mesmo modo, a hegemonia do ambiente político
+						exige a precisão e a definição do fluxo de informações. No
+						entanto, não podemos esquecer que a valorização de fatores
+						subjetivos aponta para a melhoria dos relacionamentos verticais
+						entre as hierarquias. No mundo atual, a percepção das
+						dificuldades estende o alcance e a importância do levantamento
+						das variáveis envolvidas. Todavia, o acompanhamento das
+						preferências de consumo faz parte de um processo de gerenciamento
+						dos modos de operação convencionais. A nível organizacional, a
+						expansão dos mercados mundiais garante a contribuição de um
+						grupo importante na determinação do retorno esperado a longo
+						prazo. Caros amigos, o fenômeno da Internet representa uma
+						abertura para a melhoria dos conhecimentos estratégicos para
+						atingir a excelência.</p>
 				</div>
 			</article>
 			<article class="col-6">
@@ -171,24 +155,25 @@
 					<p class="lead">O incentivo ao avanço tecnológico, assim como o
 						comprometimento entre as equipes oferece uma interessante
 						oportunidade para verificação das condições inegavelmente
-						apropriadas. Do mesmo modo, a hegemonia do ambiente político exige
-						a precisão e a definição do fluxo de informações. No entanto, não
-						podemos esquecer que a valorização de fatores subjetivos aponta
-						para a melhoria dos relacionamentos verticais entre as
-						hierarquias. No mundo atual, a percepção das dificuldades estende
-						o alcance e a importância do levantamento das variáveis
-						envolvidas. Todavia, o acompanhamento das preferências de consumo
-						faz parte de um processo de gerenciamento dos modos de operação
-						convencionais. A nível organizacional, a expansão dos mercados
-						mundiais garante a contribuição de um grupo importante na
-						determinação do retorno esperado a longo prazo. Caros amigos, o
-						fenômeno da Internet representa uma abertura para a melhoria dos
-						conhecimentos estratégicos para atingir a excelência.</p>
+						apropriadas. Do mesmo modo, a hegemonia do ambiente político
+						exige a precisão e a definição do fluxo de informações. No
+						entanto, não podemos esquecer que a valorização de fatores
+						subjetivos aponta para a melhoria dos relacionamentos verticais
+						entre as hierarquias. No mundo atual, a percepção das
+						dificuldades estende o alcance e a importância do levantamento
+						das variáveis envolvidas. Todavia, o acompanhamento das
+						preferências de consumo faz parte de um processo de gerenciamento
+						dos modos de operação convencionais. A nível organizacional, a
+						expansão dos mercados mundiais garante a contribuição de um
+						grupo importante na determinação do retorno esperado a longo
+						prazo. Caros amigos, o fenômeno da Internet representa uma
+						abertura para a melhoria dos conhecimentos estratégicos para
+						atingir a excelência.</p>
 				</div>
 			</article>
 		</div>
 	</section>
-	 Fim valores -->
+	<!-- Fim valores -->
 
 	<!-- Inicio Card Atletas -->
 	<section class="container-fluid">
@@ -279,8 +264,6 @@
 		</div>
 	</div>
 	<!-- Fim Modal -->
-
-
 
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

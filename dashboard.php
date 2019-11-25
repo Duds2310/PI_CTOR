@@ -1,7 +1,7 @@
 <?php
 include 'inc.cabecalho.php';
 
-// $usuarioLogado = $_GET['usuario'];
+
 
 ?>
 <!-- Breadcrumbs-->
