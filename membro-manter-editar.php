@@ -28,7 +28,8 @@ $usuario = $repositorioUsuario->consultarMembroPorID($idUsuario);
   <div class="card mb-3">
     <div class="card-header">Editar Membro</div>
     <div class="card-body">
-      <form action="membro-manter-editar-action.php" method="post">
+
+      <form action="membro-manter-editar-action.php" method="post" name="dados" onsubmit="return enviar();">
         <input type="hidden" value="<?php echo $usuario[0]->getId() ?>" name="id" />
 
         <div class="form-group">
@@ -43,7 +44,7 @@ $usuario = $repositorioUsuario->consultarMembroPorID($idUsuario);
             <div class="col-md-6">
               <label for="rg">RG</label>
               <div class="form-label-group">
-                <input type="text" id="rg" name="rg" value="<?php echo $usuario[0]->getRg() ?>" class="form-control" required="required" autofocus="autofocus">
+                <input type="text" id="rg" name="rg" value="<?php echo $usuario[0]->getRg() ?>" class="form-control" autofocus="autofocus">
               </div>
             </div>
 
@@ -56,7 +57,7 @@ $usuario = $repositorioUsuario->consultarMembroPorID($idUsuario);
             <div class="col-md-6">
               <label for="cep">CEP</label>
               <div class="form-label-group">
-                <input type="text" id="cep" name="cep" value="<?php echo $usuario[0]->getCep() ?>" class="form-control" required="required" autofocus="autofocus">
+                <input type="text" id="cep" name="cep" value="<?php echo $usuario[0]->getCep() ?>" class="form-control" autofocus="autofocus">
               </div>
             </div>
             <div class="col-md-6">
@@ -75,13 +76,13 @@ $usuario = $repositorioUsuario->consultarMembroPorID($idUsuario);
             <div class="col-md-6">
               <label for="uf">UF</label>
               <div class="form-label-group">
-                <input type="text" id="uf" name="uf" value="<?php echo $usuario[0]->getUf() ?>" class="form-control" required="required" autofocus="autofocus">
+                <input type="text" id="uf" name="uf" value="<?php echo $usuario[0]->getUf() ?>" class="form-control" autofocus="autofocus">
               </div>
             </div>
             <div class="col-md-6">
               <label for="cidade">Cidade</label>
               <div class="form-label-group">
-                <input type="text" id="cidade" name="cidade" value="<?php echo $usuario[0]->getCidade() ?>" class="form-control" required="required" autofocus="autofocus">
+                <input type="text" id="cidade" name="cidade" value="<?php echo $usuario[0]->getCidade() ?>" class="form-control" autofocus="autofocus">
               </div>
             </div>
 
@@ -94,13 +95,13 @@ $usuario = $repositorioUsuario->consultarMembroPorID($idUsuario);
             <div class="col-md-6">
               <label for="logradouro">Logradouro</label>
               <div class="form-label-group">
-                <input type="text" id="logradouro" name="logradouro" value="<?php echo $usuario[0]->getLogradouro() ?>" class="form-control" required="required" autofocus="autofocus">
+                <input type="text" id="logradouro" name="logradouro" value="<?php echo $usuario[0]->getLogradouro() ?>" class="form-control" autofocus="autofocus">
               </div>
             </div>
             <div class="col-md-6">
               <label for="telefone">Telefone</label>
               <div class="form-label-group">
-                <input type="text" id="telefone" name="telefone" value="<?php echo $usuario[0]->getTelefone() ?>" class="form-control" required="required">
+                <input type="text" id="telefone" name="telefone" value="<?php echo $usuario[0]->getTelefone() ?>" class="form-control">
               </div>
             </div>
 
@@ -113,13 +114,13 @@ $usuario = $repositorioUsuario->consultarMembroPorID($idUsuario);
             <div class="col-md-6">
               <label for="lastName">Login</label>
               <div class="form-label-group">
-                <input type="text" id="lastName" name="login" value="<?php echo $usuario[0]->getLogin() ?>" class="form-control" required="required">
+                <input type="text" id="login" name="login" value="<?php echo $usuario[0]->getLogin() ?>" class="form-control" required="required" autofocus="autofocus">
               </div>
             </div>
             <div class="col-md-6">
               <label for="inputEmail">Email</label>
               <div class="form-label-group">
-                <input type="email" id="inputEmail" name="email" value="<?php echo $usuario[0]->getEmail() ?>" class="form-control" required="required">
+                <input type="email" id="email" name="email" value="<?php echo $usuario[0]->getEmail() ?>" class="form-control" required="required" autofocus="autofocus">
               </div>
             </div>
 
@@ -132,13 +133,13 @@ $usuario = $repositorioUsuario->consultarMembroPorID($idUsuario);
             <div class="col-md-6">
               <label for="inputPassword">Password</label>
               <div class="form-label-group">
-                <input type="password" id="inputPassword" name="senha" value="<?php echo $usuario[0]->getSenha() ?>" class="form-control" required="required">
+                <input type="password" id="senha" name="senha" value="<?php echo $usuario[0]->getSenha() ?>" class="form-control" required="required" autofocus="autofocus">
               </div>
             </div>
             <div class="col-md-6">
               <label for="confirmPassword">Confirmar password</label>
               <div class="form-label-group">
-                <input type="password" id="confirmPassword" name="senhaConfirma" value="<?php echo $usuario[0]->getSenha() ?>" class="form-control" required="required">
+                <input type="password" id="senhaConfirma" name="senhaConfirma" value="<?php echo $usuario[0]->getSenha() ?>" class="form-control" required="required" autofocus="autofocus">
               </div>
             </div>
 
@@ -153,9 +154,23 @@ $usuario = $repositorioUsuario->consultarMembroPorID($idUsuario);
   </div>
 </div>
 
-</div>
+<script language="JavaScript">
+  function enviar() {
 
-<?php
+    if (document.dados.cpf.value == "" ||
+      document.dados.cpf.value.length != 11) {
+      alert("Preencha o campo CPF corretamente!");
+      document.dados.cpf.focus();
+      return false;
+    }
 
-include 'inc.rodape.php';
-?>
+    if (document.dados.senhaConfirma.value != document.dados.senha.value) {
+      alert("As senhas não coincidem!");
+      document.dados.senhaConfirma.focus();
+      return false;
+    }
+  }
+</script>
+
+
+<?php include 'inc.rodape.php'; ?>

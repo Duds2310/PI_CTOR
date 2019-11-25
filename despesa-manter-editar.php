@@ -75,7 +75,7 @@ $categoria = $despesa[0]->getCategoria();
 					<div class="form-row">
 						<div class="col-md-12">
 							<label>Descrição:</label>
-							<textarea class="form-control" name="descricao" id="descricao" rows="3" placeholder="Descrição"><?php echo $despesa[0]->getDescricao() ?></textarea>
+							<textarea class="form-control" name="descricao" id="descricao" rows="3" placeholder="Descrição" required="required" autofocus="autofocus"><?php echo $despesa[0]->getDescricao() ?></textarea>
 						</div>
 
 					</div>
@@ -87,13 +87,13 @@ $categoria = $despesa[0]->getCategoria();
 						<div class="col-md-6">
 							<label>Data de Pagamento:</label>
 							<div class="form-label-group">
-								<input type="date" name="datapagamento" id="datapagamento" value="<?php echo $despesa[0]->getDatapagamento(); ?>" class="form-control" placeholder="Data de Pagamento" required="required">
+								<input type="date" name="datapagamento" id="datapagamento" value="<?php echo $despesa[0]->getDatapagamento(); ?>" class="form-control" placeholder="Data de Pagamento" required="required" autofocus="autofocus">
 							</div>
 						</div>
 						<div class="col-md-6">
 							<label>Data de Vencimento:</label>
 							<div class="form-label-group">
-								<input type="date" name="datavencimento" id="datavencimento" value="<?php echo $despesa[0]->getDatavencimento(); ?>" class="form-control" placeholder="Data de Vencimento" required="required">
+								<input type="date" name="datavencimento" id="datavencimento" value="<?php echo $despesa[0]->getDatavencimento(); ?>" class="form-control" placeholder="Data de Vencimento" required="required" autofocus="autofocus">
 							</div>
 						</div>
 					</div>
@@ -105,18 +105,18 @@ $categoria = $despesa[0]->getCategoria();
 						<div class="col-md-6">
 							<label>Valor:</label>
 							<div class="form-label-group">
-								<input type="text" name="valor" id="valor" value="<?php echo $despesa[0]->getValor(); ?>" class="form-control" placeholder="Valor" required="required">
+								<input type="text" name="valor" id="valor" value="<?php echo $despesa[0]->getValor(); ?>" class="form-control" placeholder="Valor" required="required" autofocus="autofocus">
 							</div>
 						</div>
 
 						<div class="col-md-6">
 							<label>Situacao:</label>
-							<select class="form-control form-control-sm" name="categoria" id="categoria">
+							<select class="form-control form-control-sm" name="situacao" id="situacao" required="required" autofocus="autofocus">
 								<option value="-1">--Selecione a situação--</option>
-								<option <?php if ($situacao == "Em aberto") {
+								<option value="Em aberto" <?php if ($situacao == "Em aberto") {
 											echo "selected";
 										}  ?>>Em aberto</option>
-								<option <?php if ($situacao == "Pago") {
+								<option value="Pago" <?php if ($situacao == "Pago") {
 											echo "selected";
 										}  ?>>Pago</option>
 							</select>
@@ -134,7 +134,7 @@ $categoria = $despesa[0]->getCategoria();
 						<div class="col-md-12">
 							<label>Quantidade de parcelas:</label>
 							<div class="form-label-group">
-								<input type="text" name="qtdParcela" id="qtdParcela" value="<?php echo $despesa[0]->getQtdParcelas(); ?>" class="form-control" placeholder="Quantidade de parcelas" required="required">
+								<input type="text" name="qtdParcela" id="qtdParcela" value="<?php echo $despesa[0]->getQtdParcelas(); ?>" class="form-control" placeholder="Quantidade de parcelas">
 							</div>
 						</div>
 					</div>
@@ -161,12 +161,6 @@ $categoria = $despesa[0]->getCategoria();
 <script language="JavaScript">
 	function salvar() {
 
-		if (document.dados.nome.value == "" ||
-			document.dados.nome.value.length < 3) {
-			alert("Preencha campo NOME corretamente!");
-			document.dados.nome.focus();
-			return false;
-		}
 
 		if (document.dados.descricao.value == "" ||
 			document.dados.descricao.length < 140) {
@@ -175,11 +169,6 @@ $categoria = $despesa[0]->getCategoria();
 			return false;
 		}
 
-		if (document.dados.valor.value == "") {
-			alert("Preencha o campo VALOR corretamente!");
-			document.dados.valor.focus();
-			return false;
-		}
 
 		if (document.dados.categoria.value == "-1") {
 			alert("Preencha o campo CATEGORIA corretamente!");
@@ -193,17 +182,6 @@ $categoria = $despesa[0]->getCategoria();
 			return false;
 		}
 
-		if (document.dados.datapagamento.value == "") {
-			alert("Preencha o campo DATA DE PAGAMENTO corretamente!");
-			document.dados.datapagamento.focus();
-			return false;
-		}
-
-		if (document.dados.datavencimento.value == "") {
-			alert("Preencha o campo DATA DE VENCIMENTO corretamente!");
-			document.dados.datavencimento.focus();
-			return false;
-		}
 	}
 </script>
 

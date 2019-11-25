@@ -58,22 +58,22 @@ if ($validador) {
 
 			<div class="form-group form-row">
 				<div class="col-md-6">
-					<label>Data de cadastro </label> <input type="date" name="dataCadastro" id="dataCadastro" class="form-control" placeholder="Data de Cadastro">
+					<label>Data de cadastro </label> <input type="date" name="dataCadastro" id="dataCadastro" class="form-control" placeholder="Data de Cadastro" required="required" autofocus="autofocus">
 				</div>
 				<div class="col-md-6">
-					<label>Data de pagamento </label> <input type="date" name="dataPagamento" id="dataPagamento" class="form-control" placeholder="Data de Pagamento">
+					<label>Data de pagamento </label> <input type="date" name="dataPagamento" id="dataPagamento" class="form-control" placeholder="Data de Pagamento" required="required" autofocus="autofocus">
 				</div>
 			</div>
 
 			<div class="form-group form-row">
 				<div class="col-md-12">
-					<textarea class="form-control" name="descricao" id="descricao" rows="3" placeholder="Descrição"></textarea>
+					<textarea class="form-control" name="descricao" id="descricao" rows="3" placeholder="Descrição" required="required" autofocus="autofocus"></textarea>
 				</div>
 			</div>
 
 			<div class="form-group form-row">
 				<div class="col-md-12">
-					<select class="form-control form-control-sm" name="categoria" id="categoria">
+					<select class="form-control form-control-sm" name="categoria" id="categoria" required="required" autofocus="autofocus">
 						<option value="-1">-- Selecione uma Categoria --</option>
 						<?php while ($b < count($listaCategorias)) { ?>
 
@@ -89,7 +89,7 @@ if ($validador) {
 
 			<div class="form-group form-row">
 				<div class="col-md-6">
-					<select class="form-control form-control-sm" name="IdUsuarioResponsavel" id="IdUsuarioResponsavel">
+					<select class="form-control form-control-sm" name="IdUsuarioResponsavel" id="IdUsuarioResponsavel" required="required" autofocus="autofocus">
 						<option value="-1">-- Selecione Usuario --</option>
 
 						<?php while ($a < count($listaUsuario)) { ?>
@@ -103,7 +103,7 @@ if ($validador) {
 					</select>
 				</div>
 				<div class="col-md-6">
-					<input type="number" name="valor" id="valor" class="form-control" placeholder="Valor">
+					<input type="number" name="valor" id="valor" class="form-control" placeholder="Valor" required="required" autofocus="autofocus">
 				</div>
 			</div>
 
@@ -177,7 +177,7 @@ if ($validador) {
 					</tbody>
 				</table>
 			<?php } else {
-				echo "<center><h1> N�o h� receitas cadastradas!</h1></center>";
+				echo "<center><h1> Nâo há receitas cadastradas!</h1></center>";
 			} ?>
 		</div>
 	</div>
@@ -187,19 +187,9 @@ if ($validador) {
 <script language="JavaScript">
 	function enviar() {
 
-		if (document.dados.dataCadastro.value == "") {
-			alert("Preencha campo DATA DE CADASTRO corretamente!");
-			document.dados.dataCadastro.focus();
-			return false;
-		}
-
-		if (document.dados.dataPagamento.value == "") {
-			alert("Preencha campo DATA DE PAGAMENTO corretamente!");
-			document.dados.dataPagamento.focus();
-			return false;
-		}
-
-		if (document.dados.descricao.value == "") {
+		
+		if (document.dados.descricao.value == "" ||
+			document.dados.descricao.value.length > 140) {
 			alert("Preencha o campo DESCRIÇÃO corretamente!");
 			document.dados.descricao.focus();
 			return false;
@@ -217,12 +207,6 @@ if ($validador) {
 			return false;
 		}
 
-		if (document.dados.valor.value == "" ||
-			document.dados.valor.length < 0) {
-			alert("Preencha o campo VALOR corretamente!");
-			document.dados.valor.focus();
-			return false;
-		}
 
 	}
 </script>

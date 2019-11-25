@@ -46,7 +46,7 @@ if ($temRegistro) {
 
 			<div class="form-row">
 				<div class="form-group col-md-6">
-					<input type="text" class="form-control" id="nome" name="nome" placeholder="Nome">
+					<input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" required="required" autofocus="autofocus">
 				</div>
 				<div class="form-group col-md-6">
 					<select class="form-control form-control-sm" name="categoria" id="categoria">
@@ -61,25 +61,25 @@ if ($temRegistro) {
 
 			<div class="form-row">
 				<div class="form-group col-md-12">
-					<textarea class="form-control" name="descricao" id="descricao" rows="3" placeholder="Descrição"></textarea>
+					<textarea class="form-control" name="descricao" id="descricao" rows="3" placeholder="Descrição" required="required" autofocus="autofocus"></textarea>
 				</div>
 			</div>
 
 			<div class="form-row">
 				<div class="form-group col-md-6">
-					<label> Data de Pagamento </label> <input type="date" class="form-control" id="datapagamento" name="datapagamento" placeholder="Data de Pagamento">
+					<label> Data de Pagamento </label> <input type="date" class="form-control" id="datapagamento" name="datapagamento" placeholder="Data de Pagamento" required="required" autofocus="autofocus">
 				</div>
 				<div class="form-group col-md-6">
-					<label> Data de Vencimento </label> <input type="date" class="form-control" id="datavencimento" name="datavencimento" placeholder="Data de Vencimento">
+					<label> Data de Vencimento </label> <input type="date" class="form-control" id="datavencimento" name="datavencimento" placeholder="Data de Vencimento" required="required" autofocus="autofocus">
 				</div>
 			</div>
 
 			<div class="form-row">
 				<div class="form-group col-md-6">
-					<input type="text" name="valor" id="valor" class="form-control" name="valor" placeholder="valor" min="1">
+					<input type="number" name="valor" id="valor" class="form-control" name="valor" placeholder="valor" min="0.00" max="10000.00" step="0.01" required="required" autofocus="autofocus">
 				</div>
 				<div class="form-group col-md-6">
-					<select class="form-control form-control-sm" name="situacao" id="situacao">
+					<select class="form-control form-control-sm" name="situacao" id="situacao" required="required" autofocus="autofocus">
 						<option value="-1">--Selecione a situação--</option>
 						<option value="Em aberto">Em aberto</option>
 						<option value="Pago">Pago</option>
@@ -89,7 +89,7 @@ if ($temRegistro) {
 
 			<div class="form-row">
 				<div class="form-group col-md-6">
-					<input type="number" class="form-control" id="qtdParcela" name="qtdParcela" placeholder="Quantidade de parcelas">
+					<input type="number" class="form-control" id="qtdParcela" name="qtdParcela" placeholder="Quantidade de parcelas" >
 				</div>
 				<div class="form-group col-md-6">
 					<input type="checkbox" name="parcelado" value="true"> <label>Parcelado</label>
@@ -165,12 +165,6 @@ if ($temRegistro) {
 <script language="JavaScript">
 	function enviar() {
 
-		if (document.dados.nome.value == "" ||
-			document.dados.nome.value.length < 3) {
-			alert("Preencha campo NOME corretamente!");
-			document.dados.nome.focus();
-			return false;
-		}
 
 		if (document.dados.descricao.value == "" ||
 			document.dados.descricao.length < 140) {
@@ -179,11 +173,6 @@ if ($temRegistro) {
 			return false;
 		}
 
-		if (document.dados.valor.value == "") {
-			alert("Preencha o campo VALOR corretamente!");
-			document.dados.valor.focus();
-			return false;
-		}
 
 		if (document.dados.categoria.value == "-1") {
 			alert("Preencha o campo CATEGORIA corretamente!");
@@ -197,17 +186,6 @@ if ($temRegistro) {
 			return false;
 		}
 
-		if (document.dados.datapagamento.value == "") {
-			alert("Preencha o campo DATA DE PAGAMENTO corretamente!");
-			document.dados.datapagamento.focus();
-			return false;
-		}
-
-		if (document.dados.datavencimento.value == "") {
-			alert("Preencha o campo DATA DE VENCIMENTO corretamente!");
-			document.dados.datavencimento.focus();
-			return false;
-		}
 	}
 </script>
 

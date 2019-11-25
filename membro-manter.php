@@ -34,7 +34,7 @@ $validador = $ListaUsuarios == false ? false : $ListaUsuarios;
 
 			<div class="form-row">
 				<div class="form-group col-md-6">
-					<input type="text" class="form-control" id="nome" name="nome" placeholder="Nome">
+					<input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" required="required" autofocus="autofocus">
 				</div>
 				<div class="form-group col-md-6">
 					<input type="text" class="form-control" id="rg" name="rg" placeholder="Rg">
@@ -45,7 +45,7 @@ $validador = $ListaUsuarios == false ? false : $ListaUsuarios;
 					<input type="text" class="form-control" id="cep" name="cep" placeholder="Cep">
 				</div>
 				<div class="form-group col-md-6">
-					<input type="text" class="form-control" id="cpf" name="cpf" placeholder="Cpf">
+					<input type="text" class="form-control" id="cpf" name="cpf" placeholder="Cpf" required="required" autofocus="autofocus">
 				</div>
 			</div>
 
@@ -69,25 +69,25 @@ $validador = $ListaUsuarios == false ? false : $ListaUsuarios;
 
 			<div class="form-row">
 				<div class="form-group col-md-6">
-					<input type="text" id="login" name="login" class="form-control" placeholder="Login">
+					<input type="text" id="login" name="login" class="form-control" placeholder="Login" required="required" autofocus="autofocus">
 				</div>
 				<div class="form-group col-md-6">
-					<input type="email" id="email" name="email" class="form-control" placeholder="Email">
+					<input type="email" id="email" name="email" class="form-control" placeholder="Email" required="required" autofocus="autofocus">
 				</div>
 			</div>
 
 
 			<div class="form-row">
 				<div class="form-group col-md-6">
-					<input type="password" id="senha" name="senha" class="form-control" placeholder="Senha">
+					<input type="password" id="senha" name="senha" class="form-control" placeholder="Senha" required="required" autofocus="autofocus">
 				</div>
 
 				<div class="form-group col-md-6">
-					<input type="password" id="senhaConfirma" name="senhaConfirma" class="form-control" placeholder="Confirmar Senha">
+					<input type="password" id="senhaConfirma" name="senhaConfirma" class="form-control" placeholder="Confirmar Senha" required="required" autofocus="autofocus">
 				</div>
 			</div>
 
-			<button type="button" class="btn btn-primary">Cadastrar</button>
+			<button type="submit" class="btn btn-primary">Cadastrar</button>
 		</form>
 	</div>
 
@@ -146,62 +146,22 @@ $validador = $ListaUsuarios == false ? false : $ListaUsuarios;
 <script language="JavaScript">
 	function enviar() {
 
-		if (document.dados.nome.value == "" ||
-			document.dados.nome.length < 3) {
-			alert("Preencha campo NOME corretamente!");
-			document.dados.nome.focus();
-			return false;
-		}
-
-		if (document.dados.rg.value == "" ||
-			document.dados.rg.length < 9){
-			alert("Preencha campo RG corretamente!");
-			document.dados.rg.focus();
-			return false;
-		}
-
-		if (document.dados.cep.value == "") {
-			alert("Preencha o campo CEP corretamente!");
-			document.dados.cep.focus();
-			return false;
-		}
-
-		if (document.dados.cpf.value == "" || 
-			document.dados.cpf.length != 11) {
+		if (document.dados.cpf.value == "" ||
+			document.dados.cpf.value.length != 11) {
 			alert("Preencha o campo CPF corretamente!");
 			document.dados.cpf.focus();
 			return false;
 		}
 
-		if (document.dados.uf.value == "" || 
-			document.dados.uf.length != 2) {
-			alert("Preencha o campo UF corretamente!");
-			document.dados.uf.focus();
+		if (document.dados.senhaConfirma.value != document.dados.senha.value) {
+			alert("As senhas não coincidem!");
+			document.dados.senhaConfirma.focus();
 			return false;
 		}
-
-		if (document.dados.cidade.value == "") {
-			alert("Preencha o campo CIDADE corretamente!");
-			document.dados.cidade.focus();
-			return false;
-		}
-
-		if (document.dados.logradouro.value == "") {
-			alert("Preencha o campo LOGRADOURO corretamente!");
-			document.dados.logradouro.focus();
-			return false;
-		}
-
-		if (document.dados.telefone.value == "" || 
-			document.dados.telefone.length < 11) {
-			alert("Preencha o campo TELEFONE corretamente!");
-			document.dados.telefone.focus();
-			return false;
-		}
-
-		
-
 	}
 </script>
+
+
+
 
 <?php include 'inc.rodape.php'; ?>
