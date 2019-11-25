@@ -6,10 +6,10 @@ require_once 'src/ConexaoMySQL.php';
 require_once 'src/modelo/Treinamento.php';
 
 /**
- * Classe responsavel por realizar a conexão com o banco de dados
- * e manter as informações do treinamento: inserindo, alterando, consultando e excluindo
+ * Classe responsavel por realizar a conexï¿½o com o banco de dados
+ * e manter as informaï¿½ï¿½es do treinamento: inserindo, alterando, consultando e excluindo
  * os dados da tabela.
- * Outra nomenclatura para essas classes são 'DAO'.
+ * Outra nomenclatura para essas classes sï¿½o 'DAO'.
  *
  * @author Milton
  *        
@@ -36,7 +36,7 @@ class RepositorioTreinamento
     //CADASTRAR TREINAMENTO
     public function cadastrarTreinamento($Treinamento)
     {  
-        $retorno = true;
+        $retorno = false;
     
     $query = "INSERT INTO TB_TREINO(TRE_CATEGORIA, TRE_SITUACAO, TRE_DESCRICAO, TRE_DATA, USU_ID)VALUES
 	           ('" . $Treinamento->getCategoria() . "', '" . $Treinamento->getSituacao() . "', '" . $Treinamento->getDescricao() . "',
@@ -139,8 +139,24 @@ class RepositorioTreinamento
         return $retorno;
     }
 
-    public function deletarTreinamento()
-    {}
+    public function deletarTreinamento($Treinamento)
+    {
+        $retorno = false;
+        
+        $query = "DELETE FROM TB_TREINO WHERE TRE_ID = " . $Treinamento->getId();
+        
+        $conexao = $this->ConexaoMySQL->abrirBanco();
+        
+        if ($conexao->query($query) == true) {
+            $retorno = true;
+        } else {
+            echo mysqli_error($conexao);
+        }
+        
+        $conexao = $this->ConexaoMySQL->fecharBanco();
+        
+        return $retorno;
+    }
 
     public function cursosMaioresQueMilReais()
     {}

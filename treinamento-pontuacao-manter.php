@@ -1,16 +1,36 @@
 <?php
 use src\RepositorioTreinamento;
+use src\RepositorioPontuacao;
+use src\Pontuacao;
 
 include 'inc.cabecalho.php';
-
+require_once 'src/modelo/Pontuacao.php';
 require_once 'src/repositorios/RepositorioTreinamento.php';
+require_once 'src/repositorios/RepositorioPontuacao.php';
 
+$idTreinamento = 0;
+if(isset($_GET['id']) ){
+    $idTreinamento = $_GET['id'];   
+}
 // recupera o id do usuario
-$idTreinamento = $_GET['id'];
+ /*$idPontuacao = $_GET['idPon']; */
 
 $repositorioTreinamento = new RepositorioTreinamento();
+$repositorioPontuacao = new RepositorioPontuacao();
 
 $treinamento = $repositorioTreinamento->consultarTreinamentoPorId($idTreinamento);
+ /*$pontuacao = $repositorioPontuacao->consultarPontuacaoPorId($idPontuacao); */
+
+
+$pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
+$pontRound = $repositorioPontuacao->consultarRoundEndAtual($idTreinamento);
+
+
+$iPontuacao = 0;//contador de pontuacao
+if($pontuacao){
+    $iPontuacao =  count($pontuacao);
+}
+
 
 // var_dump($treinamento);
 // die("Fim");
@@ -24,307 +44,296 @@ $treinamento = $repositorioTreinamento->consultarTreinamentoPorId($idTreinamento
 </ol>
 <!--  CARD DADOS TREINO -->
 <div class="row">
-  <div class="col-md-12">
-	<div class="card mb-3">
-    		<div class="card-header">
-    		<i class="far fa-clipboard"></i>
-    						Treino</div>
-    		<div class="card-body">
-    			<form
-    				action="usuario-manter-editar-action.php?id=<?php echo $idTreinamento; ?>"
-    				method="post">
-    				<input type="hidden" value="<?php echo $treinamento->getId();?>"
-    					name="id">
-    				<!-- CATEGORIA E DATA -->
-    				<div class="form-group">
-    					<div class="form-row">
-    						<div class="col-md-6">
-    							<label>Categoria:</label>
-    							<div class="form-label-group">
-    								<input type="text" name="categoria" id="categoria"
-    									value="<?php echo $treinamento->getCategoria();?>"
-    									class="form-control" required="required" autofocus="autofocus"
-    									readonly>
-    							</div>
-    						</div>
-    						<div class="col-md-6">
-    							<label>Data</label>
-    							<div class="form-label-group">
-    								<input type="date" name="data" id="data"
-    									value="<?php echo $treinamento->getData();?>"
-    									class="form-control" placeholder="Last name"
-    									required="required" readonly>
-    							</div>
-    						</div>
-    					</div>
-    				</div>
-    				<!--FIM CATEGORIA E DATA -->
-    				<!--IN�CIO DESCRICAO -->
-    				<div class="form-group">
-    					<div class="form-row">
-        					<div class="col-md-12">
-        						<label>Descricao:</label>
-            					<div class="form-label-group">
-            					
-            						<input type="text" name="descricao" id="descricao"
-            							value="<?php echo $treinamento->getDescricao();?>"
-            							class="form-control" placeholder="Descricao"
-            							required="required" readonly>
-        						</div>
-        					</div>
-    					</div>
-    				</div>
-    				<!--FIM DESCRICAO -->
-    				<!--COMECO SITUACAO -->				
-    				<div class="form-group">
-    					<div class="form-row">
-    						<div class="col-md-6">
-    							<label>Situacao</label>
-    							<div class="form-label-group">
-    								<input type="text" name="situacao" id="situacao"
-    									value="<?php echo $treinamento->getSituacao();?>"
-    									class="form-control" placeholder="Password" required="required"
-    									readonly>
-    							</div>
-    						</div>
-    				
-    				<!--COMECO SITUACAO -->	
-    				<!--COME�O ID USUARIO -->
-        		
-            				<div class="col-md-6">
-            					<label>Id Usuario</label>
-            					<div class="form-label-group">
-            						<input type="text" id="idusuario"
-            							value="<?php echo $treinamento->getIdUsuario();?>"
-            							class="form-control" placeholder="Confirm password"
-            							required="required" readonly>
-            					</div>
-            				</div>
-            			</div>	
-        			</div>	<!--FIM ID USUARIO -->
-    			</form>
-			</div><!-- fim do card body -->
-	</div>	<!-- fim do card -->
-  </div>
+	<div class="col-md-12">
+		<div class="card mb-3">
+			<div class="card-header">
+				<i class="far fa-clipboard"></i> Treino
+			</div>
+			<div class="card-body">
+				<form
+					action="usuario-manter-editar-action.php?id=<?php echo $idTreinamento; ?>"
+					method="post">
+					<input type="hidden" value="<?php echo $treinamento->getId();?>"
+						name="id">
+					<!-- CATEGORIA E DATA -->
+					<div class="form-group">
+						<div class="form-row">
+							<div class="col-md-6">
+								<label>Categoria:</label>
+								<div class="form-label-group">
+									<input type="text" name="categoria" id="categoria"
+										value="<?php echo $treinamento->getCategoria();?>"
+										class="form-control" required="required" autofocus="autofocus"
+										readonly>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<label>Data</label>
+								<div class="form-label-group">
+									<input type="date" name="data" id="data"
+										value="<?php echo $treinamento->getData();?>"
+										class="form-control" placeholder="Last name"
+										required="required" readonly>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--FIM CATEGORIA E DATA -->
+					<!--INíCIO DESCRICAO -->
+					<div class="form-group">
+						<div class="form-row">
+							<div class="col-md-12">
+								<label>Descricao:</label>
+								<div class="form-label-group">
+
+									<input type="text" name="descricao" id="descricao"
+										value="<?php echo $treinamento->getDescricao();?>"
+										class="form-control" placeholder="Descricao"
+										required="required" readonly>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--FIM DESCRICAO -->
+					<!--COMECO SITUACAO -->
+					<div class="form-group">
+						<div class="form-row">
+							<div class="col-md-6">
+								<label>Situacao</label>
+								<div class="form-label-group">
+									<input type="text" name="situacao" id="situacao"
+										value="<?php echo $treinamento->getSituacao();?>"
+										class="form-control" placeholder="Password"
+										required="required" readonly>
+								</div>
+							</div>
+
+							<!--COMEÇO SITUACAO -->
+							<!--COMEÇO ID USUARIO -->
+							<div class="col-md-6">
+								<label>Id Usuario</label>
+								<div class="form-label-group">
+									<input type="text" id="idusuario"
+										value="<?php echo $treinamento->getIdUsuario();?>"
+										class="form-control" placeholder="Confirm password"
+										required="required" readonly>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--FIM ID USUARIO -->
+				</form>
+				<button type="submit" class="btn btn-primary mb-2">Alterar</button>
+			</div>
+			
+			<!-- fim do card body -->
+		</div>
+		<!-- fim do card -->
+	</div>
 </div>
 <?php if ($treinamento->getCategoria() == "Indoor") {?>
 
-<!-- FORMUL�RIO DE PONTUA��O DA CATEGORIA INDOOR -->
+<!-- FORMULÁRIO DE PONTUAÇÃO DA CATEGORIA INDOOR -->
 <div class="row">
-<div class="col-md-12">
-<div class="card mb-3">
-	<div class="card-header">
-		<i class="fas fa-bullseye"></i> Pontuacao
-	</div>
-	<div class="card-body">
-		<form action="pontuacao-cadastrar-action.php" method="post">
-			<div class="form-group form-row">
-				<div class="form-group col-md-3">
-					<select name="round" id="round"
-						class="form-control">
-					<!--	<label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Round</label> -->
-						<option selected>Round</option>
-						<option>Primeiro Round</option>
-						<option>Segundo Round</option>
-					</select>
-				</div>
-			
-			
-			
-			<div class="form-group col-md-3">
-					<select name="End" id="End"
-						class="form-control">
-				<!-- 	<label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">End</label> -->
-						<option selected>End</option>
-						<option>Primeiro End</option>
-						<option>Segundo End</option>
-						<option>Terceiro End</option>
-						<option>Quarto End</option>
-						<option>Quinto End</option>
-						<option>Sexto End</option>
-						<option>Setimo End</option>
-						<option>Oitavo End</option>
-						<option>Nono End</option>
-						<option>Decimo End</option>
-					</select>
-				</div>
+	<div class="col-md-12">
+		<div class="card mb-3">
+			<div class="card-header">
+				<i class="fas fa-bullseye"></i> Pontuação
 			</div>
-			<div class="form-group form-row">
-				<div class="form-group col-md-3">
-					<select name="Pontuacao1" id="Pontuacao1"
-						class="form-control">
-				<!-- 	<label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Primeiro Tiro</label> -->
-						<option selected>Primeiro Disparo</option>
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-						<option>6</option>
-						<option>7</option>
-						<option>8</option>
-						<option>9</option>
-						<option>10</option>
-						<option>X</option>
-					</select>
-				</div>
+			<div class="card-body">
 			
-		
-				<div class="form-group col-md-3">
-					<select name="Pontuacao2" id="Pontuacao2"
-						class="form-control">
-				<!--    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Segundo Tiro</label> -->
-						<option selected>Segundo Disparo</option>
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-						<option>6</option>
-						<option>7</option>
-						<option>8</option>
-						<option>9</option>
-						<option>10</option>
-						<option>X</option>
-					</select>
-				</div>
-		
+				<!-- Pegar o ID do treinamento -->
+				<form action="pontuacao-manter-cadastrar-action.php?id="<?php echo $idTreinamento; ?>
+					method="post">
+					
+				<!--ROUND -->		
+						
+					<div class="form-group form-row">
+						<div class="form-group col-md-4">
+							<label for="colFormLabelSm"
+								class="col-sm-6 col-form-label col-form-label-sm">Selecionar
+								Round</label> 
+							<select name="round" id="round" class="form-control">
+								<option value="1">1º Round</option>
+								<option value="2">2º Round</option>
+							</select>
+						</div>
+			     <!--ROUND -->	
 
-				<div class="form-group col-md-3">
-					<select name="Pontuacao3" id="Pontuacao3"
-						class="form-control">
-		<!--			<label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Terceiro Tiro</label>  -->
-						<option selected>Terceiro Disparo</option>
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-						<option>6</option>
-						<option>7</option>
-						<option>8</option>
-						<option>9</option>
-						<option>10</option>
-						<option>X</option>
-					</select>
-				</div>
+                        <!-- END -->	
+						<div class="form-group col-md-4">
+							<label for="colFormLabelSm"
+								class="col-sm-6 col-form-label col-form-label-sm">Selecionar End</label>
+							<select name="end" id="end" class="form-control">
+								<option value="1">1º End</option>
+								<option value="2">2º End</option>
+								<option value="3">3º End</option>
+								<option value="4">4º End</option>
+								<option value="5">5º End</option>
+								<option value="6">6º End</option>
+								<option value="7">7º End</option>
+								<option value="8">8º End</option>
+								<option value="9">9º End</option>
+								<option value="10">10º End</option>
+							</select>
+						</div>
+					</div>
+					<!-- END -->	
+					
+					<!--DISPAROS -->	
+					<!--1o Disparo -->
+					<div class="form-group form-row">
+						<div class="form-group col-md-3">
+							<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">
+								Selecionar Pontuação
+							</label>
+							<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">
+								(1º Disparo)
+							</label>  
+							<select name="primeiroDisparo" id="primeiroDisparo" class="form-control">
+								<option>M</option>
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+								<option>6</option>
+								<option>7</option>
+								<option>8</option>
+								<option>9</option>
+								<option>10</option>
+								<option>X</option>
+							</select>
+						</div>
+						<!--1o Disparo -->
+						<!---->
+						<!--2o Disparo -->
+						<div class="form-group col-md-3">
+							<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">
+								Selecionar Pontuação
+							</label>
+							<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">
+								(2º Disparo)
+							</label>  
+							<select name="segundoDisparo" id="segundoDisparo" class="form-control">
+								<option>M</option>
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+								<option>6</option>
+								<option>7</option>
+								<option>8</option>
+								<option>9</option>
+								<option>10</option>
+								<option>X</option>
+							</select>
+						</div>
+						<!--2o Disparo -->
+						<!---->
+						<!--3o Disparo -->
+						<div class="form-group col-md-3">
+							<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">
+								Selecionar Pontuação
+							</label>
+							<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">
+								(3º Disparo)
+							</label>  
+							<select name="terceiroDisparo" id="terceiroDisparo" class="form-control">
+								<option>M</option>
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+								<option>6</option>
+								<option>7</option>
+								<option>8</option>
+								<option>9</option>
+								<option>10</option>
+								<option>X</option>
+							</select>
+						</div>
+						<!--3o Disparo -->
+					</div>
+					<!--fim div disparos -->
+					<div class="form-group form-row">
+						<div class="col-md-2">
+							<input type="hidden" name="totalEnd" id="totalEnd" class="form-control"
+								placeholder="Total" value="<?php ?>" readonly>
+						</div>
+						<!--  
+						OUTROS DISPAROS 4o AO 6o- COLOCAR HIDDEN E NULL -->
+						<div class="col-md-2">
+							<input type="hidden" name="quartoDisparo" id="quartoDisparo" class="form-control"
+								value="null" readonly>
+						</div>
+						<div class="col-md-2">
+							<input type="hidden" name="quintoDisparo" id="quintoDisparo" class="form-control"
+								 value="null" readonly>
+						</div>
+						<div class="col-md-2">
+							<input type="hidden" name="sextoDisparo" id="sextoDisparo" class="form-control"
+							 value="null" readonly>
+						</div>
+						<div class="col-md-2">
+							<input type="hidden" name="treId" id="treId" class="form-control"
+							 value="<?php echo $idTreinamento?>" >
+						</div>
+					
+					</div>
+					<button type="submit" class="btn btn-primary mb-2">Cadastrar</button>
+				</form>
 			</div>
-			
-			<div class="form-group form-row">
-				<div class="col-md-2">
-					<input type="text" name="Total" class="form-control"
-						placeholder="Total" readonly>
-				</div>
-			</div>
-			<button type="submit" class="btn btn-primary mb-2">Cadastrar</button>
-		</form>
+		</div>
 	</div>
 </div>
-</div>
-</div>
-<!-- IN�CIO TABELA INDOOR PRIMEIRO ROUND-->
+
+
+<!-- INíCIO TABELA INDOOR PRIMEIRO ROUND -->
 <div class="row">
 <div class="col-md-6">
 <div class="card mb-3">
-<table class="table table-bordered">
+<table class="table table-bordered" id="MyTableID" width="100%" cellspacing="0">
   <thead>
     <tr>
-      <th scope="col" colspan= "4" class="table-active">Primeiro Round</th>
+      <th scope="col" colspan= "4" class="table-active">1º Round </th>
       <th scope="col" class="table-active" >Total </th>
-      <th scope="col" class="table-active" >Acoes </th>
-      
-      <!--  
-      <a
-							href="#"><i
-								class="fa fa-edit"></i></a> |<a
-							href="#">
-								<i class="fa fa-trash"></i>
-		</a> -->
-	  
+      <th scope="col" class="table-active" >Ações </th>
     </tr>
-  </thead>
+  </thead> 
   <tbody>
+    <?php 
+        $i = 0;
+        $contadorEnd = 1;
+        while ($i < 10){            
+            if(empty($pontuacao[$i])){
+    ?>
     <tr>
-      <th scope="row">1o End</th>
-      <td>10</td>
-      <td>6</td>
-      <td>10</td>
-      <td>26</td>
+      <th scope="row"><?php echo $contadorEnd?>º End</th>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
       <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-
     </tr>
+  	<?php } /*FIM IF*/ else {?>
     <tr>
-      <th scope="row">2o End</th>
-      <td>X</td>
-      <td>X</td>
-      <td>2</td>
-      <td>22</td>
+      <th scope="row"><?php echo $contadorEnd?>º End</th>
+      <td><?php echo $pontuacao[$i]->getPrimeiroDisparo(); ?></td>
+      <td><?php echo $pontuacao[$i]->getSegundoDisparo(); ?></td>
+      <td><?php echo $pontuacao[$i]->getTerceiroDisparo(); ?></td>
+      <td><?php echo $pontuacao[$i]->getEndTotal(); ?></td>
       <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
     </tr>
-    <tr>
-      <th scope="row">3o End</th>
-      <td> 9</td>
-      <td>10</td>
-      <td>10</td>
-      <td>29</td>
-      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-    </tr>
-     <tr>
-      <th scope="row">4o End</th>
-      <td>9</td>
-      <td>7</td>
-      <td>10</td>
-      <td>26</td>
-      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-    </tr>
-    <tr>
-      <th scope="row">5o End</th>
-      <td> 9</td>
-      <td>10</td>
-      <td>10</td>
-      <td>29</td>
-      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-    </tr>
-    <tr>
-      <th scope="row">6o End</th>
-      <td>X</td>
-      <td>10</td>
-      <td>10</td>
-      <td>30</td>
-      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-    </tr>
-    <tr>
-      <th scope="row">7o End</th>
-      <td> 9</td>
-      <td>10</td>
-      <td>1</td>
-      <td>20</td>
-      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-    </tr>
-    <tr>
-      <th scope="row">8o End</th>
-      <td>10</td>
-      <td>10</td>
-      <td>10</td>
-      <td>30</td>
-      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-    </tr>
-    <tr>
-      <th scope="row">9o End</th>
-      <td>8</td>
-      <td>10</td>
-      <td>10</td>
-      <td>28</td>
-      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-    </tr>
-    <tr>
-      <th scope="row">10o End</th>
-      <td>8</td>
-      <td>10</td>
-      <td>7</td>
-      <td>25</td>
-      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-    </tr>
+  	<?php } /*FIM ELSE*/?>		  
+    <?php
+        $contadorEnd++;
+        $i++;
+        }  /*FIM WHILE*/?>
+     
+     
     <tr>
       <th scope="row" colspan="5" class="table-secondary">Total: </th>
       <td class="table-secondary">265</td>
@@ -333,313 +342,283 @@ $treinamento = $repositorioTreinamento->consultarTreinamentoPorId($idTreinamento
  </table>  
 </div>
 </div>
- <!-- FIM TABELA INDOOR PRIMEIRO ROUND--> 
-    <!-- IN�CIO TABELA INDOOR SEGUNDO ROUND-->
-<div class="col-md-6">    
+
+
+ <!-- FIM TABELA INDOOR PRIMEIRO ROUND
+
+<!-- INíCIO TABELA INDOOR SEGUNDO ROUND -->
+
+<?php if ($pontuacao[$i]->getRound() == 2)  {
+
+    
+    ?>
+<div class="col-md-6 col-sm-12">    
 <div class="card mb-3">
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th scope="col" colspan= "4" class="table-active">Segundo Round</th>
+      <th scope="col" colspan= "4" class="table-active">2º Round</th>
       <th scope="col" class="table-active">Total</th>
-      <th scope="col" class="table-active">Acoes</th>
- <!--    <a
-							href="#"><i
-								class="fa fa-edit"></i></a> |<a
-							href="#">
-								<i class="fa fa-trash"></i>
-		</a> -->  
- 		
+      <th scope="col" class="table-active">Ações</th>
     </tr>
   </thead>
-  <tbody>
+  <?php 
+        while ($i < 10){            
+            if(empty($pontuacao[$i])){
+    ?>
     <tr>
-      <th scope="row">1o End</th>
-      <td>10</td>
-      <td>6</td>
-      <td>10</td>
-      <td>26</td>
-      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-
-    </tr>
-    <tr>
-      <th scope="row">2o End</th>
-      <td>X</td>
-      <td>X</td>
-      <td>2</td>
-      <td>22</td><td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-    </tr>
-    <tr>
-      <th scope="row">3o End</th>
-      <td> 9</td>
-      <td>10</td>
-      <td>10</td>
-      <td>29</td>
+      <th scope="row"><?php echo $contadorEnd?>º End</th>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
       <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
     </tr>
-     <tr>
-      <th scope="row">4o End</th>
-      <td>9</td>
-      <td>7</td>
-      <td>10</td>
-      <td>26</td>
-      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-    </tr>
+  	<?php } /*FIM IF*/ else {?>
     <tr>
-      <th scope="row">5o End</th>
-      <td> 9</td>
-      <td>10</td>
-      <td>10</td>
-      <td>29</td>
+      <th scope="row"><?php echo $contadorEnd?>º End</th>
+      <td><?php echo $pontuacao[$i]->getPrimeiroDisparo(); ?></td>
+      <td><?php echo $pontuacao[$i]->getSegundoDisparo(); ?></td>
+      <td><?php echo $pontuacao[$i]->getTerceiroDisparo(); ?></td>
+      <td><?php echo $pontuacao[$i]->getEndTotal(); ?></td>
       <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
     </tr>
-    <tr>
-      <th scope="row">6o End</th>
-      <td>X</td>
-      <td>10</td>
-      <td>10</td>
-      <td>30</td>
-      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-    </tr>
-    <tr>
-      <th scope="row">7o End</th>
-      <td> 9</td>
-      <td>10</td>
-      <td>1</td>
-      <td>20</td>
-      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-    </tr>
-    <tr>
-      <th scope="row">8o End</th>
-      <td>10</td>
-      <td>10</td>
-      <td>10</td>
-      <td>30</td>
-      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-    </tr>
-    <tr>
-      <th scope="row">9o End</th>
-      <td>8</td>
-      <td>10</td>
-      <td>10</td>
-      <td>28</td>
-      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-    </tr>
-    <tr>
-      <th scope="row">10o End</th>
-      <td>10</td>
-      <td>10</td>
-      <td>10</td>
-      <td>30</td>
-      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-    </tr>
+  	<?php } /*FIM ELSE*/?>		  
+    <?php
+        $contadorEnd++;
+        $i++;
+        }  /*FIM WHILE*/?>
+     
+     
     <tr>
       <th scope="row" colspan="5" class="table-secondary">Total: </th>
-      <td class="table-secondary">270</td>
+      <td class="table-secondary"></td>
     </tr>
    </tbody>
+
  </table> 
  </div>
 </div>
-</div>
- <!-- FIM TABELA INDOOR SEGUNDO ROUND-->
- <!--  PONTUACAO TOTAL -->
- <table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col" colspan= "4" class="table-success"> <i class="fas fa-crosshairs"></i> PONTUACAO TOTAL: </th>
-      <th scope="col" class="table-success">535</th>
-    </tr>
-  </thead>
- </table> 
-
- <!--  FIM PONTUACAO TOTAL -->
 <?php }else { ?>
-<!-- FORMUL�RIO DE PONTUA��O DA CATEGORIA OUTDOOR -->
-<div class="row">
-<div class="col-md-12">
-<div class="card mb-3">
-	<div class="card-header">
-		<i class="fas fa-bullseye"></i> Pontuacao
-	</div>
-	<div class="card-body">
-		<form action="pontuacao-manter-cadastrar-action.php" method="post">
-			<div class="form-group form-row">
-				<div class="form-group col-md-3">
-					<select name="round" id="round"
-						class="form-control">
-						<label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Round</label>
-						<option selected>Round</option>
-						<option>Primeiro Round</option>
-						<option>Segundo Round</option>
-					</select>
-				</div>
-			
-				<div class="form-group col-md-3">
-					<select name="End" id="End"
-						class="form-control">
-						<label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">End</label>
-						<option selected>End</option>
-						<option>Primeiro End</option>
-						<option>Segundo End</option>
-						<option>Terceiro End</option>
-						<option>Quarto End</option>
-						<option>Quinto End</option>
-						<option>Sexto End</option>
-					</select>
-				</div>
-			</div>
-			<div class="form-group form-row">
-				<div class="form-group col-md-4">
-					<select name="Pontuacao1" id="Pontuacao1"
-						class="form-control">
-						<label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Primeiro Tiro</label>
-						<option selected>Primeiro Disparo</option>
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-						<option>6</option>
-						<option>7</option>
-						<option>8</option>
-						<option>9</option>
-						<option>10</option>
-						<option>X</option>
-					</select>
-				</div>
-				<div class="form-group col-md-4">
-					<select name="Pontuacao2" id="Pontuacao2"
-						class="form-control">
-						<label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Segundo Tiro</label>
-						<option selected>Segundo Disparo</option>
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-						<option>6</option>
-						<option>7</option>
-						<option>8</option>
-						<option>9</option>
-						<option>10</option>
-						<option>X</option>
-					</select>
-				</div>
-		
+   <tr>
+    <th scope="row"><?php echo $contadorEnd?>º End</th>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
+    </tr>
+<?php } ?>
+</div>
+ <!-- FIM TABELA INDOOR SEGUNDO ROUND
+<!--  Pontuação TOTAL -->
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th scope="col" colspan="4" class="table-success"><i
+				class="fas fa-crosshairs"></i> PONTUAÇÃO TOTAL:</th>
+			<th scope="col" class="table-success"></th>
+		</tr>
+	</thead>
+</table>
 
-				<div class="form-group col-md-4">
-					<select name="Pontuacao3" id="Pontuacao3"
-						class="form-control">
-						<label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Terceiro Tiro</label>
-						<option selected>Terceiro Disparo</option>
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-						<option>6</option>
-						<option>7</option>
-						<option>8</option>
-						<option>9</option>
-						<option>10</option>
-						<option>X</option>
-					</select>
-				</div>
+<!--  FIM PONTUACAO TOTAL -->
+<?php }else { ?>
+<!-- FORMULÁRIO DE PONTUAÇÃO DA CATEGORIA OUTDOOR -->
+<div class="row">
+	<div class="col-md-12">
+		<div class="card mb-3">
+			<div class="card-header">
+				<i class="fas fa-bullseye"></i> Pontuação
 			</div>
-			<div class="form-group form-row">
-				<div class="form-group col-md-4">
-					<select name="Pontuacao4" id="Pontuacao4"
-						class="form-control">
-						<label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Quarto Tiro</label>
-						<option selected>Quarto Disparo</option>
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-						<option>6</option>
-						<option>7</option>
-						<option>8</option>
-						<option>9</option>
-						<option>10</option>
-						<option>X</option>
-					</select>
-				</div>
-				<div class="form-group col-md-4">
-					<select name="Pontuacao5" id="Pontuacao5"
-						class="form-control">
-						<label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Quinto Tiro</label>
-						<option selected>Quinto Disparo</option>
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-						<option>6</option>
-						<option>7</option>
-						<option>8</option>
-						<option>9</option>
-						<option>10</option>
-						<option>X</option>
-					</select>
-				</div>
-				<div class="form-group col-md-4">
-					<select name="Pontuacao6" id="Pontuacao6"
-						class="form-control">
-						<label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Sexto Tiro</label>
-						<option selected>Sexto Disparo</option>
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-						<option>6</option>
-						<option>7</option>
-						<option>8</option>
-						<option>9</option>
-						<option>10</option>
-						<option>X</option>
-					</select>
-				</div>
+			<div class="card-body">
+				<form action="pontuacao-manter-cadastrar-action.php" method="post">
+					<div class="form-group form-row">
+						<div class="form-group col-md-3">
+							<label for="colFormLabelSm"
+								class="col-sm-6 col-form-label col-form-label-sm">Selecionar
+								Round</label> <select name="round" id="round"
+								class="form-control">
+								<option>1º Round</option>
+								<option>2º Round</option>
+							</select>
+						</div>
+
+						<div class="form-group col-md-3">
+							<label for="colFormLabelSm"
+								class="col-sm-6 col-form-label col-form-label-sm">Selecionar End</label>
+							<select name="end" id="end" class="form-control">
+								<option>1º End</option>
+								<option>2º End</option>
+								<option>3º End</option>
+								<option>4º End</option>
+								<option>5º End</option>
+								<option>6º End</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group form-row">
+						<div class="form-group col-md-4">
+							<label for="colFormLabelSm"
+								class="col-sm-6 col-form-label col-form-label-sm">
+								Selecionar Pontuação (1º Disparo)
+							</label> 
+							<select name="primeiroDisparo" id="primeiroDisparo"
+								class="form-control">
+								<option>M</option>
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+								<option>6</option>
+								<option>7</option>
+								<option>8</option>
+								<option>9</option>
+								<option>10</option>
+								<option>X</option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="colFormLabelSm"
+								class="col-sm-6 col-form-label col-form-label-sm">
+								Selecionar Pontuação (2º Disparo)
+							</label> 
+							<select name="segundoDisparo" id="segundoDisparo"
+								class="form-control">
+								<option>M</option>
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+								<option>6</option>
+								<option>7</option>
+								<option>8</option>
+								<option>9</option>
+								<option>10</option>
+								<option>X</option>
+							</select>
+						</div>
+
+
+						<div class="form-group col-md-4">
+							<label for="colFormLabelSm"
+								class="col-sm-6 col-form-label col-form-label-sm">
+								Selecionar Pontuação (3º Disparo)
+							</label> 
+							<select name="terceiroDisparo" id="terceiroDisparo"
+								class="form-control">
+								<option>M</option>
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+								<option>6</option>
+								<option>7</option>
+								<option>8</option>
+								<option>9</option>
+								<option>10</option>
+								<option>X</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group form-row">
+						<div class="form-group col-md-4">
+							<label for="colFormLabelSm"
+								class="col-sm-6 col-form-label col-form-label-sm">
+								Selecionar Pontuação(4º Disparo)
+							</label> 
+							<select name="quartoDisparo" id="quartoDisparo"
+								class="form-control">
+								<option>M</option>
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+								<option>6</option>
+								<option>7</option>
+								<option>8</option>
+								<option>9</option>
+								<option>10</option>
+								<option>X</option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="colFormLabelSm"
+								class="col-sm-6 col-form-label col-form-label-sm">
+								Selecionar Pontuação(5º Disparo)
+							</label> 
+							<select name="quintoDisparo" id="quintoDisparo"
+								class="form-control">
+								<option>M</option>
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+								<option>6</option>
+								<option>7</option>
+								<option>8</option>
+								<option>9</option>
+								<option>10</option>
+								<option>X</option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="colFormLabelSm"
+								class="col-sm-6 col-form-label col-form-label-sm">
+								Selecionar Pontuação(6º Disparo)
+							</label> 
+							<select name="sextoDisparo" id="sextoDisparo"
+								class="form-control">
+								<option>M</option>
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+								<option>6</option>
+								<option>7</option>
+								<option>8</option>
+								<option>9</option>
+								<option>10</option>
+								<option>X</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group form-row">
+						<div class="col-md-2">
+							<input type="text" name="Total" id="TotalOutdoor" class="form-control"
+								placeholder="Total" readonly>
+						</div>
+					</div>
+					<button type="submit" class="btn btn-primary mb-2">Cadastrar</button>
+				</form>
 			</div>
-			<div class="form-group form-row">
-				<div class="col-md-2">
-					<input type="text" name="Total" class="form-control"
-						placeholder="Total" readonly>
-				</div>
-			</div>
-			<button type="submit" class="btn btn-primary mb-2">Cadastrar</button>
-		</form>
+		</div>
 	</div>
 </div>
-</div>
-</div>
+
+
+ <!-- IN�CIO TABELA OUTDOOR PRIMEIRO ROUND-->
  
- 
- <!-- TABELA OUTDOOR PRIMEIRO ROUND-->
 <div class="row"> 
 <div class="col-md-6"> 
  <div class="card mb-3">
  <table class="table table-bordered">
   <thead>
     <tr>
-      <th scope="col" colspan= "7" class="table-active">Primeiro Round</th>
+      <th scope="col" colspan= "7" class="table-active">1º Round</th>
       <th scope="col" class="table-active">Total </th>
-      <th scope="col" class="table-active">Acoes </th>  
-      <!--  
-      <a
-							href="#"><i
-								class="fa fa-edit"></i></a> |<a
-							href="#">
-								<i class="fa fa-trash"></i>
-		</a>
-	-->
+      <th scope="col" class="table-active">Ações </th>  
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row">1o End</th>
+      <th scope="row">1º End</th>
       <td>10</td>
       <td>8</td>
       <td>10</td>
@@ -650,7 +629,7 @@ $treinamento = $repositorioTreinamento->consultarTreinamentoPorId($idTreinamento
       <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
     </tr>
     <tr>
-      <th scope="row">2o End</th>
+      <th scope="row">2º End</th>
       <td>X</td>
       <td>X</td>
       <td>7</td>
@@ -661,7 +640,7 @@ $treinamento = $repositorioTreinamento->consultarTreinamentoPorId($idTreinamento
       <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
     </tr>
     <tr>
-      <th scope="row">3o End</th>
+      <th scope="row">3º End</th>
       <td>9</td>
       <td>10</td>
       <td>10</td>
@@ -672,7 +651,7 @@ $treinamento = $repositorioTreinamento->consultarTreinamentoPorId($idTreinamento
       <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
     </tr>
      <tr>
-      <th scope="row">4o End</th>
+      <th scope="row">4º End</th>
       <td>9</td>
       <td>7</td>
       <td>10</td>
@@ -683,7 +662,7 @@ $treinamento = $repositorioTreinamento->consultarTreinamentoPorId($idTreinamento
       <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
     </tr>
     <tr>
-      <th scope="row">5o End</th>
+      <th scope="row">5º End</th>
       <td>9</td>
       <td>10</td>
       <td>10</td>
@@ -694,7 +673,7 @@ $treinamento = $repositorioTreinamento->consultarTreinamentoPorId($idTreinamento
       <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
     </tr>
     <tr>
-      <th scope="row">6o End</th>
+      <th scope="row">6º End</th>
       <td>X</td>
       <td>10</td>
       <td>7</td>
@@ -713,25 +692,20 @@ $treinamento = $repositorioTreinamento->consultarTreinamentoPorId($idTreinamento
  </div>
 </div>
  <!-- FIM TABELA OUTDOOR PRIMEIRO ROUND-->
-  <!-- TABELA OUTDOOR SEGUNDO ROUND-->
+<!-- TABELA OUTDOOR SEGUNDO ROUND -->
 <div class="col-md-6">
 <div class="card mb-3">
  <table class="table table-bordered">
   <thead>
     <tr>
-      <th scope="col" colspan= "7" class="table-active">Segundo Round</th>
+      <th scope="col" colspan= "7" class="table-active">2º Round</th>
       <th scope="col" class="table-active">Total </th>
-      <th scope="col" class="table-active">Acoes </th>
-      <!--  <a href="#"><i class="fa fa-edit"></i></a> |<a
-							href="#">
-								<i class="fa fa-trash"></i>
-		</a> -->
-	 
+      <th scope="col" class="table-active">Ações </th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row">1o End</th>
+      <th scope="row">1º End</th>
       <td>10</td>
       <td>8</td>
       <td>10</td>
@@ -742,7 +716,7 @@ $treinamento = $repositorioTreinamento->consultarTreinamentoPorId($idTreinamento
       <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
     </tr>
     <tr>
-      <th scope="row">2o End</th>
+      <th scope="row">2º End</th>
       <td>X</td>
       <td>X</td>
       <td>7</td>
@@ -753,7 +727,7 @@ $treinamento = $repositorioTreinamento->consultarTreinamentoPorId($idTreinamento
       <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
     </tr>
     <tr>
-      <th scope="row">3o End</th>
+      <th scope="row">3º End</th>
       <td>9</td>
       <td>10</td>
       <td>10</td>
@@ -764,7 +738,7 @@ $treinamento = $repositorioTreinamento->consultarTreinamentoPorId($idTreinamento
       <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
     </tr>
      <tr>
-      <th scope="row">4o End</th>
+      <th scope="row">4º End</th>
       <td>9</td>
       <td>7</td>
       <td>10</td>
@@ -775,7 +749,7 @@ $treinamento = $repositorioTreinamento->consultarTreinamentoPorId($idTreinamento
       <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
     </tr>
     <tr>
-      <th scope="row">5o End</th>
+      <th scope="row">5º End</th>
       <td>9</td>
       <td>10</td>
       <td>10</td>
@@ -786,7 +760,7 @@ $treinamento = $repositorioTreinamento->consultarTreinamentoPorId($idTreinamento
       <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
     </tr>
     <tr>
-      <th scope="row">6o End</th>
+      <th scope="row">6º End</th>
       <td>X</td>
       <td>10</td>
       <td>7</td>
@@ -806,17 +780,18 @@ $treinamento = $repositorioTreinamento->consultarTreinamentoPorId($idTreinamento
 </div>
 </div>
   <!-- FIM TABELA OUTDOOR SEGUNDO ROUND-->
-  
-   <!--  PONTUACAO TOTAL -->
- <table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col" colspan= "4" class="table-success"><i class="fas fa-crosshairs"></i> PONTUACAO TOTAL: </th>
-      <th scope="col" class="table-success">640</th>
-    </tr>
-  </thead>
- </table> 
- <!--  FIM PONTUACAO TOTAL -->
+
+<!--  PONTUACAO TOTAL -->
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th scope="col" colspan="4" class="table-success"><i
+				class="fas fa-crosshairs"></i> PONTUAÇÃO TOTAL:</th>
+			<th scope="col" class="table-success">640</th>
+		</tr>
+	</thead>
+</table>
+<!--  FIM PONTUACAO TOTAL -->
 <?php }?>
 
 
