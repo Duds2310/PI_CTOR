@@ -12,7 +12,7 @@ $datapagamento = $_POST['datapagamento'];
 $categoria = $_POST['categoria'];
 $datavencimento = $_POST['datavencimento'];
 $situacao = $_POST['situacao'];
-$parcelado = $_POST['parcelado'];
+
 $qtdParcelas = $_POST['qtdParcela'];
 $descricao = $_POST['descricao'];
 $id = $_GET['id'];
@@ -20,6 +20,12 @@ $id = $_GET['id'];
 $repoDespesa = new RepositorioDespesa();
 
 $despesa = new Despesa();
+
+if (isset($_POST['parcelado'])) {
+    $parcelado = isset($_POST['parcelado']);
+} else {
+    $parcelado = null;
+}
 
 $despesa->setNome($nome);
 $despesa->setValor($valor);
