@@ -49,7 +49,7 @@ if ($temRegistro) {
 				</div>
 				<div class="form-group col-md-6">
 					<input type="text" name="valor" id="valor" class="form-control"
-						name="valor" placeholder="valor" min="1">
+						name="valor" placeholder="Valor" min="1">
 				</div>
 			</div>
 			<div class="form-row">
@@ -66,7 +66,7 @@ if ($temRegistro) {
 				</div>
 				<div class="form-group col-md-6">
 					<input type="text" class="form-control" id="situacao"
-						name="situacao" placeholder="Situacao">
+						name="situacao" placeholder="Situação">
 				</div>
 			</div>
 			<div class="form-row">
@@ -99,7 +99,7 @@ if ($temRegistro) {
 						<th>Categoria</th>
 						<th>Situacao</th>
 						<th>Data de Vencimento</th>
-						<th>A��es</th>
+						<th>Ações</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -137,7 +137,7 @@ if ($temRegistro) {
 			</table>
 			<?php } else  {?>
 			        <center>
-				<h1>N�o h� despesas cadastradas!</h1>
+				<h1>Não há despesas cadastradas!</h1>
 			</center>
 				
 			<?php }?>

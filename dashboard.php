@@ -53,7 +53,7 @@ include 'inc.cabecalho.php';
 				<div class="mr-5">5.000</div>
 			</div>
 			<a class="card-footer text-white clearfix small z-1" href="#"> <span
-				class="float-left">caixa total</span> <span class="float-right"> <i
+				class="float-left">Caixa Total</span> <span class="float-right"> <i
 					class="fas fa-angle-right"></i>
 			</span>
 			</a>

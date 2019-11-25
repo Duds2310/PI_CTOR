@@ -2,7 +2,7 @@
 <?php
 $loginError = false;
 
-// verifica se essa pagina recebeu parametro 'login' via url, neste caso usuario n�o existe
+// verifica se essa pagina recebeu parametro 'login' via url, neste caso usuario n�o existe
 if (isset($_GET['login'])) {
     $loginError = true;
 }
@@ -17,7 +17,7 @@ if (isset($_GET['login'])) {
 <meta name="author" content="">
 <link rel="icon" href="/docs/4.1/assets/img/favicons/favicon.ico">
 
-<title>CTOR - Area Administrativa</title>
+<title>CTOR - Área Administrativa</title>
 <!-- Bootstrap core CSS -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -32,13 +32,13 @@ if (isset($_GET['login'])) {
 <body class="text-center">
 
 	<form class="form-signin" action="login-action.php" method="post">
-      <?php if($loginError){ //verifica se $loginError � true, se for exibe o seguinte alerta?>
-          <p class="alert alert-danger" role="alert">Usuario nao existe!
+      <?php if($loginError){ //verifica se $loginError � true, se for exibe o seguinte alerta?>
+          <p class="alert alert-danger" role="alert">Usuário Não Existe!
 		</p>
 	  <?php }?>
       <img class="mb-4" src="src/ctor.jpg"
 			alt="" width="72" height="72">
-		<h1 class="h3 mb-3 font-weight-normal">Area Restrita</h1>
+		<h1 class="h3 mb-3 font-weight-normal">Área Restrita</h1>
 		<label for="inputEmail" class="sr-only">Email</label> <input
 			type="email" id="email" name="email" class="form-control"
 			placeholder="Endereço Email" required autofocus> <label

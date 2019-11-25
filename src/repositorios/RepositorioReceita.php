@@ -9,6 +9,7 @@ require_once 'src/ConexaoMySQL.php';
 require_once 'src/modelo/Receita.php';
 require_once 'src/modelo/ReceitaOTD.php';
 
+
 class RepositorioReceita
 {
 
@@ -243,6 +244,46 @@ class RepositorioReceita
         $this->ConexaoMySQL->fecharBanco();
         return $ReceitasOTD;
     }
+    
+    
+    public function listarMensalidade()
+    {
+        $Receitas = null;
+        
+        $query = "select * from tb_receitas";
+        
+        $conexao = $this->ConexaoMySQL->abrirBanco();
+        
+        $resultado = $conexao->query($query);
+        
+    $i = 0;    
+    if ($resultado->num_rows > 0) {
+        while ($linha = $resultado->fetch_assoc()) {
+            $Receita = new Receita();
+            
+            $Receita->setId($linha["REC_ID"]);
+            $Receita->setCategoriaId($linha["CAT_REC_ID"]);
+            $Receita->setDataCadastro($linha["REC_DATA_CADASTRO"]);
+            $Receita->setDataPagamento($linha["REC_DATA_PAGAMENTO"]);
+            $Receita->setDescricao($linha["REC_DESCRICAO"]);
+            $Receita->setUsuarioResponsavelId($linha["REC_ID_USU_PAGAMENTO"]);
+            $Receita->setValor($linha["REC_VALOR"]);
+            $Receita->setSituacao($linha["REC_SITUACAO"]);
+            $Receita->setIdUsuario($linha["USU_ID"]);
+            
+            
+            $Receitas[$i] = $Receita;
+            $i ++;
+        }
+    } else {
+        $Receitas = false;
+    }
+    $this->ConexaoMySQL->fecharBanco();
+    
+    return $Receitas;
+
+    }
+
 }
 
 

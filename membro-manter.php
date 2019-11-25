@@ -36,22 +36,22 @@ $validador = $ListaUsuarios == false ? false : $ListaUsuarios;
 
 				<div class="form-group col-md-6">
 					<input type="text" class="form-control" id="rg" name="rg"
-						placeholder="Rg">
+						placeholder="RG">
 				</div>
 
 				<div class="form-group col-md-6">
 					<input type="text" class="form-control" id="cep" name="cep"
-						placeholder="Cep">
+						placeholder="CEP">
 				</div>
 
 				<div class="form-group col-md-6">
 					<input type="text" class="form-control" id="cpf" name="cpf"
-						placeholder="Cpf">
+						placeholder="CPF">
 				</div>
 
 				<div class="form-group col-md-6">
 					<input type="text" class="form-control" id="uf" name="uf"
-						placeholder="Uf">
+						placeholder="UF">
 				</div>
 
 				<div class="form-group col-md-6">

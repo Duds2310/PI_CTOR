@@ -19,7 +19,7 @@ $i = 0;
 <!-- Breadcrumbs-->
 <ol class="breadcrumb">
 	<li class="breadcrumb-item"><a href="dashboard.php">Treino</a></li>
-	<li class="breadcrumb-item active">Informacoes do Treino</li>
+	<li class="breadcrumb-item active">Informações do Treino</li>
 </ol>
 
 <!-- Inicio formul�rio de cadastro de Treinamentos -->
@@ -42,8 +42,8 @@ $i = 0;
 				<div class="form-group col-md-4">
 					<select name="situacao" id="situacao"
 						class="form-control">
-						<label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Situacao</label>
-						<option selected>Situacao</option>
+						<label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Situação</label>
+						<option selected>Situação</option>
 						<option>Ativo</option>
 						<option>Inativo</option>
 					</select>
@@ -52,7 +52,7 @@ $i = 0;
 			<div class="form-group form-row">
 				<div class="col-md-12">
 					<input type="text" name="descricao" class="form-control"
-						placeholder="Descricao">
+						placeholder="Descrição">
 				</div>
 			</div>
 			<div class="form-group form-row">
@@ -65,7 +65,7 @@ $i = 0;
 			<div class="form-group form-row">
 				<div class="col-md-4">
 					<input type="text" name="idusuario" id="idusuario" class="form-control"
-						placeholder="id Usuario">
+						placeholder="id Usuário">
 				</div>
 
 			</div>
@@ -86,7 +86,7 @@ $i = 0;
 				<thead>
 					<tr>
 						<th>Categoria</th>
-						<th>Situacao</th>
+						<th>Situação</th>
 						<th>Data</th>
 						<th>Ações</th>
 					</tr>

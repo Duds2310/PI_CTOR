@@ -55,12 +55,12 @@ if ($validador) {
 		<form action="receita-manter-cadastrar-action.php" method="post">
 			<div class="form-group form-row">
 				<div class="col-md-2">
-					<label>Data de cadastro </label> <input type="date"
+					<label>Data de Cadastro </label> <input type="date"
 						name="dataCadastro" id="dataCadastro" class="form-control"
 						placeholder="Data de Cadastro">
 				</div>
 				<div class="col-md-2">
-					<label>Data de pagamento </label> <input type="date"
+					<label>Data de Pagamento </label> <input type="date"
 						name="dataPagamento" id="dataPagamento" class="form-control"
 						placeholder="Data de Pagamento">
 				</div>
@@ -72,7 +72,7 @@ if ($validador) {
 			<div class="form-group form-row">
 				<div class="col-md-12">
 					<textarea class="form-control" name="descricao" id="descricao"
-						rows="3" placeholder="Descri��o"></textarea>
+						rows="3" placeholder="Descrição"></textarea>
 				</div>
 			</div>
 			<div class="form-group form-row">
@@ -189,7 +189,7 @@ if ($validador) {
 				</tfoot>
 				</tbody>
 			</table>
-			<?php } else { echo "<center><h1> N�o h� receitas cadastradas!</h1></center>"; } ?>
+			<?php } else { echo "<center><h1> Não há receitas cadastradas!</h1></center>"; } ?>
 		</div>
 	</div>
 </div>

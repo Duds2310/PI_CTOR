@@ -89,9 +89,8 @@
 			<li class="nav-item"><a class="nav-link" href="provas-manter.php"> <i
 					class="fas fa-user-circle fa-fw"></i> <span>Manter Provas</span></a>
 			</li>
-			
-			<li class="nav-item"><a class="nav-link" href="treinamento-manter.php"> <i 
-					class="fas fa-bullseye"></i> <span>Manter Treino</span></a>
+			<li class="nav-item"><a class="nav-link" href="membro-listar-mensalidade.php"> <i 
+					class="fas fa-dollar-sign"></i> <span>Consultar Mensalidades</span></a>
 			</li>
 		</ul>
 

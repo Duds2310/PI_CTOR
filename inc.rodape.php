@@ -6,7 +6,7 @@
 <footer class="sticky-footer">
 	<div class="container my-auto">
 		<div class="copyright text-center my-auto">
-			<span>Copyright © Your Website 2019</span>
+			<span>Copyright Â© TI-109 2019</span>
 		</div>
 	</div>
 </footer>
@@ -31,7 +31,7 @@
 				<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
 				<button class="close" type="button" data-dismiss="modal"
 					aria-label="Close">
-					<span aria-hidden="true">×</span>
+					<span aria-hidden="true">ï¿½</span>
 				</button>
 			</div>
 			<div class="modal-body">Select "Logout" below if you are ready to end
