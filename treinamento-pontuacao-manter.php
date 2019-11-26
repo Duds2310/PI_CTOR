@@ -23,13 +23,13 @@ $treinamento = $repositorioTreinamento->consultarTreinamentoPorId($idTreinamento
 
 
 $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
-$pontRound = $repositorioPontuacao->consultarRoundEndAtual($idTreinamento);
+//$pontRound = $repositorioPontuacao->consultarRoundEndAtual($idTreinamento);
 
 
-$iPontuacao = 0;//contador de pontuacao
-if($pontuacao){
-    $iPontuacao =  count($pontuacao);
-}
+// $iPontuacao = 0;//contador de pontuacao
+// if($pontuacao){
+//     $iPontuacao =  count($pontuacao);
+// }
 
 
 // var_dump($treinamento);
@@ -143,8 +143,7 @@ if($pontuacao){
 			<div class="card-body">
 			
 				<!-- Pegar o ID do treinamento -->
-				<form action="pontuacao-manter-cadastrar-action.php?id="<?php echo $idTreinamento; ?>
-					method="post">
+				<form action="pontuacao-manter-cadastrar-action.php" method="post">
 					
 				<!--ROUND -->		
 						
@@ -363,6 +362,8 @@ if($pontuacao){
     </tr>
   </thead>
   <?php 
+        $i = 0;
+        $contadorEnd = 1;
         while ($i < 10){            
             if(empty($pontuacao[$i])){
     ?>
@@ -399,7 +400,7 @@ if($pontuacao){
  </table> 
  </div>
 </div>
-<?php }else { ?>
+<?php } /*FIM IF*/ else { ?>
    <tr>
     <th scope="row"><?php echo $contadorEnd?>º End</th>
       <td>&nbsp;</td>

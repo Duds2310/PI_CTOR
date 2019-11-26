@@ -64,15 +64,24 @@ $repoPontuacao = new RepositorioPontuacao();
 
 //setando round e end
 $pontuacaoRoundEnd = $repoPontuacao->consultarRoundEndAtual($treId);
-$roundAtual = $pontuacaoRoundEnd->getRound();
-$endAtual = $pontuacaoRoundEnd->getEnd() + 1;
 
 
-if($roundAtual == 2 && $endAtual == 10){
+$ultimaPontuacaoCadastrada = $repoPontuacao->consultarPontuacaoPorId($pontuacaoRoundEnd->getId());    
+
+if($ultimaPontuacaoCadastrada){
+    $roundAtual = $ultimaPontuacaoCadastrada[0]->getRound();
+    $endAtual = $ultimaPontuacaoCadastrada[0]->getEnd() + 1;    
+}else{
+    $roundAtual = 1;
+    $endAtual = 1;    
+}
+
+
+if($roundAtual == 2 && $endAtual == 11){
     die("limite treino atingido");
 }
 
-if($endAtual == 10){
+if($endAtual > 10){
     $roundAtual = $roundAtual + 1;
     $endAtual = 1;
 }
@@ -91,8 +100,10 @@ $pontuacao->setSextoDisparo($sextoDisparo);
 $pontuacao->setIdTreino($treId);
 $pontuacao->setEndTotal($endTotal);
 
-$resultado = $repoPontuacao->cadastrarPontuacao($pontuacao);
 
+
+
+$resultado = $repoPontuacao->cadastrarPontuacao($pontuacao);
 
 
 
