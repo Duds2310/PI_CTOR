@@ -12,6 +12,7 @@ $email = $_POST['email'];
 $login = $_POST['login'];
 $senha = $_POST['senha'];
 $id = $_POST['id'];
+$categoria = $_POST['categoria'];
 
 $repoUsuario = new RepositorioUsuario();
 
@@ -22,6 +23,7 @@ $usuario->setEmail($email);
 $usuario->setLogin($login);
 $usuario->setSenha($senha);
 $usuario->setId($id);
+$usuario->setCategoriaid($categoria);
 
 $resultado = $repoUsuario->alterarUsuario($usuario);
 

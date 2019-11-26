@@ -196,9 +196,9 @@ class RepositorioUsuario
     {
         $retorno = true;
 
-        $query = "INSERT INTO TB_USUARIO(USU_NOME, USU_LOGIN, USU_EMAIL, USU_SENHA)VALUES
+        $query = "INSERT INTO TB_USUARIO(USU_NOME, USU_LOGIN, USU_EMAIL, USU_SENHA, CAT_ID)VALUES
 	           ('" . $Usuario->getNome() . "', '" . $Usuario->getLogin() . "', '" . $Usuario->getEmail() . "',
-                     '" . $Usuario->getSenha() . "')";
+                     '" . $Usuario->getSenha() . "', '" . $Usuario->getCategoriaid();
 
         $conexao = $this->ConexaoMySQL->abrirBanco();
 

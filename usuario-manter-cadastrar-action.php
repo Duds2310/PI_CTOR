@@ -11,15 +11,18 @@ $nome = $_POST['nome'];
 $email = $_POST['email'];
 $login = $_POST['login'];
 $senha = $_POST['senha'];
+$categoria = $_POST['categoria'];
 
 $repoUsuario = new RepositorioUsuario();
 
 $usuario = new Usuario();
 
+$usuario->setCategoriaid($categoria);
 $usuario->setNome($nome);
 $usuario->setEmail($email);
 $usuario->setLogin($login);
 $usuario->setSenha($senha);
+
 
 
 $resultado = $repoUsuario->cadastarUsuario($usuario);
