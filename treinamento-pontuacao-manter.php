@@ -2,41 +2,31 @@
 use src\RepositorioTreinamento;
 use src\RepositorioPontuacao;
 use src\Pontuacao;
-
 include 'inc.cabecalho.php';
 require_once 'src/modelo/Pontuacao.php';
 require_once 'src/repositorios/RepositorioTreinamento.php';
 require_once 'src/repositorios/RepositorioPontuacao.php';
-
 $idTreinamento = 0;
 if(isset($_GET['id']) ){
     $idTreinamento = $_GET['id'];   
 }
 // recupera o id do usuario
  /*$idPontuacao = $_GET['idPon']; */
-
 $repositorioTreinamento = new RepositorioTreinamento();
 $repositorioPontuacao = new RepositorioPontuacao();
-
 $treinamento = $repositorioTreinamento->consultarTreinamentoPorId($idTreinamento);
  /*$pontuacao = $repositorioPontuacao->consultarPontuacaoPorId($idPontuacao); */
-
-
 $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
+
+
 //$pontRound = $repositorioPontuacao->consultarRoundEndAtual($idTreinamento);
-
-
 // $iPontuacao = 0;//contador de pontuacao
 // if($pontuacao){
 //     $iPontuacao =  count($pontuacao);
 // }
-
-
 // var_dump($treinamento);
 // die("Fim");
-
 ?>
-
 <!-- Breadcrumbs-->
 <ol class="breadcrumb">
 	<li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
@@ -52,7 +42,8 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 			<div class="card-body">
 				<form
 					action="usuario-manter-editar-action.php?id=<?php echo $idTreinamento; ?>"
-					method="post">
+					method="post"
+					action="treinamento-manter-editar-action.php">
 					<input type="hidden" value="<?php echo $treinamento->getId();?>"
 						name="id">
 					<!-- CATEGORIA E DATA -->
@@ -107,15 +98,14 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 										required="required" readonly>
 								</div>
 							</div>
-
 							<!--COMEÇO SITUACAO -->
 							<!--COMEÇO ID USUARIO -->
 							<div class="col-md-6">
 								<label>Id Usuario</label>
 								<div class="form-label-group">
 									<input type="text" id="idusuario"
-										value="<?php echo $treinamento->getIdUsuario();?>"
-										class="form-control" placeholder="Confirm password"
+										value="<?php echo $treinamento->getIdUsuario() ?>"
+										class="form-control" placeholder="id"
 										required="required" readonly>
 								</div>
 							</div>
@@ -125,14 +115,12 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 				</form>
 				<button type="submit" class="btn btn-primary mb-2">Alterar</button>
 			</div>
-			
 			<!-- fim do card body -->
 		</div>
 		<!-- fim do card -->
 	</div>
 </div>
 <?php if ($treinamento->getCategoria() == "Indoor") {?>
-
 <!-- FORMULÁRIO DE PONTUAÇÃO DA CATEGORIA INDOOR -->
 <div class="row">
 	<div class="col-md-12">
@@ -141,12 +129,9 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 				<i class="fas fa-bullseye"></i> Pontuação
 			</div>
 			<div class="card-body">
-			
 				<!-- Pegar o ID do treinamento -->
 				<form action="pontuacao-manter-cadastrar-action.php" method="post">
-					
-				<!--ROUND -->		
-						
+				<!--ROUND -->	
 					<div class="form-group form-row">
 						<div class="form-group col-md-4">
 							<label for="colFormLabelSm"
@@ -177,9 +162,8 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 							</select>
 						</div>
 					</div>
-					<!-- END -->	
-					
-					<!--DISPAROS -->	
+					<!-- fim END -->
+					<!--início DISPAROS -->	
 					<!--1o Disparo -->
 					<div class="form-group form-row">
 						<div class="form-group col-md-3">
@@ -279,8 +263,7 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 						<div class="col-md-2">
 							<input type="hidden" name="treId" id="treId" class="form-control"
 							 value="<?php echo $idTreinamento?>" >
-						</div>
-					
+						</div>	
 					</div>
 					<button type="submit" class="btn btn-primary mb-2">Cadastrar</button>
 				</form>
@@ -288,8 +271,6 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 		</div>
 	</div>
 </div>
-
-
 <!-- INíCIO TABELA INDOOR PRIMEIRO ROUND -->
 <div class="row">
 <div class="col-md-6">
@@ -308,31 +289,29 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
         $contadorEnd = 1;
         while ($i < 10){            
             if(empty($pontuacao[$i])){
-    ?>
-    <tr>
-      <th scope="row"><?php echo $contadorEnd?>º End</th>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-    </tr>
-  	<?php } /*FIM IF*/ else {?>
-    <tr>
-      <th scope="row"><?php echo $contadorEnd?>º End</th>
-      <td><?php echo $pontuacao[$i]->getPrimeiroDisparo(); ?></td>
-      <td><?php echo $pontuacao[$i]->getSegundoDisparo(); ?></td>
-      <td><?php echo $pontuacao[$i]->getTerceiroDisparo(); ?></td>
-      <td><?php echo $pontuacao[$i]->getEndTotal(); ?></td>
-      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-    </tr>
-  	<?php } /*FIM ELSE*/?>		  
-    <?php
-        $contadorEnd++;
-        $i++;
-        }  /*FIM WHILE*/?>
-     
-     
+                    ?>
+                    <tr>
+                      <th scope="row"><?php echo $contadorEnd?>º End</th>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
+                    </tr>
+                  	<?php } /*FIM IF*/ else {?>
+                    <tr>
+                      <th scope="row"><?php echo $contadorEnd?>º End</th>
+                      <td><?php echo $pontuacao[$i]->getPrimeiroDisparo(); ?></td>
+                      <td><?php echo $pontuacao[$i]->getSegundoDisparo(); ?></td>
+                      <td><?php echo $pontuacao[$i]->getTerceiroDisparo(); ?></td>
+                      <td><?php echo $pontuacao[$i]->getEndTotal(); ?></td>
+                      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
+                    </tr>
+                  	<?php } /*FIM ELSE*/?>		  
+        <?php
+         $contadorEnd++;
+         $i++;
+         }  /*FIM WHILE*/?>
     <tr>
       <th scope="row" colspan="5" class="table-secondary">Total: </th>
       <td class="table-secondary">265</td>
@@ -341,16 +320,11 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
  </table>  
 </div>
 </div>
-
-
- <!-- FIM TABELA INDOOR PRIMEIRO ROUND
-
+<!-- FIM TABELA INDOOR PRIMEIRO ROUND -->
 <!-- INíCIO TABELA INDOOR SEGUNDO ROUND -->
-
-<?php if ($pontuacao[$i]->getRound() == 2)  {
-
-    
-    ?>
+<?php 
+if ($pontuacao[$i]->getRound() == 2)  {
+?>
 <div class="col-md-6 col-sm-12">    
 <div class="card mb-3">
 <table class="table table-bordered">
@@ -362,41 +336,38 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
     </tr>
   </thead>
   <?php 
-        $i = 0;
+        $i = 10;
         $contadorEnd = 1;
-        while ($i < 10){            
+        while ($i < 20){            
             if(empty($pontuacao[$i])){
     ?>
-    <tr>
-      <th scope="row"><?php echo $contadorEnd?>º End</th>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-    </tr>
-  	<?php } /*FIM IF*/ else {?>
-    <tr>
-      <th scope="row"><?php echo $contadorEnd?>º End</th>
-      <td><?php echo $pontuacao[$i]->getPrimeiroDisparo(); ?></td>
-      <td><?php echo $pontuacao[$i]->getSegundoDisparo(); ?></td>
-      <td><?php echo $pontuacao[$i]->getTerceiroDisparo(); ?></td>
-      <td><?php echo $pontuacao[$i]->getEndTotal(); ?></td>
-      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-    </tr>
-  	<?php } /*FIM ELSE*/?>		  
+                <tr>
+                  <th scope="row"><?php echo $contadorEnd?>º End</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
+                </tr>
+              	<?php } /*FIM IF*/ else {?>
+                <tr>
+                  <th scope="row"><?php echo $contadorEnd?>º End</th>
+                  <td><?php echo $pontuacao[$i]->getPrimeiroDisparo(); ?></td>
+                  <td><?php echo $pontuacao[$i]->getSegundoDisparo(); ?></td>
+                  <td><?php echo $pontuacao[$i]->getTerceiroDisparo(); ?></td>
+                  <td><?php echo $pontuacao[$i]->getEndTotal(); ?></td>
+                  <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
+                </tr>
+              	<?php } /*FIM ELSE*/?>		  
     <?php
         $contadorEnd++;
         $i++;
         }  /*FIM WHILE*/?>
-     
-     
     <tr>
       <th scope="row" colspan="5" class="table-secondary">Total: </th>
       <td class="table-secondary"></td>
     </tr>
    </tbody>
-
  </table> 
  </div>
 </div>
@@ -422,7 +393,6 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 		</tr>
 	</thead>
 </table>
-
 <!--  FIM PONTUACAO TOTAL -->
 <?php }else { ?>
 <!-- FORMULÁRIO DE PONTUAÇÃO DA CATEGORIA OUTDOOR -->
@@ -435,6 +405,7 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 			<div class="card-body">
 				<form action="pontuacao-manter-cadastrar-action.php" method="post">
 					<div class="form-group form-row">
+						<!-- ROUND -->
 						<div class="form-group col-md-3">
 							<label for="colFormLabelSm"
 								class="col-sm-6 col-form-label col-form-label-sm">Selecionar
@@ -444,7 +415,8 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 								<option>2º Round</option>
 							</select>
 						</div>
-
+						<!-- FIM ROUND -->
+						<!-- END -->
 						<div class="form-group col-md-3">
 							<label for="colFormLabelSm"
 								class="col-sm-6 col-form-label col-form-label-sm">Selecionar End</label>
@@ -458,6 +430,8 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 							</select>
 						</div>
 					</div>
+					<!-- FIM END -->
+					<!--1º DISPARO -->
 					<div class="form-group form-row">
 						<div class="form-group col-md-4">
 							<label for="colFormLabelSm"
@@ -480,6 +454,8 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 								<option>X</option>
 							</select>
 						</div>
+						<!--FIM PRIMEIRO DISPARO -->
+						<!--SEGUNDO DISPARO -->
 						<div class="form-group col-md-4">
 							<label for="colFormLabelSm"
 								class="col-sm-6 col-form-label col-form-label-sm">
@@ -501,8 +477,8 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 								<option>X</option>
 							</select>
 						</div>
-
-
+						<!-- FIM SEGUNDO DISPARO-->
+						<!-- TERCEIRO DISPARO-->
 						<div class="form-group col-md-4">
 							<label for="colFormLabelSm"
 								class="col-sm-6 col-form-label col-form-label-sm">
@@ -524,8 +500,11 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 								<option>X</option>
 							</select>
 						</div>
+						<!--FIM TERCEIRO DISPARO -->
 					</div>
+					<!--FIM DA LINHA 1, 2 E 3 DISPARO -->
 					<div class="form-group form-row">
+					<!--QUARTO DISPARO -->
 						<div class="form-group col-md-4">
 							<label for="colFormLabelSm"
 								class="col-sm-6 col-form-label col-form-label-sm">
@@ -547,6 +526,8 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 								<option>X</option>
 							</select>
 						</div>
+						<!--FIM QUARTO DISPARO -->
+						<!-- QUINTO DISPARO -->
 						<div class="form-group col-md-4">
 							<label for="colFormLabelSm"
 								class="col-sm-6 col-form-label col-form-label-sm">
@@ -568,6 +549,8 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 								<option>X</option>
 							</select>
 						</div>
+						<!--FIM QUINTO DISPARO -->
+						<!--SEXTO DISPARO -->
 						<div class="form-group col-md-4">
 							<label for="colFormLabelSm"
 								class="col-sm-6 col-form-label col-form-label-sm">
@@ -589,199 +572,150 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 								<option>X</option>
 							</select>
 						</div>
+						<!--FIM SEXTO DISPARO -->
 					</div>
+					<!-- FIM DA LINHA - 4, 5 E 6 DISPARO -->
 					<div class="form-group form-row">
 						<div class="col-md-2">
 							<input type="text" name="Total" id="TotalOutdoor" class="form-control"
 								placeholder="Total" readonly>
 						</div>
 					</div>
+					<div class="col-md-2">
+					<?php 
+// 					echo "--------------------- ID---------------------";
+// 					  echo $idTreinamento;
+// 					   die("--------------------- ID")
+					?>
+					<!-- PASSANDO ID USUARIO -->
+							<input type="hidden" name="treId" id="treId" class="form-control"
+							 value="<?php echo $idTreinamento?>" >
+						</div>
+					<!-- BOTÃO CADASTRAR PONTUAÇÃO -->
 					<button type="submit" class="btn btn-primary mb-2">Cadastrar</button>
 				</form>
 			</div>
 		</div>
 	</div>
 </div>
-
-
- <!-- IN�CIO TABELA OUTDOOR PRIMEIRO ROUND-->
- 
-<div class="row"> 
-<div class="col-md-6"> 
- <div class="card mb-3">
- <table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col" colspan= "7" class="table-active">1º Round</th>
-      <th scope="col" class="table-active">Total </th>
-      <th scope="col" class="table-active">Ações </th>  
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1º End</th>
-      <td>10</td>
-      <td>8</td>
-      <td>10</td>
-      <td>7</td>
-      <td>8</td>
-      <td>X</td>      
-      <td>53</td>
-      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-    </tr>
-    <tr>
-      <th scope="row">2º End</th>
-      <td>X</td>
-      <td>X</td>
-      <td>7</td>
-      <td>9</td>
-      <td>9</td>
-      <td>9</td>
-      <td>54</td>
-      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-    </tr>
-    <tr>
-      <th scope="row">3º End</th>
-      <td>9</td>
-      <td>10</td>
-      <td>10</td>
-      <td>8</td>
-      <td>9</td>
-      <td>6</td>
-      <td>52</td>
-      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-    </tr>
-     <tr>
-      <th scope="row">4º End</th>
-      <td>9</td>
-      <td>7</td>
-      <td>10</td>
-      <td>9</td>
-      <td>10</td>
-      <td>9</td>
-      <td>54</td>
-      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-    </tr>
-    <tr>
-      <th scope="row">5º End</th>
-      <td>9</td>
-      <td>10</td>
-      <td>10</td>
-      <td>9</td>
-      <td>10</td>
-      <td>7</td>
-      <td>55</td>
-      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-    </tr>
-    <tr>
-      <th scope="row">6º End</th>
-      <td>X</td>
-      <td>10</td>
-      <td>7</td>
-      <td>9</td>
-      <td>8</td>
-      <td>8</td>
-      <td>52</td>
-      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-    </tr>
-    <tr>
-      <th scope="row" colspan="8" class="table-secondary">Total: </th>
-      <td class="table-secondary">320</td>
-    </tr>
-   </tbody>
- </table>
- </div>
-</div>
- <!-- FIM TABELA OUTDOOR PRIMEIRO ROUND-->
-<!-- TABELA OUTDOOR SEGUNDO ROUND -->
+ <!-- INíCIO TABELA OUTDOOR PRIMEIRO ROUND-->
+<div class="row">
 <div class="col-md-6">
 <div class="card mb-3">
- <table class="table table-bordered">
+<table class="table table-bordered" id="MyTableID" width="100%" cellspacing="0">
+  <thead>
+    <tr>
+      <th scope="col" colspan= "7" class="table-active">1º Round </th>
+      <th scope="col" class="table-active" >Total </th>
+      <th scope="col" class="table-active" >Ações </th>
+    </tr>
+  </thead> 
+  <tbody>
+    <?php 
+        $i = 0;
+        $contadorEnd = 1;
+        while ($i < 6){            
+            if(empty($pontuacao[$i])){
+                    ?>
+                    <tr>
+                      <th scope="row"><?php echo $contadorEnd?>º End</th>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
+                    </tr>
+                  	<?php } /*FIM IF*/ else {?>
+                    <tr>
+                      <th scope="row"><?php echo $contadorEnd?>º End</th>
+                      <td><?php echo $pontuacao[$i]->getPrimeiroDisparo(); ?></td>
+                      <td><?php echo $pontuacao[$i]->getSegundoDisparo(); ?></td>
+                      <td><?php echo $pontuacao[$i]->getTerceiroDisparo(); ?></td>
+                      <td><?php echo $pontuacao[$i]->getQuartoDisparo(); ?></td>
+                      <td><?php echo $pontuacao[$i]->getQuintoDisparo(); ?></td>
+                      <td><?php echo $pontuacao[$i]->getSextoDisparo(); ?></td>
+                      <td><?php echo $pontuacao[$i]->getEndTotal(); ?></td>
+                      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
+                    </tr>
+                  	<?php } /*FIM ELSE*/?>		  
+        <?php
+         $contadorEnd++;
+         $i++;
+         }  /*FIM WHILE*/?>
+    <tr>
+      <th scope="row" colspan="8" class="table-secondary">Total: </th>
+      <td class="table-secondary">265</td>
+    </tr>
+   </tbody>
+ </table>  
+</div>
+</div>
+<!-- FIM TABELA OUTDOOR PRIMEIRO ROUND -->
+<!-- INíCIO TABELA OUTDOOR SEGUNDO ROUND -->
+<?php 
+if(empty($pontuacao[$i])){
+//if ($pontuacao[$i]->getRound() == 2)  {
+?>
+<div class="col-md-6 col-sm-12">    
+<div class="card mb-3">
+<table class="table table-bordered">
   <thead>
     <tr>
       <th scope="col" colspan= "7" class="table-active">2º Round</th>
-      <th scope="col" class="table-active">Total </th>
-      <th scope="col" class="table-active">Ações </th>
+      <th scope="col" class="table-active">Total</th>
+      <th scope="col" class="table-active">Ações</th>
     </tr>
   </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1º End</th>
-      <td>10</td>
-      <td>8</td>
-      <td>10</td>
-      <td>7</td>
-      <td>8</td>
-      <td>X</td>      
-      <td>53</td>
-      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-    </tr>
-    <tr>
-      <th scope="row">2º End</th>
-      <td>X</td>
-      <td>X</td>
-      <td>7</td>
-      <td>9</td>
-      <td>9</td>
-      <td>9</td>
-      <td>54</td>
-      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-    </tr>
-    <tr>
-      <th scope="row">3º End</th>
-      <td>9</td>
-      <td>10</td>
-      <td>10</td>
-      <td>8</td>
-      <td>9</td>
-      <td>6</td>
-      <td>52</td>
-      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-    </tr>
-     <tr>
-      <th scope="row">4º End</th>
-      <td>9</td>
-      <td>7</td>
-      <td>10</td>
-      <td>9</td>
-      <td>10</td>
-      <td>9</td>
-      <td>54</td>
-      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-    </tr>
-    <tr>
-      <th scope="row">5º End</th>
-      <td>9</td>
-      <td>10</td>
-      <td>10</td>
-      <td>9</td>
-      <td>10</td>
-      <td>7</td>
-      <td>55</td>
-      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-    </tr>
-    <tr>
-      <th scope="row">6º End</th>
-      <td>X</td>
-      <td>10</td>
-      <td>7</td>
-      <td>9</td>
-      <td>8</td>
-      <td>8</td>
-      <td>52</td>
-      <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-    </tr>
+  <?php 
+        $i = 6;
+        $contadorEnd = 1;
+        while ($i < 12){            
+            if(empty($pontuacao[$i])){
+    ?>
+                <tr>
+                  <th scope="row"><?php echo $contadorEnd?>º End</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
+                </tr>
+              	<?php } /*FIM IF*/ elseif ($pontuacao[$i]->getRound() == 2)   {?>
+                <tr>
+                  <th scope="row"><?php echo $contadorEnd?>º End</th>
+                  <td><?php echo $pontuacao[$i]->getPrimeiroDisparo(); ?></td>
+                  <td><?php echo $pontuacao[$i]->getSegundoDisparo(); ?></td>
+                  <td><?php echo $pontuacao[$i]->getTerceiroDisparo(); ?></td>
+                  <td><?php echo $pontuacao[$i]->getQuartoDisparo(); ?></td>
+                  <td><?php echo $pontuacao[$i]->getQuintoDisparo(); ?></td>
+                  <td><?php echo $pontuacao[$i]->getSextoDisparo(); ?></td>
+                  <td><?php echo $pontuacao[$i]->getEndTotal(); ?></td>
+                  <td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
+                </tr>
+              	<?php }/*FIM ELSEif*/ else {
+              	    echo "UAHEHUAEUHAUEHAUHEUAH ERROOOO";
+              	} ?>		  
+    <?php
+        $contadorEnd++;
+        $i++;
+        }  /*FIM WHILE*/?>
     <tr>
       <th scope="row" colspan="8" class="table-secondary">Total: </th>
-      <td class="table-secondary">320</td>
+      <td class="table-secondary"></td>
     </tr>
    </tbody>
- </table>
+ </table> 
  </div>
 </div>
-</div>
-  <!-- FIM TABELA OUTDOOR SEGUNDO ROUND-->
 
+</div>
+<!-- FIM TABELA OUTDOOR SEGUNDO ROUND-->
 <!--  PONTUACAO TOTAL -->
 <table class="table table-bordered">
 	<thead>
@@ -793,10 +727,9 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 	</thead>
 </table>
 <!--  FIM PONTUACAO TOTAL -->
-<?php }?>
-
-
+<?php } 
+        } //Fim do código da categoria OUTDOOR?>
+<!--  incluindo rodapé-->
 <?php
-
 include 'inc.rodape.php';
 ?>

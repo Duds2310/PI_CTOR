@@ -5,6 +5,9 @@ include 'inc.cabecalho.php';
 
 require_once 'src/repositorios/RepositorioTreinamento.php';
 
+//$idUsuarioLogado = $_SESSION['idUsuario'];
+
+
 $repoTreinamentos = new RepositorioTreinamento();
 
 
@@ -105,7 +108,9 @@ $i = 0;
 					<tr>
 						<td><?php echo $ListaTreinamentos[$i]->getCategoria(); ?></td>
 						<td><?php echo $ListaTreinamentos[$i]->getSituacao(); ?></td>
-						<td><?php echo $ListaTreinamentos[$i]->getData(); ?></td>
+						
+						<?php $data = date_create($ListaTreinamentos[$i]->getData());?>
+						<td><?php echo date_format($data, 'd/m/y'); ?></td>
 						<td><a
 							href="treinamento-pontuacao-manter.php?id=<?php echo $ListaTreinamentos[$i]->getID(); ?>"><i
 								class="fa fa-edit"></i></a> |<a
