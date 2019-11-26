@@ -8,7 +8,7 @@ include 'inc.cabecalho.php';
 
 require_once 'src/repositorios/RepositorioTreinamento.php';
 
-$nome = $_POST['nome'];
+//$nome = $_POST['nome'];
 
 $descricao = $_POST['descricao'];
 $categoria = $_POST['categoria'];

@@ -30,8 +30,11 @@ $resultado = $repoTreinamento->cadastrarTreinamento($treinamento);
 if ($resultado == true) {
     header('Location: treinamento-manter.php');
 } else{
-    echo "Falha ao cadastrar o Treinamento!";
-}
+   ?>
+   <div class="alert alert-danger" role="alert">
+    <?php  echo "Falha ao cadastrar o Treinamento!"; ?>
+   </div>
+ <?php } ?>
 
 
 

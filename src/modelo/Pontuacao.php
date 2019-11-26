@@ -141,6 +141,7 @@ class Pontuacao
     public function setEnd($end)
     {
         $this->end = $end;
+
     }
 
     /**
