@@ -57,11 +57,7 @@ if ($validador) {
 		<form action="receita-manter-cadastrar-action.php" method="post" name="dados" onsubmit="return enviar();">
 
 			<div class="form-group form-row">
-
-				<div class="col-md-6">
-					<label>Data de cadastro </label> <input type="date" name="dataCadastro" id="dataCadastro" class="form-control" placeholder="Data de Cadastro" required="required" autofocus="autofocus">
-				</div>
-				<div class="col-md-6">
+				<div class="col-md-12">
 					<label>Data de pagamento </label> <input type="date" name="dataPagamento" id="dataPagamento" class="form-control" placeholder="Data de Pagamento" required="required" autofocus="autofocus">
 				</div>
 			</div>
@@ -93,7 +89,7 @@ if ($validador) {
 			<div class="form-group form-row">
 				<div class="col-md-6">
 					<select class="form-control form-control-sm" name="IdUsuarioResponsavel" id="IdUsuarioResponsavel" required="required" autofocus="autofocus">
-						<option value="-1">-- Selecione Usuario --</option>
+						<option value="-1">-- Selecione a origem --</option>
 
 						<?php while ($a < count($listaUsuario)) { ?>
 
@@ -132,8 +128,7 @@ if ($validador) {
 							<th>Categoria</th>
 							<th>Data de cadastro</th>
 							<th>Data de Pagamento</th>
-							<th>Usuario Responsavel</th>
-							<th>Autor</th>
+							<th>Origem</th>
 							<th>Valor</th>
 							<th>Ações</th>
 						</tr>
@@ -157,7 +152,6 @@ if ($validador) {
 											?>
 								</td>
 								<td><?php echo $listaTela[$i]->getResponsavel(); ?></td>
-								<td><?php echo $listaTela[$i]->getAutor(); ?></td>
 								<td><?php echo $listaTela[$i]->getValor(); ?></td>
 								<td><a href="receita-manter-editar.php?id=<?php echo $listaTela[$i]->getId(); ?>"><i class="fa fa-edit"></i></a> |<a href="receita-manter-deletar-action.php?id=<?php echo $listaTela[$i]->getId(); ?>">
 										<i class="fa fa-trash"></i>
@@ -174,7 +168,7 @@ if ($validador) {
 
 					<tfoot>
 						<tr>
-							<th colspan="6">Total:</th>
+							<th colspan="5">Total:</th>
 							<th colspan="2"> <?php echo " $$total"; ?></th>
 						</tr>
 					</tfoot>
@@ -191,7 +185,7 @@ if ($validador) {
 <script language="JavaScript">
 	function enviar() {
 
-		
+
 		if (document.dados.descricao.value == "" ||
 			document.dados.descricao.value.length > 140) {
 			alert("Preencha o campo DESCRIÇÃO corretamente!");

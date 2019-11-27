@@ -8,7 +8,7 @@ require_once 'src/repositorios/RepositorioReceita.php';
 
 $descricao = $_POST['descricao'];
 $valor = $_POST['valor'];
-$dataCadastro = $_POST['dataCadastro'];
+$dataCadastro = date("y-m-d");
 $dataPagamento = $_POST['dataPagamento'];
 $idUsuarioResponsavel = $_POST['IdUsuarioResponsavel'];
 $categoria = $_POST['categoria'];

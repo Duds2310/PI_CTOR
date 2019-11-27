@@ -40,11 +40,9 @@ $receita = $repoReceita->consultarReceitaId($id) ?>
 			<form action="receita-manter-editar-action.php?id=<?php echo $id; ?>" method="post" name="dados" onsubmit="return enviar();">
 
 				<input type="hidden" value="<?php echo $id ?>" name="id">
+				<input type="hidden" name="dataCadastro" value="<?php echo $receita->getDataCadastro() ?>" id="dataCadastro" class="form-control" placeholder="Data de Cadastro" required="required" autofocus="autofocus">
 				<div class="form-group form-row">
-					<div class="col-md-6">
-						<label>Data de cadastro </label> <input type="date" name="dataCadastro" value="<?php echo $receita->getDataCadastro() ?>" id="dataCadastro" class="form-control" placeholder="Data de Cadastro" required="required" autofocus="autofocus">
-					</div>
-					<div class="col-md-6">
+					<div class="col-md-12">
 						<label>Data de pagamento </label> <input type="date" name="dataPagamento" value="<?php echo $receita->getDataPagamento() ?>" id="dataPagamento" class="form-control" placeholder="Data de Pagamento" required="required" autofocus="autofocus">
 					</div>
 				</div>
