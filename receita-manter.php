@@ -59,10 +59,10 @@ if ($validador) {
 			<div class="form-group form-row">
 
 				<div class="col-md-6">
-					<label>Data de cadastro </label> <input type="date" name="dataCadastro" id="dataCadastro" class="form-control" placeholder="Data de Cadastro" required="required" autofocus="autofocus">
+					<label>Data de Cadastro </label> <input type="date" name="dataCadastro" id="dataCadastro" class="form-control" placeholder="Data de Cadastro" required="required" autofocus="autofocus">
 				</div>
 				<div class="col-md-6">
-					<label>Data de pagamento </label> <input type="date" name="dataPagamento" id="dataPagamento" class="form-control" placeholder="Data de Pagamento" required="required" autofocus="autofocus">
+					<label>Data de Pagamento </label> <input type="date" name="dataPagamento" id="dataPagamento" class="form-control" placeholder="Data de Pagamento" required="required" autofocus="autofocus">
 				</div>
 			</div>
 
@@ -93,7 +93,7 @@ if ($validador) {
 			<div class="form-group form-row">
 				<div class="col-md-6">
 					<select class="form-control form-control-sm" name="IdUsuarioResponsavel" id="IdUsuarioResponsavel" required="required" autofocus="autofocus">
-						<option value="-1">-- Selecione Usuario --</option>
+						<option value="-1">-- Selecione Usuário --</option>
 
 						<?php while ($a < count($listaUsuario)) { ?>
 
@@ -128,11 +128,11 @@ if ($validador) {
 				<table class="table table-bordered" id="MyTableID" width="100%" cellspacing="0">
 					<thead>
 						<tr>
-							<th>Descricao</th>
+							<th>Descrição</th>
 							<th>Categoria</th>
-							<th>Data de cadastro</th>
+							<th>Data de Cadastro</th>
 							<th>Data de Pagamento</th>
-							<th>Usuario Responsavel</th>
+							<th>Usuário Responsável</th>
 							<th>Autor</th>
 							<th>Valor</th>
 							<th>Ações</th>
