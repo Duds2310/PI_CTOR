@@ -2,6 +2,7 @@
 use src\RepositorioUsuario;
 use src\Usuario;
 
+
 require_once 'src/repositorios/RepositorioUsuario.php';
 
 //recuperando informacoes do formulario
@@ -41,8 +42,8 @@ $Usuario->setId($id);
 
 $editado = $repositorioUsuario->alterarMembro($Usuario);
 
-if($editado){
-    header("location: membro-manter.php");
+if($editado == true){
+    header("location: dashboard.php");
 }else {
     echo "Deu ruim :D"  ;
 }

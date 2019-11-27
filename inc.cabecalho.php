@@ -103,8 +103,10 @@ $catUsuarioLogado = $_SESSION['catUsuario'];
 		<?php if ($catUsuarioLogado == '1') { ?>
 			<!-- Sidebar - Menu Lateral -->
 			<ul class="sidebar navbar-nav">
+
 				<li class="nav-item"><a class="nav-link" href="treinamento-manter.php"> <i class="fas fa-bullseye"></i> <span>Manter Treino</span></a></li>
 				<li class="nav-item"><a class="nav-link" href="membro-listar-mensalidade.php"> <i class="fas fa-dollar-sign"></i> <span>Consultar Mensalidades</span></a></li>
+				<li class="nav-item"><a class="nav-link" href="membro-manter-editar.php"> <i class="fas fa-user-circle fa-fw"></i> <span>Editar Perfil</span></a></li>
 			</ul>
 
 		<?php } ?>

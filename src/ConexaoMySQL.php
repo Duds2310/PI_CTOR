@@ -11,7 +11,7 @@ class ConexaoMySQL
 
     private $user = "root";
 
-    private $senha = "123456";
+    private $senha = "";
 
     private $server = "localhost";
 

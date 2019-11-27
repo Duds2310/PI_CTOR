@@ -8,8 +8,8 @@ include 'inc.cabecalho.php';
 require_once 'src/repositorios/RepositorioPontuacao.php';
 
 
-$round = $_POST['round'];
-$end = $_POST['end'];
+//$round = $_POST['round'];
+//$end = $_POST['end'];
 $primeiroDisparo = $_POST['primeiroDisparo'];
 $segundoDisparo = $_POST['segundoDisparo'];
 $terceiroDisparo = $_POST['terceiroDisparo'];
@@ -37,7 +37,25 @@ if ($terceiroDisparo == "M") {
     $terceiroDisparo = 10;
 }
 
-$endTotal = $primeiroDisparo + $segundoDisparo + $terceiroDisparo;
+if ($quartoDisparo == "M") {
+    $quartoDisparo  = 0;
+}else if ($quartoDisparo == "X"){
+    $quartoDisparo = 10;
+}
+
+if ($quintoDisparo == "M") {
+    $quintoDisparo  = 0;
+}else if ($quintoDisparo == "X"){
+    $quintoDisparo = 10;
+}
+
+if ($sextoDisparo == "M") {
+    $sextoDisparo  = 0;
+}else if ($sextoDisparo == "X"){
+    $sextoDisparo = 10;
+}
+
+$endTotal = $primeiroDisparo + $segundoDisparo + $terceiroDisparo +$quartoDisparo + $quintoDisparo + $sextoDisparo;
 
 /*
 echo "-----------";
@@ -64,15 +82,25 @@ $repoPontuacao = new RepositorioPontuacao();
 
 //setando round e end
 $pontuacaoRoundEnd = $repoPontuacao->consultarRoundEndAtual($treId);
-$roundAtual = $pontuacaoRoundEnd->getRound();
-$endAtual = $pontuacaoRoundEnd->getEnd() + 1;
 
 
-if($roundAtual == 2 && $endAtual == 10){
-    die("limite treino atingido");
+$ultimaPontuacaoCadastrada = $repoPontuacao->consultarPontuacaoPorId($pontuacaoRoundEnd->getId());    
+
+if($ultimaPontuacaoCadastrada){
+    $roundAtual = $ultimaPontuacaoCadastrada[0]->getRound();
+    $endAtual = $ultimaPontuacaoCadastrada[0]->getEnd() + 1;    
+}else{
+    $roundAtual = 1;
+    $endAtual = 1;    
 }
 
-if($endAtual == 10){
+
+
+if($roundAtual == 2 && $endAtual == 11){
+    die("A tabela deste treino já foi totalmente preenchida.");
+}
+
+if($endAtual > 10){
     $roundAtual = $roundAtual + 1;
     $endAtual = 1;
 }
@@ -91,8 +119,10 @@ $pontuacao->setSextoDisparo($sextoDisparo);
 $pontuacao->setIdTreino($treId);
 $pontuacao->setEndTotal($endTotal);
 
-$resultado = $repoPontuacao->cadastrarPontuacao($pontuacao);
 
+
+
+$resultado = $repoPontuacao->cadastrarPontuacao($pontuacao);
 
 
 
