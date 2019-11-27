@@ -57,6 +57,7 @@ if ($validador) {
 		<form action="receita-manter-cadastrar-action.php" method="post" name="dados" onsubmit="return enviar();">
 
 			<div class="form-group form-row">
+
 				<div class="col-md-12">
 					<label>Data de pagamento </label> <input type="date" name="dataPagamento" id="dataPagamento" class="form-control" placeholder="Data de Pagamento" required="required" autofocus="autofocus">
 				</div>
@@ -90,7 +91,6 @@ if ($validador) {
 				<div class="col-md-6">
 					<select class="form-control form-control-sm" name="IdUsuarioResponsavel" id="IdUsuarioResponsavel" required="required" autofocus="autofocus">
 						<option value="-1">-- Selecione a origem --</option>
-
 						<?php while ($a < count($listaUsuario)) { ?>
 
 							<option value="<?php echo $listaUsuario[$a]->getId(); ?>">
@@ -124,11 +124,13 @@ if ($validador) {
 				<table class="table table-bordered" id="MyTableID" width="100%" cellspacing="0">
 					<thead>
 						<tr>
-							<th>Descricao</th>
+							<th>Descrição</th>
 							<th>Categoria</th>
-							<th>Data de cadastro</th>
+							<th>Data de Cadastro</th>
 							<th>Data de Pagamento</th>
+
 							<th>Origem</th>
+
 							<th>Valor</th>
 							<th>Ações</th>
 						</tr>
