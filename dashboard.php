@@ -1,6 +1,19 @@
 <?php
 include 'inc.cabecalho.php';
 
+use src\RepositorioDespesa;
+use src\repositorios\RepositorioReceita;
+
+require_once 'src/repositorios/RepositorioDespesa.php';
+require_once 'src/repositorios/RepositorioReceita.php';
+
+$repoDespesa = new RepositorioDespesa();
+
+$retornoDespesa = $repoDespesa->somarDespesa();
+
+$repoReceita = new RepositorioReceita();
+
+$retornoReceita = $repoReceita->somarReceita();
 
 
 ?>
@@ -18,7 +31,7 @@ include 'inc.cabecalho.php';
 				<div class="card-body-icon">
 					<i class="fas fa-fw fa-comments"></i>
 				</div>
-				<div class="mr-5">15.000</div>
+				<div class="mr-5"><?php echo $retornoReceita->getValor(); ?></div>
 			</div>
 			<a class="card-footer text-white clearfix small z-1" href="#"> <span
 				class="float-left">Receita</span> <span class="float-right"> <i
@@ -34,7 +47,7 @@ include 'inc.cabecalho.php';
 				<div class="card-body-icon">
 					<i class="fas fa-fw fa-shopping-cart"></i>
 				</div>
-				<div class="mr-5">10.000</div>
+				<div class="mr-5"><?php echo $retornoDespesa->getValor(); ?></div>
 			</div>
 			<a class="card-footer text-white clearfix small z-1" href="#"> <span
 				class="float-left">Despesa</span> <span class="float-right"> <i
@@ -50,7 +63,7 @@ include 'inc.cabecalho.php';
 				<div class="card-body-icon">
 					<i class="fas fa-fw fa-life-ring"></i>
 				</div>
-				<div class="mr-5">5.000</div>
+				<div class="mr-5"><?php echo $retornoReceita->getValor() - $retornoDespesa->getValor(); ?></div>
 			</div>
 			<a class="card-footer text-white clearfix small z-1" href="#"> <span
 				class="float-left">Caixa Total</span> <span class="float-right"> <i
