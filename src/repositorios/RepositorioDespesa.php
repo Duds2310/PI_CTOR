@@ -53,7 +53,6 @@ class RepositorioDespesa
                 $Despesa->setQtdParcelas($linha['DES_QTD_PARCELA']);
                 $Despesa->setParcelado($linha['DES_PARCELADO']);
 
-
                 $ListaDespesa[$i] = $Despesa;
 
                 $i ++;
@@ -114,9 +113,7 @@ class RepositorioDespesa
                     ('" . $Despesa->getNome() . "' , " . $Despesa->getValor() . " , '" . $Despesa->getDatapagamento() . "' , '" . $Despesa->getCategoria() . "' ,
                      '" . $Despesa->getDatavencimento() . "' , '" . $Despesa->getSituacao() . "', '" . $Despesa->getDescricao() . "' , '" . $Despesa->getQtdParcelas() . "' ,
                         '" . $Despesa->getParcelado() . "')";
-        
-       
-        
+
         $conexao = $this->ConexaoMySQL->abrirBanco();
 
         if ($conexao->query($query) == true) {
@@ -141,9 +138,8 @@ class RepositorioDespesa
                      DES_DESCRICAO = '" . $Despesa->getDescricao() . "' , DES_QTD_PARCELA = " . $Despesa->getQtdParcelas() . " ,
                      DES_PARCELADO = '" . $Despesa->getParcelado() . "' WHERE DES_ID = " . $Despesa->getId();
 
-        
-        //var_dump($query);
-        //die();
+        // var_dump($query);
+        // die();
         $conexao = $this->ConexaoMySQL->abrirBanco();
 
         if ($conexao->query($query) == true) {
@@ -176,5 +172,36 @@ class RepositorioDespesa
         $conexao = $this->ConexaoMySQL->fecharBanco();
 
         return $retorno;
+    }
+
+    public function somarDespesa()
+    {
+        $retornoDespesa = null; // vari�vel respons�vel por armazenar as despesas
+
+        $query = "SELECT SUM(DES_VALOR) AS DES_VALOR FROM TB_DESPESAS"; // vari�vel respons�vel por armazenar a query do banco
+
+        $conexao = $this->ConexaoMySQL->abrirBanco(); // vari�vel respons�vel por abrir o link de conexao
+
+        $resultado = $conexao->query($query); // respons�vel por executar a query no banco de dados
+
+        
+        // verificar se retornou o valor
+
+        if ($resultado->num_rows > 0) {
+            
+            $linha = $resultado->fetch_assoc();
+            $Despesa = new Despesa();
+
+            $Despesa->setValor($linha['DES_VALOR']);
+
+            $retornoDespesa = $Despesa;
+
+            
+        } else {
+            $retornoDespesa = false;
+        }
+        $this->ConexaoMySQL->fecharBanco();
+
+        return $retornoDespesa;
     }
 }

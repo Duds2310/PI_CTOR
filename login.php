@@ -17,7 +17,7 @@ if (isset($_GET['login'])) {
 <meta name="author" content="">
 <link rel="icon" href="/docs/4.1/assets/img/favicons/favicon.ico">
 
-<title>CTOR - Area Administrativa</title>
+<title>CTOR - Área Administrativa</title>
 <!-- Bootstrap core CSS -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -46,7 +46,7 @@ if (isset($_GET['login'])) {
 			type="password" id="password" name="password" class="form-control"
 			placeholder="Senha" required>
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-		<p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+		<p class="mt-5 mb-3 text-muted">&copy; 2019-2020</p>
 	</form>
 </body>
 </html>

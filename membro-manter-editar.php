@@ -7,11 +7,14 @@ include 'inc.cabecalho.php';
 require_once 'src/repositorios/RepositorioUsuario.php';
 
 //recupera o id do usuario
-$idUsuario = $_GET['id'];
+$idUsuario = $idUsuarioLogado;
 
 $repositorioUsuario = new RepositorioUsuario();
 
 $usuario = $repositorioUsuario->consultarMembroPorID($idUsuario);
+
+//var_dump($usuario);
+//die();
 
 
 
@@ -31,6 +34,7 @@ $usuario = $repositorioUsuario->consultarMembroPorID($idUsuario);
 
       <form action="membro-manter-editar-action.php" method="post" name="dados" onsubmit="return enviar();">
         <input type="hidden" value="<?php echo $usuario[0]->getId() ?>" name="id" />
+        <input type="hidden" value="<?php echo $usuario[0]->getSenha(); ?>" name="senhaAntigo">
 
         <div class="form-group">
           <div class="form-row">
@@ -133,24 +137,25 @@ $usuario = $repositorioUsuario->consultarMembroPorID($idUsuario);
             <div class="col-md-6">
               <label for="inputPassword">Password</label>
               <div class="form-label-group">
-                <input type="password" id="senha" name="senha" value="<?php echo $usuario[0]->getSenha() ?>" class="form-control" required="required" autofocus="autofocus">
+                <input type="password" id="senha" name="senha" class="form-control" required="required" autofocus="autofocus">
               </div>
             </div>
             <div class="col-md-6">
               <label for="confirmPassword">Confirmar password</label>
               <div class="form-label-group">
-                <input type="password" id="senhaConfirma" name="senhaConfirma" value="<?php echo $usuario[0]->getSenha() ?>" class="form-control" required="required" autofocus="autofocus">
+                <input type="password" id="senhaConfirma" name="senhaConfirma" class="form-control" required="required" autofocus="autofocus">
               </div>
             </div>
 
           </div>
         </div>
-        <button type="submit" class="btn btn-primary btn-block"> Alterar</button>
+        <button type="submit" class="btn btn-primary btn-block"> Salvar</button>
+      </form>
     </div>
 
     <!-- <a class="btn btn-primary btn-block" href="login.html">Alterar</a> -->
 
-    </form>
+
   </div>
 </div>
 
@@ -164,13 +169,47 @@ $usuario = $repositorioUsuario->consultarMembroPorID($idUsuario);
       return false;
     }
 
+    if (document.dados.cep.value == "" ||
+      document.dados.cep.value.length != 8) {
+      alert("Preencha o campo CEP corretamente!");
+      document.dados.cep.focus();
+      return false;
+    }
+
+    if (document.dados.rg.value == "" ||
+      document.dados.rg.value.length > 13) {
+      alert("Preencha o campo RG corretamente!");
+      document.dados.rg.focus();
+      return false;
+    }
+
+    if (document.dados.telefone.value == "" ||
+      document.dados.telefone.value.length != 9) {
+      alert("Preencha o campo TELEFONE corretamente!");
+      document.dados.telefone.focus();
+      return false;
+    }
+
     if (document.dados.senhaConfirma.value != document.dados.senha.value) {
       alert("As senhas não coincidem!");
       document.dados.senhaConfirma.focus();
       return false;
     }
+
+
+
+
+
+
+
+
+
+
+
+
   }
 </script>
+
 
 
 <?php include 'inc.rodape.php'; ?>

@@ -36,9 +36,6 @@ class RepositorioUsuario
         $query = "SELECT * FROM TB_USUARIO"; // variavel reponsavel por armazenar a query do banco
 
         $conexao = $this->ConexaoMySQL->abrirBanco(); // abre o link de conexao
-        
-        
-
 
         $resultado = $conexao->query($query); // responsavel por executar a query no banco de dados
 
@@ -134,7 +131,8 @@ class RepositorioUsuario
                 $Usuario->setLogin($linha['USU_LOGIN']);
                 $Usuario->setSenha($linha['USU_SENHA']);
                 $Usuario->setEmail($linha['USU_EMAIL']);
-
+                $Usuario->setCategoriaid($linha['CAT_ID']);
+                
                 $Usuarios[$i] = $Usuario;
                 $i ++;
             }
@@ -196,9 +194,13 @@ class RepositorioUsuario
     {
         $retorno = true;
 
-        $query = "INSERT INTO TB_USUARIO(USU_NOME, USU_LOGIN, USU_EMAIL, USU_SENHA)VALUES
+        $query = "INSERT INTO TB_USUARIO(USU_NOME, USU_LOGIN, USU_EMAIL, USU_SENHA, CAT_ID)VALUES
 	           ('" . $Usuario->getNome() . "', '" . $Usuario->getLogin() . "', '" . $Usuario->getEmail() . "',
-                     '" . $Usuario->getSenha() . "')";
+                     '" . $Usuario->getSenha() . "', " . $Usuario->getCategoriaid() . ");";
+        
+        echo $query ;
+        die();
+        
 
         $conexao = $this->ConexaoMySQL->abrirBanco();
 
@@ -222,7 +224,7 @@ class RepositorioUsuario
                      USU_CIDADE, USU_LOGRADOURO,USU_TELEFONE, USU_LOGIN, USU_EMAIL, USU_SENHA, CAT_ID)VALUES
 	           ('" . $Usuario->getNome() . "', '" . $Usuario->getRg() ."', '" . $Usuario->getCep() . "', '" . 
 	           $Usuario->getCpf() . "', '" . $Usuario->getUf() . "', '" . $Usuario->getCidade() . "', '" . $Usuario->getLogradouro() .
-	           "', '" . $Usuario->getTelefone() . "', '" . $Usuario->getLogin() . "', '" . $Usuario->getEmail() . "', '" . $Usuario->getSenha() . "', '" . 1 . "')";
+	           "', '" . $Usuario->getTelefone() . "', '" . $Usuario->getLogin() . "', '" . $Usuario->getEmail() . "', '" . $Usuario->getSenha() . "', '" . $Usuario->getCategoriaId() . "')";
         
 	           //echo $query;
 	           //die();
@@ -250,7 +252,7 @@ class RepositorioUsuario
 
         $query = "UPDATE TB_USUARIO SET USU_NOME = '" . $Usuario->getNome() . "', USU_LOGIN = '" . $Usuario->getLogin() . "',
                      USU_EMAIL = '" . $Usuario->getEmail() . "', USU_SENHA = '" . $Usuario->getSenha() . 
-                        "' WHERE USU_ID = " . $Usuario->getId();
+                     "', CAT_ID = '" . $Usuario->getCategoriaId() .  "' WHERE USU_ID = " . $Usuario->getId();
        
 
         $conexao = $this->ConexaoMySQL->abrirBanco();
@@ -272,9 +274,9 @@ class RepositorioUsuario
         
         $query = "UPDATE TB_USUARIO SET USU_NOME = '" . $Usuario->getNome() ."',USU_RG = '". $Usuario->getRg()
         . "',USU_CEP = '". $Usuario->getCep() ."',USU_CPF = '". $Usuario->getCpf() . "',USU_CIDADE = '". $Usuario->getCidade()
-        . "',USU_LOGRADOURO = '".$Usuario->getLogradouro() . "',USU_TELEFONE = '"
+        . "',USU_LOGRADOURO = '".$Usuario->getLogradouro() . "',USU_TELEFONE = '" . $Usuario->getTelefone() 
         ."', USU_LOGIN = '" . $Usuario->getLogin() . "',USU_EMAIL = '" . $Usuario->getEmail() . "', USU_SENHA = '" . $Usuario->getSenha() 
-        ."' WHERE USU_ID = " . $Usuario->getId();
+        ."', USU_UF = '" . $Usuario->getUf() . "'  WHERE USU_ID = " . $Usuario->getId();
         
         
         $conexao = $this->ConexaoMySQL->abrirBanco();

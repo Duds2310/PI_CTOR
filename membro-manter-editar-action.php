@@ -2,6 +2,7 @@
 use src\RepositorioUsuario;
 use src\Usuario;
 
+
 require_once 'src/repositorios/RepositorioUsuario.php';
 
 //recuperando informacoes do formulario
@@ -18,7 +19,16 @@ $login = $_POST['login'];
 $email = $_POST['email'];
 $senha = $_POST['senha'];
 $senhaConfirma = $_POST['senhaConfirma'];
+$senhaAntigo = $_POST['senhaAntigo'];
 $id = $_POST['id'];
+
+
+
+if ($senha == "") {
+    $senha = $senhaAntigo;
+} else{
+    $senha = md5($senha);
+}
 
 
 $repositorioUsuario = new RepositorioUsuario();
@@ -41,8 +51,8 @@ $Usuario->setId($id);
 
 $editado = $repositorioUsuario->alterarMembro($Usuario);
 
-if($editado){
-    header("location: membro-manter.php");
+if($editado == true){
+    header("location: dashboard.php");
 }else {
     echo "Deu ruim :D"  ;
 }

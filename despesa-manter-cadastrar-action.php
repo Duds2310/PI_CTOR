@@ -16,6 +16,8 @@ $situacao = $_POST['situacao'];
 $descricao = $_POST['descricao'];
 $parcela = $_POST['qtdParcela'];
 
+$i = 0;
+
 
 
 
@@ -31,6 +33,10 @@ if ($parcela > 1) {
     $despesa->setQtdParcelas($parcela);
 } else {
     $despesa->setQtdParcelas(1);
+}
+
+if ($parcela == "") {
+    $parcela = "1";
 }
 
 
@@ -50,10 +56,21 @@ $despesa->setSituacao($situacao);
 $despesa->setDescricao($descricao);
 
 
+if ($despesa > 1) {
+    while ($despesa >= $i) {
+        
+        date($datavencimento, strtotime("+30 days"));
+        $despesa->setDatavencimento($datavencimento);
+        
+        $cadastrado = $repoDespesa->cadastrarDespesa($despesa);
+        $i++;
+    }
+} else {
+    $cadastrado = $repoDespesa->cadastrarDespesa($despesa);
+}
 
 
 
-$cadastrado = $repoDespesa->cadastrarDespesa($despesa);
 
 
 if ($cadastrado == true) {
