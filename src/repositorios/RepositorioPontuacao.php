@@ -158,6 +158,8 @@ class RepositorioPontuacao
     }
     
     
-    
+    public function consultarRound($ultimoRound) {
+        
+    }
     
 }
