@@ -37,8 +37,8 @@ $totalPontos1 = 0;
 $cont = 0;
 $cont2 = 10;
 
-var_dump($pontuacao);
-die();
+//var_dump($pontuacao);
+//die();
 
 /*
 if ($pontuacao == true) {
@@ -755,6 +755,6 @@ if ($pontuacao == true) {
 	<!--  incluindo rodapé-->
 <?php
 
-} //fim do else para categoria OUTDOOR (linha 400)
+}//fim do else para categoria OUTDOOR (linha 400)
 include 'inc.rodape.php';
 ?>
