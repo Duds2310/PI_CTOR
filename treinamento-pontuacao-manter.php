@@ -20,6 +20,55 @@ $treinamento = $repositorioTreinamento->consultarTreinamentoPorId($idTreinamento
 /*$pontuacao = $repositorioPontuacao->consultarPontuacaoPorId($idPontuacao); */
 $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 
+/*
+$validador = $listaTela == false ? false : $listaTela;
+
+if ($validador) {
+	while ($c < count($listaTela)) {
+		$total = $total + $listaTela[$c]->getValor();
+		$c++;
+	}
+}
+*/
+
+//var_dump($pontuacao);
+//die();
+//Criando variável para soma dos pontos
+$totalPontos1 = 0;
+$cont = 0;
+$cont2 = 10;
+
+//var_dump($pontuacao);
+//die();
+
+/*
+if ($pontuacao == true) {
+	$teste = count($pontuacao);
+
+	
+
+	if ($cont < $teste) {
+		while ($cont < 11) {
+			$controleSoma = $pontuacao[$cont]->getEndTotal();
+			$totalPontos1 = $totalPontos1 + $controleSoma;
+			$cont++;
+		}
+	} else {
+		while ($cont2 < 11) {
+			$contSoma = $pontuacao[$cont2]->getEndTotal();
+			$totalPontos2 = $totalPontos2 + $contSoma;
+
+			$cont2++;
+		}
+	}
+}
+*/
+
+
+
+
+
+
 
 //$pontRound = $repositorioPontuacao->consultarRoundEndAtual($idTreinamento);
 // $iPontuacao = 0;//contador de pontuacao
@@ -714,6 +763,6 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 
 <?php
 
-} //fim do else para categoria OUTDOOR (linha 400)
+}//fim do else para categoria OUTDOOR (linha 400)
 include 'inc.rodape.php';
 ?>
