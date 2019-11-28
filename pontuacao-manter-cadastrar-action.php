@@ -17,67 +17,56 @@ $quartoDisparo = $_POST['quartoDisparo'];
 $quintoDisparo = $_POST['quintoDisparo'];
 $sextoDisparo = $_POST['sextoDisparo'];
 $treId = $_POST['treId'];
+$cat = $_POST['categoriaHidden'];
 
+
+//variaveis apenas para somar (end total) - devem pegar os valores dos disparos e mudar somente quando for X ou M para fins de soma da variável endtotal
+$tiro1 = $primeiroDisparo;
+$tiro2 = $segundoDisparo;
+$tiro3 = $terceiroDisparo;
+$tiro4 = $quartoDisparo;
+$tiro5 = $quintoDisparo;
+$tiro6 = $sextoDisparo;
 
 if ($primeiroDisparo == "M") {
-    $primeiroDisparo = 0;
+    $tiro1 = 0;
 }else if ($primeiroDisparo == "X") {
-    $primeiroDisparo = 10;
+    $tiro1 = 10;
 }
 
 if ($segundoDisparo == "M") {
-    $segundoDisparo = 0;
+    $tiro2 = 0;
 }else if ($segundoDisparo == "X") {
-    $segundoDisparo = 10;
+    $tiro2 = 10;
 }
 
 if ($terceiroDisparo == "M") {
-    $terceiroDisparo  = 0;
+    $tiro3  = 0;
 }else if ($terceiroDisparo == "X"){
-    $terceiroDisparo = 10;
+    $tiro3 = 10;
 }
 
 if ($quartoDisparo == "M") {
-    $quartoDisparo  = 0;
+    $tiro4  = 0;
 }else if ($quartoDisparo == "X"){
-    $quartoDisparo = 10;
+    $tiro4 = 10;
 }
 
 if ($quintoDisparo == "M") {
-    $quintoDisparo  = 0;
+    $tiro5  = 0;
 }else if ($quintoDisparo == "X"){
-    $quintoDisparo = 10;
+    $tiro5 = 10;
 }
 
 if ($sextoDisparo == "M") {
-    $sextoDisparo  = 0;
+    $tiro6  = 0;
 }else if ($sextoDisparo == "X"){
-    $sextoDisparo = 10;
+    $tiro6 = 10;
 }
 
-$endTotal = $primeiroDisparo + $segundoDisparo + $terceiroDisparo +$quartoDisparo + $quintoDisparo + $sextoDisparo;
+$endTotal = $tiro1 + $tiro2 + $tiro3 + $tiro4 + $tiro5 + $tiro6;
 
-/*
-echo "-----------";
-echo $round;
-echo "-----------";
-echo $end;
-echo "-----------";
-echo $primeiroDisparo;
-echo "-----------";
-echo $segundoDisparo;
-echo "-----------";
-echo $terceiroDisparo;
-echo "-----------";
-echo $quartoDisparo;
-echo "-----------";
-echo $quintoDisparo;
-echo "-----------";
-echo $sextoDisparo;
-echo "-----------";
-echo $endTotal;
-die("------------");
-*/
+
 $repoPontuacao = new RepositorioPontuacao();
 
 //setando round e end
@@ -95,9 +84,20 @@ if($ultimaPontuacaoCadastrada){
 }
 
 
-
-if($roundAtual == 2 && $endAtual == 11){
-    die("A tabela deste treino já foi totalmente preenchida.");
+if ($cat == "Indoor")
+{if($roundAtual == 2 && $endAtual == 11){
+    ?>    <div class="alert alert-info" role="alert">
+                <?php echo  "A tabela deste treino já foi totalmente preenchida."?>
+        </div>
+   <?php  die();
+   }
+}elseif ($cat == "Outdoor") {
+    if($roundAtual == 2 && $endAtual == 6){
+        ?>    <div class="alert alert-info" role="alert">
+                    <?php echo  "A tabela deste treino já foi totalmente preenchida."?>
+            </div>
+       <?php  die();
+       }
 }
 
 if($endAtual > 10){

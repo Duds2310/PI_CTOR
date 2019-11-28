@@ -12,7 +12,7 @@ $categoria = $_POST['categoria'];
 $situacao = $_POST['situacao'];
 $descricao = $_POST['descricao'];
 $data = $_POST['data'];
-$idUsuario = $_POST['idusuario'];
+$idUsuario = $idUsuarioLogado;
 
 $repoTreinamento = new RepositorioTreinamento();
 

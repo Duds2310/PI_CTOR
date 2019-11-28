@@ -18,6 +18,9 @@ $categoria = $usuario[0]->getCategoriaid();
 //var_dump($usuario);
 //die();
 
+//var_dump($usuario);
+//die();
+
 
 ?>
 
@@ -62,13 +65,13 @@ $categoria = $usuario[0]->getCategoriaid();
 						<div class="form-label-group">
 							<select class="form-control form-control-sm" name="categoria" id="categoria">
 								<option value="-1">--Selecione a Categoria--</option>
-								<option value="1" <?php if ($categoria = 1) {
+								<option value="1" <?php if ($categoria == 1) {
 														echo "selected";
 													} ?>>Membro</option>
-								<option value="2" <?php if ($categoria = 2) {
+								<option value="2" <?php if ($categoria == 2) {
 														echo "selected";
 													} ?>>Master</option>
-								<option value="3" <?php if ($categoria = 3) {
+								<option value="3" <?php if ($categoria == 3) {
 														echo "selected";
 													} ?>>Doador</option>
 							</select>

@@ -4,7 +4,7 @@
 session_start();
 
 
-//verificando se tem valores na sessap
+//verificando se tem valores na sessao
 if (!(isset($_SESSION['idUsuario']) && isset($_SESSION['emailUsuario'])
 	&& isset($_SESSION['nomeUsuario']) && isset($_SESSION['catUsuario']))) {
 	header("Location: login.php");
@@ -67,22 +67,24 @@ $catUsuarioLogado = $_SESSION['catUsuario'];
 		<!-- Navbar -->
 		<ul class="navbar-nav ml-auto ml-md-0">
 			<li class="nav-item dropdown no-arrow">
-				<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-user-circle fa-fw"></i>
+				<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <?php echo $_SESSION['nomeUsuario']?> <i class="fas fa-user fa-fw"></i>
 				</a>
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
 					<!-- <div class="dropdown-divider"></div> -->
 					<!-- <!--  data-toggle="modal" data-target="#logoutModal"  -->
+					
 					<a data-toggle="modal" data-target="#logoutModal" class="dropdown-item">Logout</a>
 				</div>
 			</li>
 		</ul>
-
+		
 	</nav>
 
 	<div id="wrapper">
 
 
 		<?php if ($catUsuarioLogado == '2') { ?>
+
 			<!-- Sidebar - Menu Lateral -->
 			<ul class="sidebar navbar-nav">
 				<li class="nav-item"><a class="nav-link" href="dashboard.php"> <i class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
@@ -91,9 +93,11 @@ $catUsuarioLogado = $_SESSION['catUsuario'];
 				<li class="nav-item"><a class="nav-link" href="receita-manter.php"> <i class="fas fa-coins "></i> <span>Manter Receita</span></a></li>
 				<li class="nav-item"><a class="nav-link" href="despesa-manter.php"> <i class="fas fa-coins"></i> <span>Manter Despesa</span></a></li>
 				<li class="nav-item"><a class="nav-link" href="provas-manter.php"> <i class="fas fa-user-circle fa-fw"></i> <span>Manter Provas</span></a></li>
-				<li class="nav-item"><a class="nav-link" href="membro-listar-mensalidade.php"> <i class="fas fa-dollar-sign"></i> <span>Consultar Mensalidades</span></a></li>
 				<li class="nav-item"><a class="nav-link" href="treinamento-manter.php"> <i class="fas fa-bullseye"></i> <span>Manter Treino</span></a></li>
 			</ul>
+
+			
+
 
 		<?php } ?>
 
@@ -101,7 +105,10 @@ $catUsuarioLogado = $_SESSION['catUsuario'];
 		<?php if ($catUsuarioLogado == '1') { ?>
 			<!-- Sidebar - Menu Lateral -->
 			<ul class="sidebar navbar-nav">
+
 				<li class="nav-item"><a class="nav-link" href="treinamento-manter.php"> <i class="fas fa-bullseye"></i> <span>Manter Treino</span></a></li>
+				<li class="nav-item"><a class="nav-link" href="membro-listar-mensalidade.php"> <i class="fas fa-dollar-sign"></i> <span>Consultar Mensalidades</span></a></li>
+				<li class="nav-item"><a class="nav-link" href="membro-manter-editar.php"> <i class="fas fa-user-circle fa-fw"></i> <span>Editar Perfil</span></a></li>
 			</ul>
 
 		<?php } ?>
