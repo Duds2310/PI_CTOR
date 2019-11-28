@@ -13,8 +13,8 @@ $login = $_POST['login'];
 $senha = $_POST['senha'];
 $categoria = $_POST['categoria'];
 
-$senha = md5($senha);
-
+//var_dump($categoria);
+//die();
 
 
 $repoUsuario = new RepositorioUsuario();
@@ -26,9 +26,6 @@ $usuario->setNome($nome);
 $usuario->setEmail($email);
 $usuario->setLogin($login);
 $usuario->setSenha($senha);
-
-//var_dump($usuario);
-//die();
 
 
 

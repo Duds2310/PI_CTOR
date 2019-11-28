@@ -36,6 +36,9 @@ class RepositorioUsuario
         $query = "SELECT * FROM TB_USUARIO"; // variavel reponsavel por armazenar a query do banco
 
         $conexao = $this->ConexaoMySQL->abrirBanco(); // abre o link de conexao
+        
+        
+
 
         $resultado = $conexao->query($query); // responsavel por executar a query no banco de dados
 
@@ -197,10 +200,6 @@ class RepositorioUsuario
         $query = "INSERT INTO TB_USUARIO(USU_NOME, USU_LOGIN, USU_EMAIL, USU_SENHA, CAT_ID)VALUES
 	           ('" . $Usuario->getNome() . "', '" . $Usuario->getLogin() . "', '" . $Usuario->getEmail() . "',
                      '" . $Usuario->getSenha() . "', " . $Usuario->getCategoriaid() . ");";
-        
-        echo $query ;
-        die();
-        
 
         $conexao = $this->ConexaoMySQL->abrirBanco();
 
