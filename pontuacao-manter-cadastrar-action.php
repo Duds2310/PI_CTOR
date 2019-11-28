@@ -20,6 +20,8 @@ $treId = $_POST['treId'];
 $cat = $_POST['categoriaHidden'];
 
 
+
+
 //variaveis apenas para somar (end total) - devem pegar os valores dos disparos e mudar somente quando for X ou M para fins de soma da variável endtotal
 $tiro1 = $primeiroDisparo;
 $tiro2 = $segundoDisparo;
@@ -71,28 +73,30 @@ $repoPontuacao = new RepositorioPontuacao();
 
 //setando round e end
 $pontuacaoRoundEnd = $repoPontuacao->consultarRoundEndAtual($treId);
-
-
+$endAtual = 0;
+$roundAtual = 0;
 $ultimaPontuacaoCadastrada = $repoPontuacao->consultarPontuacaoPorId($pontuacaoRoundEnd->getId());    
 
 if($ultimaPontuacaoCadastrada){
     $roundAtual = $ultimaPontuacaoCadastrada[0]->getRound();
-    $endAtual = $ultimaPontuacaoCadastrada[0]->getEnd() + 1;    
+    $endAtual = $ultimaPontuacaoCadastrada[0]->getEnd();    
 }else{
     $roundAtual = 1;
     $endAtual = 1;    
 }
 
 
+//var_dump($endAtual);
+//die("parou");
 if ($cat == "Indoor")
-{if($roundAtual == 2 && $endAtual == 11){
+{if($roundAtual == 2 && $endAtual > 9){
     ?>    <div class="alert alert-info" role="alert">
                 <?php echo  "A tabela deste treino já foi totalmente preenchida."?>
         </div>
    <?php  die();
    }
-}elseif ($cat == "Outdoor") {
-    if($roundAtual == 2 && $endAtual == 6){
+}else if ($cat == "Outdoor") {
+    if($roundAtual == 2 && $endAtual == 7){
         ?>    <div class="alert alert-info" role="alert">
                     <?php echo  "A tabela deste treino já foi totalmente preenchida."?>
             </div>

@@ -19,7 +19,6 @@ $repositorioPontuacao = new RepositorioPontuacao();
 $treinamento = $repositorioTreinamento->consultarTreinamentoPorId($idTreinamento);
 /*$pontuacao = $repositorioPontuacao->consultarPontuacaoPorId($idPontuacao); */
 $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
-
 /*
 $validador = $listaTela == false ? false : $listaTela;
 
@@ -69,7 +68,6 @@ if ($pontuacao == true) {
 
 
 
-
 //$pontRound = $repositorioPontuacao->consultarRoundEndAtual($idTreinamento);
 // $iPontuacao = 0;//contador de pontuacao
 // if($pontuacao){
@@ -97,13 +95,8 @@ if ($pontuacao == true) {
 			<div class="card-body">
 				<form action="usuario-manter-editar-action.php?id=<?php echo $idTreinamento; ?>" method="post" action="treinamento-manter-editar-action.php">
 					<input type="hidden" value="<?php echo $treinamento->getId(); ?>" name="id">
-
 					<!--  oi???? -->
-
 					<!-- CATEGORIA E DATA -->
-
-
-					
 					<div class="form-group">
 						<div class="form-row">
 							<div class="col-md-6">
@@ -120,10 +113,6 @@ if ($pontuacao == true) {
 							</div>
 						</div>
 					</div>
-
-
-
-
 					<!--FIM CATEGORIA E DATA -->
 					<!--INíCIO DESCRICAO -->
 					<div class="form-group">
@@ -286,8 +275,8 @@ if ($pontuacao == true) {
 							</div>
 							<!-- PASSANDO A CATEGORIA PARA O CADASTRO DA PONTUAÇÃO -->
 							<input type="hidden" name="categoriaHidden" id="categoriaHidden" class="form-control" value="<?php echo $treinamento->getCategoria(); ?>">
-							
-						<!--  OUTROS DISPAROS 4o AO 6o- COLOCAR HIDDEN E NULL -->
+
+							<!--  OUTROS DISPAROS 4o AO 6o- COLOCAR HIDDEN E NULL -->
 							<div class="col-md-2">
 								<input type="hidden" name="quartoDisparo" id="quartoDisparo" class="form-control" value="0" readonly>
 							</div>
@@ -313,7 +302,7 @@ if ($pontuacao == true) {
 	<div class="row">
 		<div class="col-md-6 col-xl-6 col-lg-6">
 			<div class="card mb-3">
-				<table class="table table-bordered" width="100%" cellspacing="0">
+				<table class="table-responsive-md-6 table-bordered" width="100%" cellspacing="0">
 					<thead>
 						<tr>
 							<th scope="col" colspan="4" class="table-active">1º Round </th>
@@ -323,7 +312,6 @@ if ($pontuacao == true) {
 					</thead>
 					<tbody>
 						<?php
-							$somaEnds = 0;
 
 							$i = 0;
 							$contadorEnd = 1;
@@ -349,21 +337,19 @@ if ($pontuacao == true) {
 								</tr>
 							<?php } /*FIM ELSE*/ ?>
 						<?php
-							/*
+								/*
 								if(empty($pontuacao)){
 								$somaEnds = 0;
 								}else{$somaEnds = $somaEnds + $pontuacao[$i]->getEndTotal();
 								}
-							*/	
-
+							*/
 								$contadorEnd++;
 								$i++;
 							}  /*FIM WHILE*/ ?>
 						<tr>
-							<th scope="row" colspan="5" class="table-secondary">Total: </th>
-
-							<td class="table-secondary"><?php /*echo $somaEnds; */?></td>
-
+							<th scope="row" colspan="4" class="table-secondary">Total: </th>
+							<td class="table-secondary"><?php echo $totalPontos1; ?></td>
+							<td class="table-secondary"></td>
 						</tr>
 					</tbody>
 				</table>
@@ -376,7 +362,7 @@ if ($pontuacao == true) {
 			?>
 		<div class="col-md-6 col-sm-12">
 			<div class="card mb-3">
-				<table class="table table-bordered" width="100%" cellspacing="0">
+				<table class="table-responsive-md-6 table-bordered" width="100%" cellspacing="0">
 
 					<thead>
 						<tr>
@@ -413,8 +399,21 @@ if ($pontuacao == true) {
 							$contadorEnd++;
 							$i++;
 						}  /*FIM WHILE*/ ?>
+
+					<?php /* SOMA ROUND 2
+    				$totalPontos2 = 0;
+                            $cont = 0;
+                            if ($pontuacao) {
+                            	while ($cont < count($pontuacao)){
+                            		$totalPontos1 = 	$totalPontos1 + $pontuacao[$cont]->getEndTotal();
+                            		
+                            
+                            		$cont++;
+                            	} 
+                      }*/ ?>
 					<tr>
-						<th scope="row" colspan="5" class="table-secondary">Total: </th>
+						<th scope="row" colspan="4" class="table-secondary">Total: </th>
+						<td class="table-secondary"><?php ?> Total </td>
 						<td class="table-secondary"></td>
 					</tr>
 					</tbody>
@@ -434,10 +433,8 @@ if ($pontuacao == true) {
 		</thead>
 	</table>
 	<!--  FIM PONTUACAO TOTAL -->
-
 <?php  } else { ?>
 	<!-- FORMULÁRIO DE PONTUAÇÃO DA CATEGORIA OUTDOOR -->
-
 
 	<div class="row">
 		<div class="col-md-12">
@@ -470,7 +467,6 @@ if ($pontuacao == true) {
 										<option>6º End</option>
 									</select>
 								</div>
-
 							</div>
 						</div>
 						<!-- FIM END -->
@@ -545,7 +541,6 @@ if ($pontuacao == true) {
 							<div class="form-group col-md-4">
 								<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">
 									Selecionar Pontuação (4º Disparo)
-
 								</label>
 								<select name="quartoDisparo" id="quartoDisparo" class="form-control">
 									<option>M</option>
@@ -567,7 +562,6 @@ if ($pontuacao == true) {
 							<div class="form-group col-md-4">
 								<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">
 									Selecionar Pontuação (5º Disparo)
-
 								</label>
 								<select name="quintoDisparo" id="quintoDisparo" class="form-control">
 									<option>M</option>
@@ -624,7 +618,6 @@ if ($pontuacao == true) {
 						<button type="submit" class="btn btn-primary mb-2">Cadastrar</button>
 					</form>
 				</div>
-
 			</div>
 		</div>
 	</div>
@@ -756,11 +749,10 @@ if ($pontuacao == true) {
 		</div>
 	</div>
 
-	</div>
+
 
 	<!--  FIM PONTUACAO TOTAL -->
 	<!--  incluindo rodapé-->
-
 <?php
 
 }//fim do else para categoria OUTDOOR (linha 400)
