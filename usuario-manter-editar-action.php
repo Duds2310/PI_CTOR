@@ -13,15 +13,6 @@ $login = $_POST['login'];
 $senha = $_POST['senha'];
 $id = $_POST['id'];
 $categoria = $_POST['categoria'];
-$senhaAntigo = $_POST['senhaAntigo'];
-
-if ($senha == "") {
-    $senha = $senhaAntigo;
-} else{
-    $senha = md5($senha);
-}
-
-
 
 
 $repoUsuario = new RepositorioUsuario();

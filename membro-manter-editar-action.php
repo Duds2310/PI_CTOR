@@ -19,16 +19,7 @@ $login = $_POST['login'];
 $email = $_POST['email'];
 $senha = $_POST['senha'];
 $senhaConfirma = $_POST['senhaConfirma'];
-$senhaAntigo = $_POST['senhaAntigo'];
 $id = $_POST['id'];
-
-
-
-if ($senha == "") {
-    $senha = $senhaAntigo;
-} else{
-    $senha = md5($senha);
-}
 
 
 $repositorioUsuario = new RepositorioUsuario();

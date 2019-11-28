@@ -37,7 +37,6 @@ $categoria = $usuario[0]->getCategoriaid();
 
 			<form action="usuario-manter-editar-action.php?id=<?php echo $idUsuario; ?>" method="post">
 				<input type="hidden" value="<?php echo $usuario[0]->getId(); ?>" name="id">
-				<input type="hidden" value="<?php echo $usuario[0]->getSenha(); ?>" name="senhaAntigo">
 
 				<div class="form-group form-row">
 					<div class="col-md-6">
@@ -88,13 +87,13 @@ $categoria = $usuario[0]->getCategoriaid();
 						<div class="col-md-6">
 							<label>*Senha</label>
 							<div class="form-label-group">
-								<input type="password" name="senha" id="senha"  class="form-control" placeholder="Password">
+								<input type="password" name="senha" id="senha" value="<?php echo $usuario[0]->getSenha(); ?>" class="form-control" placeholder="Password" required="required">
 							</div>
 						</div>
 						<div class="col-md-6">
 							<label>*Confirmar Senha</label>
 							<div class="form-label-group">
-								<input type="password" id="confirmPassword" class="form-control" placeholder="Confirm password">
+								<input type="password" id="confirmPassword" value="<?php echo $usuario[0]->getSenha(); ?>" class="form-control" placeholder="Confirm password" required="required">
 							</div>
 						</div>
 					</div>
