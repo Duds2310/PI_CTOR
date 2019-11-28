@@ -34,6 +34,7 @@ $usuario = $repositorioUsuario->consultarMembroPorID($idUsuario);
 
       <form action="membro-manter-editar-action.php" method="post" name="dados" onsubmit="return enviar();">
         <input type="hidden" value="<?php echo $usuario[0]->getId() ?>" name="id" />
+        <input type="hidden" value="<?php echo $usuario[0]->getSenha(); ?>" name="senhaAntigo">
 
         <div class="form-group">
           <div class="form-row">
@@ -136,13 +137,13 @@ $usuario = $repositorioUsuario->consultarMembroPorID($idUsuario);
             <div class="col-md-6">
               <label for="inputPassword">Password</label>
               <div class="form-label-group">
-                <input type="password" id="senha" name="senha" value="<?php echo $usuario[0]->getSenha() ?>" class="form-control" required="required" autofocus="autofocus">
+                <input type="password" id="senha" name="senha" class="form-control" required="required" autofocus="autofocus">
               </div>
             </div>
             <div class="col-md-6">
               <label for="confirmPassword">Confirmar password</label>
               <div class="form-label-group">
-                <input type="password" id="senhaConfirma" name="senhaConfirma" value="<?php echo $usuario[0]->getSenha() ?>" class="form-control" required="required" autofocus="autofocus">
+                <input type="password" id="senhaConfirma" name="senhaConfirma" class="form-control" required="required" autofocus="autofocus">
               </div>
             </div>
 

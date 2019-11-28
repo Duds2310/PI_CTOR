@@ -12,6 +12,8 @@ require_once 'src/repositorios/RepositorioUsuario.php';
 $email = $_POST['email'];
 $senha = $_POST['password'];
 
+$senha = md5($senha);
+
 // cria um novo usuario apenas com login e senha
 $Usuario = new Usuario();
 $Usuario->setEmail($email);
