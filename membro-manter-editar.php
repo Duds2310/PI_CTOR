@@ -7,11 +7,14 @@ include 'inc.cabecalho.php';
 require_once 'src/repositorios/RepositorioUsuario.php';
 
 //recupera o id do usuario
-$idUsuario = $_GET['id'];
+$idUsuario = $idUsuarioLogado;
 
 $repositorioUsuario = new RepositorioUsuario();
 
 $usuario = $repositorioUsuario->consultarMembroPorID($idUsuario);
+
+//var_dump($usuario);
+//die();
 
 
 
@@ -145,12 +148,13 @@ $usuario = $repositorioUsuario->consultarMembroPorID($idUsuario);
 
           </div>
         </div>
-        <button type="submit" class="btn btn-primary btn-block"> Alterar</button>
+        <button type="submit" class="btn btn-primary btn-block"> Salvar</button>
+      </form>
     </div>
 
     <!-- <a class="btn btn-primary btn-block" href="login.html">Alterar</a> -->
 
-    </form>
+
   </div>
 </div>
 
@@ -164,13 +168,47 @@ $usuario = $repositorioUsuario->consultarMembroPorID($idUsuario);
       return false;
     }
 
+    if (document.dados.cep.value == "" ||
+      document.dados.cep.value.length != 8) {
+      alert("Preencha o campo CEP corretamente!");
+      document.dados.cep.focus();
+      return false;
+    }
+
+    if (document.dados.rg.value == "" ||
+      document.dados.rg.value.length > 13) {
+      alert("Preencha o campo RG corretamente!");
+      document.dados.rg.focus();
+      return false;
+    }
+
+    if (document.dados.telefone.value == "" ||
+      document.dados.telefone.value.length != 9) {
+      alert("Preencha o campo TELEFONE corretamente!");
+      document.dados.telefone.focus();
+      return false;
+    }
+
     if (document.dados.senhaConfirma.value != document.dados.senha.value) {
       alert("As senhas não coincidem!");
       document.dados.senhaConfirma.focus();
       return false;
     }
+
+
+
+
+
+
+
+
+
+
+
+
   }
 </script>
+
 
 
 <?php include 'inc.rodape.php'; ?>

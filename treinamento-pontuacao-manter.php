@@ -48,8 +48,13 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 			<div class="card-body">
 				<form action="usuario-manter-editar-action.php?id=<?php echo $idTreinamento; ?>" method="post" action="treinamento-manter-editar-action.php">
 					<input type="hidden" value="<?php echo $treinamento->getId(); ?>" name="id">
+
 					<!--  oi???? -->
+
 					<!-- CATEGORIA E DATA -->
+
+
+					
 					<div class="form-group">
 						<div class="form-row">
 							<div class="col-md-6">
@@ -66,6 +71,10 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 							</div>
 						</div>
 					</div>
+
+
+
+
 					<!--FIM CATEGORIA E DATA -->
 					<!--INíCIO DESCRICAO -->
 					<div class="form-group">
@@ -266,6 +275,7 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 					<tbody>
 						<?php
 							$somaEnds = 0;
+
 							$i = 0;
 							$contadorEnd = 1;
 							while ($i < 10) {
@@ -296,12 +306,15 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 								}else{$somaEnds = $somaEnds + $pontuacao[$i]->getEndTotal();
 								}
 							*/	
+
 								$contadorEnd++;
 								$i++;
 							}  /*FIM WHILE*/ ?>
 						<tr>
 							<th scope="row" colspan="5" class="table-secondary">Total: </th>
+
 							<td class="table-secondary"><?php /*echo $somaEnds; */?></td>
+
 						</tr>
 					</tbody>
 				</table>
@@ -372,8 +385,10 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 		</thead>
 	</table>
 	<!--  FIM PONTUACAO TOTAL -->
+
 <?php  } else { ?>
 	<!-- FORMULÁRIO DE PONTUAÇÃO DA CATEGORIA OUTDOOR -->
+
 
 	<div class="row">
 		<div class="col-md-12">
@@ -406,6 +421,7 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 										<option>6º End</option>
 									</select>
 								</div>
+
 							</div>
 						</div>
 						<!-- FIM END -->
@@ -480,6 +496,7 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 							<div class="form-group col-md-4">
 								<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">
 									Selecionar Pontuação (4º Disparo)
+
 								</label>
 								<select name="quartoDisparo" id="quartoDisparo" class="form-control">
 									<option>M</option>
@@ -501,6 +518,7 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 							<div class="form-group col-md-4">
 								<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">
 									Selecionar Pontuação (5º Disparo)
+
 								</label>
 								<select name="quintoDisparo" id="quintoDisparo" class="form-control">
 									<option>M</option>
@@ -557,6 +575,7 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 						<button type="submit" class="btn btn-primary mb-2">Cadastrar</button>
 					</form>
 				</div>
+
 			</div>
 		</div>
 	</div>
@@ -692,6 +711,7 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 
 	<!--  FIM PONTUACAO TOTAL -->
 	<!--  incluindo rodapé-->
+
 <?php
 
 } //fim do else para categoria OUTDOOR (linha 400)
