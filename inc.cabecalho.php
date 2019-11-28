@@ -87,13 +87,13 @@ $catUsuarioLogado = $_SESSION['catUsuario'];
 
 			<!-- Sidebar - Menu Lateral -->
 			<ul class="sidebar navbar-nav">
-				<li class="nav-item"><a class="nav-link" href="dashboard.php"> <i class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
-				<li class="nav-item"><a class="nav-link" href="usuario-manter.php"> <i class="fas fa-user-circle fa-fw"></i> <span>Manter Usuarios</span></a></li>
-				<li class="nav-item"><a class="nav-link" href="membro-manter.php"> <i class="fas fa-user-circle fa-fw"></i> <span>Manter Membro</span></a></li>
-				<li class="nav-item"><a class="nav-link" href="receita-manter.php"> <i class="fas fa-coins "></i> <span>Manter Receita</span></a></li>
-				<li class="nav-item"><a class="nav-link" href="despesa-manter.php"> <i class="fas fa-coins"></i> <span>Manter Despesa</span></a></li>
-				<li class="nav-item"><a class="nav-link" href="provas-manter.php"> <i class="fas fa-user-circle fa-fw"></i> <span>Manter Provas</span></a></li>
-				<li class="nav-item"><a class="nav-link" href="treinamento-manter.php"> <i class="fas fa-bullseye"></i> <span>Manter Treino</span></a></li>
+				<li class="nav-item"><a class="nav-link" href="dashboard.php"> <i class="fas fa-chart-bar"></i> <span>Dashboard</span></a></li>
+				<li class="nav-item"><a class="nav-link" href="usuario-manter.php"> <i class="fas fa-user-circle fa-fw"></i> <span>Usuarios</span></a></li>
+				<li class="nav-item"><a class="nav-link" href="membro-manter.php"> <i class="fas fa-id-card-alt"></i> <span>Membro</span></a></li>
+				<li class="nav-item"><a class="nav-link" href="receita-manter.php"> <i class="fas fa-coins "></i> <span>Receita</span></a></li>
+				<li class="nav-item"><a class="nav-link" href="despesa-manter.php"> <i class="fas fa-file-invoice-dollar"></i> <span>Despesa</span></a></li>
+				<li class="nav-item"><a class="nav-link" href="provas-manter.php"> <i class="far fa-calendar-alt"></i> <span>Provas</span></a></li>
+				<li class="nav-item"><a class="nav-link" href="treinamento-manter.php"> <i class="fas fa-bullseye"></i> <span>Treino</span></a></li>
 			</ul>
 
 			
@@ -106,9 +106,9 @@ $catUsuarioLogado = $_SESSION['catUsuario'];
 			<!-- Sidebar - Menu Lateral -->
 			<ul class="sidebar navbar-nav">
 
-				<li class="nav-item"><a class="nav-link" href="treinamento-manter.php"> <i class="fas fa-bullseye"></i> <span>Manter Treino</span></a></li>
-				<li class="nav-item"><a class="nav-link" href="membro-listar-mensalidade.php"> <i class="fas fa-dollar-sign"></i> <span>Consultar Mensalidades</span></a></li>
-				<li class="nav-item"><a class="nav-link" href="membro-manter-editar.php"> <i class="fas fa-user-circle fa-fw"></i> <span>Editar Perfil</span></a></li>
+				<li class="nav-item"><a class="nav-link" href="treinamento-manter.php"> <i class="fas fa-bullseye"></i> <span>Treino</span></a></li>
+				<li class="nav-item"><a class="nav-link" href="membro-listar-mensalidade.php"> <i class="fas fa-dollar-sign"></i> <span>Mensalidades</span></a></li>
+				<li class="nav-item"><a class="nav-link" href="membro-manter-editar.php"> <i class="fas fa-user-circle fa-fw"></i> <span>Perfil</span></a></li>
 			</ul>
 
 		<?php } ?>
