@@ -46,7 +46,7 @@ if ($retornoReceita->getValor() < $retornoDespesa->getValor()) {
 				<div class="card-body-icon">
 					<i class="fas fa-fw fa-money-bill-wave"></i>
 				</div>
-				<div class="mr-5"><?php echo $retornoReceita->getValor(); ?></div>
+				<div class="mr-5"><?php echo "$".$retornoReceita->getValor(); ?></div>
 			</div>
 			<a class="card-footer text-white clearfix small z-1" href="#"> <span
 				class="float-left">Receita</span> <span class="float-right"> <i
@@ -62,7 +62,7 @@ if ($retornoReceita->getValor() < $retornoDespesa->getValor()) {
 				<div class="card-body-icon">
 					<i class="fas fa-fw fa-wallet"></i>
 				</div>
-				<div class="mr-5"><?php echo $retornoDespesa->getValor(); ?></div>
+				<div class="mr-5"><?php echo "$".$retornoDespesa->getValor(); ?></div>
 			</div>
 			<a class="card-footer text-white clearfix small z-1" href="#"> <span
 				class="float-left">Despesa</span> <span class="float-right"> <i
@@ -78,7 +78,7 @@ if ($retornoReceita->getValor() < $retornoDespesa->getValor()) {
 				<div class="card-body-icon">
 					<i class="fas fa-fw fa-cash-register"></i>
 				</div>
-				<div class="mr-5"><?php echo $retornoTotal; ?></div>
+				<div class="mr-5"><?php echo "$".$retornoTotal; ?></div>
 			</div>
 			<a class="card-footer text-white clearfix small z-1" href="#"> <span
 				class="float-left">Caixa</span> <span class="float-right"> <i
