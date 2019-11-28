@@ -21,11 +21,20 @@ $repoDespesa = new RepositorioDespesa();
 
 $despesa = new Despesa();
 
+
+
+
 if (isset($_POST['parcelado'])) {
     $parcelado = isset($_POST['parcelado']);
 } else {
-    $parcelado = null;
+    $parcelado = 0;
 }
+
+
+if ($qtdParcelas == "") {
+    $qtdParcelas = "1";
+}
+
 
 $despesa->setNome($nome);
 $despesa->setValor($valor);

@@ -17,7 +17,7 @@ if (isset($_GET['login'])) {
 <meta name="author" content="">
 <link rel="icon" href="/docs/4.1/assets/img/favicons/favicon.ico">
 
-<title>CTOR - Area Administrativa</title>
+<title>CTOR - Área Administrativa</title>
 <!-- Bootstrap core CSS -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"

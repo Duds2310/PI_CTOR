@@ -71,6 +71,7 @@ if ($temRegistro) {
 				</div>
 				<div class="form-group col-md-6">
 					<label> Data de Vencimento </label> <input type="date" class="form-control" id="datavencimento" name="datavencimento" placeholder="Data de Vencimento" required="required" autofocus="autofocus">
+
 				</div>
 			</div>
 
