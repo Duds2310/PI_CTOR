@@ -84,6 +84,7 @@ $catUsuarioLogado = $_SESSION['catUsuario'];
 
 
 		<?php if ($catUsuarioLogado == '2') { ?>
+
 			<!-- Sidebar - Menu Lateral -->
 			<ul class="sidebar navbar-nav">
 				<li class="nav-item"><a class="nav-link" href="dashboard.php"> <i class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
@@ -96,6 +97,7 @@ $catUsuarioLogado = $_SESSION['catUsuario'];
 			</ul>
 
 			
+
 
 		<?php } ?>
 

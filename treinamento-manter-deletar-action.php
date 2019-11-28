@@ -21,7 +21,10 @@ $resultado = $repositorioTreinamento->deletarTreinamento($TreinamentoDeletar);
 if ($resultado == true) {
     header('Location: treinamento-manter.php');
 } else {
-    echo "Erro na exclusão do treino";
-}
-
+    ?>
+    <div class="alert alert-danger" role="alert">
+		<?php echo "Erro na exclusão do treino";?>
+	</div>
+<?php 
+    }
 ?>

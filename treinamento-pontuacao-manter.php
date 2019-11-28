@@ -28,7 +28,11 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 // }
 // var_dump($treinamento);
 // die("Fim");
+
+
 ?>
+
+
 <!-- Breadcrumbs-->
 <ol class="breadcrumb">
 	<li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
@@ -44,6 +48,9 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 			<div class="card-body">
 				<form action="usuario-manter-editar-action.php?id=<?php echo $idTreinamento; ?>" method="post" action="treinamento-manter-editar-action.php">
 					<input type="hidden" value="<?php echo $treinamento->getId(); ?>" name="id">
+
+					<!--  oi???? -->
+
 					<!-- CATEGORIA E DATA -->
 
 
@@ -93,17 +100,12 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 							</div>
 							<!--COMEÇO SITUACAO -->
 							<!--COMEÇO ID USUARIO -->
-							<div class="col-md-6">
-								<label>Id Usuario</label>
-								<div class="form-label-group">
-									<input type="text" id="idusuario" value="<?php echo $treinamento->getIdUsuario() ?>" class="form-control" placeholder="id" required="required" readonly>
-								</div>
-							</div>
+
 						</div>
 					</div>
 					<!--FIM ID USUARIO -->
 				</form>
-				<button type="submit" class="btn btn-primary mb-2">Alterar</button>
+				<button class="btn btn-primary" type="submit">Alterar</button>
 			</div>
 			<!-- fim do card body -->
 		</div>
@@ -233,16 +235,18 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 							<div class="col-md-2">
 								<input type="hidden" name="totalEnd" id="totalEnd" class="form-control" placeholder="Total" value="<?php ?>" readonly>
 							</div>
-							<!--  
-						OUTROS DISPAROS 4o AO 6o- COLOCAR HIDDEN E NULL -->
+							<!-- PASSANDO A CATEGORIA PARA O CADASTRO DA PONTUAÇÃO -->
+							<input type="hidden" name="categoriaHidden" id="categoriaHidden" class="form-control" value="<?php echo $treinamento->getCategoria(); ?>">
+							
+						<!--  OUTROS DISPAROS 4o AO 6o- COLOCAR HIDDEN E NULL -->
 							<div class="col-md-2">
-								<input type="hidden" name="quartoDisparo" id="quartoDisparo" class="form-control" value="null" readonly>
+								<input type="hidden" name="quartoDisparo" id="quartoDisparo" class="form-control" value="0" readonly>
 							</div>
 							<div class="col-md-2">
-								<input type="hidden" name="quintoDisparo" id="quintoDisparo" class="form-control" value="null" readonly>
+								<input type="hidden" name="quintoDisparo" id="quintoDisparo" class="form-control" value="0" readonly>
 							</div>
 							<div class="col-md-2">
-								<input type="hidden" name="sextoDisparo" id="sextoDisparo" class="form-control" value="null" readonly>
+								<input type="hidden" name="sextoDisparo" id="sextoDisparo" class="form-control" value="0" readonly>
 							</div>
 							<div class="col-md-2">
 								<input type="hidden" name="treId" id="treId" class="form-control" value="<?php echo $idTreinamento ?>">
@@ -254,11 +258,13 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 			</div>
 		</div>
 	</div>
+
+
 	<!-- INíCIO TABELA INDOOR PRIMEIRO ROUND -->
 	<div class="row">
-		<div class="col-md-6">
+		<div class="col-md-6 col-xl-6 col-lg-6">
 			<div class="card mb-3">
-				<table class="table table-bordered" id="MyTableID" width="100%" cellspacing="0">
+				<table class="table table-bordered" width="100%" cellspacing="0">
 					<thead>
 						<tr>
 							<th scope="col" colspan="4" class="table-active">1º Round </th>
@@ -268,6 +274,8 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 					</thead>
 					<tbody>
 						<?php
+							$somaEnds = 0;
+
 							$i = 0;
 							$contadorEnd = 1;
 							while ($i < 10) {
@@ -292,12 +300,21 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 								</tr>
 							<?php } /*FIM ELSE*/ ?>
 						<?php
+							/*
+								if(empty($pontuacao)){
+								$somaEnds = 0;
+								}else{$somaEnds = $somaEnds + $pontuacao[$i]->getEndTotal();
+								}
+							*/	
+
 								$contadorEnd++;
 								$i++;
 							}  /*FIM WHILE*/ ?>
 						<tr>
 							<th scope="row" colspan="5" class="table-secondary">Total: </th>
-							<td class="table-secondary">265</td>
+
+							<td class="table-secondary"><?php /*echo $somaEnds; */?></td>
+
 						</tr>
 					</tbody>
 				</table>
@@ -306,67 +323,59 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 		<!-- FIM TABELA INDOOR PRIMEIRO ROUND -->
 		<!-- INíCIO TABELA INDOOR SEGUNDO ROUND -->
 		<?php
-			if ($pontuacao[$i]->getRound() == 2) {
-				?>
-			<div class="col-md-6 col-sm-12">
-				<div class="card mb-3">
-					<table class="table table-bordered">
-						<thead>
-							<tr>
-								<th scope="col" colspan="4" class="table-active">2º Round</th>
-								<th scope="col" class="table-active">Total</th>
-								<th scope="col" class="table-active">Ações</th>
-							</tr>
-						</thead>
-						<?php
-								$i = 10;
-								$contadorEnd = 1;
-								while ($i < 20) {
-									if (empty($pontuacao[$i])) {
-										?>
-								<tr>
-									<th scope="row"><?php echo $contadorEnd ?>º End</th>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-								</tr>
-							<?php } /*FIM IF*/ else { ?>
-								<tr>
-									<th scope="row"><?php echo $contadorEnd ?>º End</th>
-									<td><?php echo $pontuacao[$i]->getPrimeiroDisparo(); ?></td>
-									<td><?php echo $pontuacao[$i]->getSegundoDisparo(); ?></td>
-									<td><?php echo $pontuacao[$i]->getTerceiroDisparo(); ?></td>
-									<td><?php echo $pontuacao[$i]->getEndTotal(); ?></td>
-									<td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-								</tr>
-							<?php } /*FIM ELSE*/ ?>
-						<?php
-									$contadorEnd++;
-									$i++;
-								}  /*FIM WHILE*/ ?>
+
+			?>
+		<div class="col-md-6 col-sm-12">
+			<div class="card mb-3">
+				<table class="table table-bordered" width="100%" cellspacing="0">
+
+					<thead>
 						<tr>
-							<th scope="row" colspan="5" class="table-secondary">Total: </th>
-							<td class="table-secondary"></td>
+							<th scope="col" colspan="4" class="table-active">2º Round</th>
+							<th scope="col" class="table-active">Total</th>
+							<th scope="col" class="table-active">Ações</th>
 						</tr>
-						</tbody>
-					</table>
-				</div>
+					</thead>
+					<?php
+						$i = 10;
+						$contadorEnd = 1;
+						while ($i < 20) {
+							if (empty($pontuacao[$i])) {
+								?>
+							<tr>
+								<th scope="row"><?php echo $contadorEnd ?>º End</th>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
+							</tr>
+						<?php } /*FIM IF*/ else { ?>
+							<tr>
+								<th scope="row"><?php echo $contadorEnd ?>º End</th>
+								<td><?php echo $pontuacao[$i]->getPrimeiroDisparo(); ?></td>
+								<td><?php echo $pontuacao[$i]->getSegundoDisparo(); ?></td>
+								<td><?php echo $pontuacao[$i]->getTerceiroDisparo(); ?></td>
+								<td><?php echo $pontuacao[$i]->getEndTotal(); ?></td>
+								<td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
+							</tr>
+						<?php } /*FIM ELSE*/ ?>
+					<?php
+							$contadorEnd++;
+							$i++;
+						}  /*FIM WHILE*/ ?>
+					<tr>
+						<th scope="row" colspan="5" class="table-secondary">Total: </th>
+						<td class="table-secondary"></td>
+					</tr>
+					</tbody>
+				</table>
 			</div>
-		<?php } /*FIM IF*/ else { ?>
-			<tr>
-				<th scope="row"><?php echo $contadorEnd ?>º End</th>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-			</tr>
-		<?php } ?>
+		</div>
+		<?php  /*FIM IF*/ ?>
 	</div>
-	<!-- FIM TABELA INDOOR SEGUNDO ROUND
-<!--  Pontuação TOTAL -->
+	<!-- FIM TABELA INDOOR SEGUNDO ROUND -->
+	<!--  Pontuação TOTAL -->
 	<table class="table table-bordered">
 		<thead>
 			<tr>
@@ -376,8 +385,11 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 		</thead>
 	</table>
 	<!--  FIM PONTUACAO TOTAL -->
-<?php } else { ?>
+
+<?php  } else { ?>
 	<!-- FORMULÁRIO DE PONTUAÇÃO DA CATEGORIA OUTDOOR -->
+
+
 	<div class="row">
 		<div class="col-md-12">
 			<div class="card mb-3">
@@ -386,27 +398,30 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 				</div>
 				<div class="card-body">
 					<form action="pontuacao-manter-cadastrar-action.php" method="post">
-						<div class="form-group form-row">
-							<!-- ROUND -->
-							<div class="form-group col-md-3">
-								<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">Selecionar
-									Round</label> <select name="round" id="round" class="form-control">
-									<option>1º Round</option>
-									<option>2º Round</option>
-								</select>
-							</div>
-							<!-- FIM ROUND -->
-							<!-- END -->
-							<div class="form-group col-md-3">
-								<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">Selecionar End</label>
-								<select name="end" id="end" class="form-control">
-									<option>1º End</option>
-									<option>2º End</option>
-									<option>3º End</option>
-									<option>4º End</option>
-									<option>5º End</option>
-									<option>6º End</option>
-								</select>
+						<div class="form-group">
+							<div class="form-row">
+								<!-- ROUND -->
+								<div class="col-md-6">
+									<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">Selecionar
+										Round</label> <select name="round" id="round" class="form-control">
+										<option>1º Round</option>
+										<option>2º Round</option>
+									</select>
+								</div>
+								<!-- FIM ROUND -->
+								<!-- END -->
+								<div class="col-md-6">
+									<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">Selecionar End</label>
+									<select name="end" id="end" class="form-control">
+										<option>1º End</option>
+										<option>2º End</option>
+										<option>3º End</option>
+										<option>4º End</option>
+										<option>5º End</option>
+										<option>6º End</option>
+									</select>
+								</div>
+
 							</div>
 						</div>
 						<!-- FIM END -->
@@ -480,7 +495,8 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 							<!--QUARTO DISPARO -->
 							<div class="form-group col-md-4">
 								<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">
-									Selecionar Pontuação(4º Disparo)
+									Selecionar Pontuação (4º Disparo)
+
 								</label>
 								<select name="quartoDisparo" id="quartoDisparo" class="form-control">
 									<option>M</option>
@@ -501,7 +517,8 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 							<!-- QUINTO DISPARO -->
 							<div class="form-group col-md-4">
 								<label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm">
-									Selecionar Pontuação(5º Disparo)
+									Selecionar Pontuação (5º Disparo)
+
 								</label>
 								<select name="quintoDisparo" id="quintoDisparo" class="form-control">
 									<option>M</option>
@@ -547,12 +564,10 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 								<input type="text" name="Total" id="TotalOutdoor" class="form-control" placeholder="Total" readonly>
 							</div>
 						</div>
+						<!-- PASSANDO A CATEGORIA PARA O CADASTRO DA PONTUAÇÃO -->
+						<input type="hidden" name="categoriaHidden" id="categoriaHidden" class="form-control" value="<?php echo $treinamento->getCategoria(); ?>">
+
 						<div class="col-md-2">
-							<?php
-								// 					echo "--------------------- ID---------------------";
-								// 					  echo $idTreinamento;
-								// 					   die("--------------------- ID")
-								?>
 							<!-- PASSANDO ID USUARIO -->
 							<input type="hidden" name="treId" id="treId" class="form-control" value="<?php echo $idTreinamento ?>">
 						</div>
@@ -560,141 +575,145 @@ $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
 						<button type="submit" class="btn btn-primary mb-2">Cadastrar</button>
 					</form>
 				</div>
+
 			</div>
 		</div>
 	</div>
-	<!-- INíCIO TABELA OUTDOOR PRIMEIRO ROUND-->
+
+	<!-- INíCIO CARD DISPAROS-->
+
 	<div class="row">
-		<div class="col-md-6">
+		<div class="col-md-12">
 			<div class="card mb-3">
-				<table class="table table-bordered" id="MyTableID" width="100%" cellspacing="0">
-					<thead>
-						<tr>
-							<th scope="col" colspan="7" class="table-active">1º Round </th>
-							<th scope="col" class="table-active">Total </th>
-							<th scope="col" class="table-active">Ações </th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php
-							$i = 0;
-							$contadorEnd = 1;
-							while ($i < 6) {
-								if (empty($pontuacao[$i])) {
-									?>
-								<tr>
-									<th scope="row"><?php echo $contadorEnd ?>º End</th>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-								</tr>
-							<?php } /*FIM IF*/ else { ?>
-								<tr>
-									<th scope="row"><?php echo $contadorEnd ?>º End</th>
-									<td><?php echo $pontuacao[$i]->getPrimeiroDisparo(); ?></td>
-									<td><?php echo $pontuacao[$i]->getSegundoDisparo(); ?></td>
-									<td><?php echo $pontuacao[$i]->getTerceiroDisparo(); ?></td>
-									<td><?php echo $pontuacao[$i]->getQuartoDisparo(); ?></td>
-									<td><?php echo $pontuacao[$i]->getQuintoDisparo(); ?></td>
-									<td><?php echo $pontuacao[$i]->getSextoDisparo(); ?></td>
-									<td><?php echo $pontuacao[$i]->getEndTotal(); ?></td>
-									<td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-								</tr>
-							<?php } /*FIM ELSE*/ ?>
-						<?php
-								$contadorEnd++;
-								$i++;
-							}  /*FIM WHILE*/ ?>
-						<tr>
-							<th scope="row" colspan="8" class="table-secondary">Total: </th>
-							<td class="table-secondary">265</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-		<!-- FIM TABELA OUTDOOR PRIMEIRO ROUND -->
-		<!-- INíCIO TABELA OUTDOOR SEGUNDO ROUND -->
-		<?php
-			if (empty($pontuacao[$i])) {
-				//if ($pontuacao[$i]->getRound() == 2)  {
-				?>
-			<div class="col-md-6 col-sm-12">
-				<div class="card mb-3">
-					<table class="table table-bordered">
-						<thead>
-							<tr>
-								<th scope="col" colspan="7" class="table-active">2º Round</th>
-								<th scope="col" class="table-active">Total</th>
-								<th scope="col" class="table-active">Ações</th>
-							</tr>
-						</thead>
-						<?php
-								$i = 6;
-								$contadorEnd = 1;
-								while ($i < 12) {
-									if (empty($pontuacao[$i])) {
-										?>
-								<tr>
-									<th scope="row"><?php echo $contadorEnd ?>º End</th>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-								</tr>
-							<?php } /*FIM IF*/ elseif ($pontuacao[$i]->getRound() == 2) { ?>
-								<tr>
-									<th scope="row"><?php echo $contadorEnd ?>º End</th>
-									<td><?php echo $pontuacao[$i]->getPrimeiroDisparo(); ?></td>
-									<td><?php echo $pontuacao[$i]->getSegundoDisparo(); ?></td>
-									<td><?php echo $pontuacao[$i]->getTerceiroDisparo(); ?></td>
-									<td><?php echo $pontuacao[$i]->getQuartoDisparo(); ?></td>
-									<td><?php echo $pontuacao[$i]->getQuintoDisparo(); ?></td>
-									<td><?php echo $pontuacao[$i]->getSextoDisparo(); ?></td>
-									<td><?php echo $pontuacao[$i]->getEndTotal(); ?></td>
-									<td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
-								</tr>
-							<?php }/*FIM ELSEif*/ else {
-											echo "UAHEHUAEUHAUEHAUHEUAH ERROOOO";
-										} ?>
-						<?php
-									$contadorEnd++;
-									$i++;
-								}  /*FIM WHILE*/ ?>
-						<tr>
-							<th scope="row" colspan="8" class="table-secondary">Total: </th>
-							<td class="table-secondary"></td>
-						</tr>
-						</tbody>
-					</table>
+				<div class="card-header">
+					<i class="fas fa-bullseye"></i> Disparos
+				</div>
+
+				<div class="card-body">
+					<div class="form-group">
+						<div class="form-row">
+							<!-- INÍCIO TABELA PRIMEIRO ROUND OUTDOOR-->
+							<div class="col-md-6 col-xl-6 col-lg-6">
+								<table class="table-responsive-md-6 table-bordered" width="100%" cellspacing="0">
+									<thead>
+										<tr>
+											<th scope="col" colspan="7" class="table-active">1º Round </th>
+											<th scope="col" class="table-active">Total </th>
+											<th scope="col" class="table-active">Ações </th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php
+											$i = 0;
+											$contadorEnd = 1;
+											while ($i < 6) {
+												if (empty($pontuacao[$i])) {
+													?>
+												<tr>
+													<th scope="row"><?php echo $contadorEnd ?>º End</th>
+													<td>&nbsp;</td>
+													<td>&nbsp;</td>
+													<td>&nbsp;</td>
+													<td>&nbsp;</td>
+													<td>&nbsp;</td>
+													<td>&nbsp;</td>
+													<td>&nbsp;</td>
+													<td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
+												</tr>
+											<?php } /*FIM IF*/ else { ?>
+												<tr>
+													<th scope="row"><?php echo $contadorEnd ?>º End</th>
+													<td><?php echo $pontuacao[$i]->getPrimeiroDisparo(); ?></td>
+													<td><?php echo $pontuacao[$i]->getSegundoDisparo(); ?></td>
+													<td><?php echo $pontuacao[$i]->getTerceiroDisparo(); ?></td>
+													<td><?php echo $pontuacao[$i]->getQuartoDisparo(); ?></td>
+													<td><?php echo $pontuacao[$i]->getQuintoDisparo(); ?></td>
+													<td><?php echo $pontuacao[$i]->getSextoDisparo(); ?></td>
+													<td><?php echo $pontuacao[$i]->getEndTotal(); ?></td>
+													<td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
+												</tr>
+											<?php } /*FIM ELSE*/ ?>
+										<?php
+												$contadorEnd++;
+												$i++;
+											}  /*FIM WHILE*/ ?>
+										<tr>
+											<th scope="row" colspan="8" class="table-secondary">Total: </th>
+											<td class="table-secondary">265</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!-- FIM TABELA OUTDOOR PRIMEIRO ROUND -->
+							<!--INÍCIO TABELA OUTDOOR SEGUNDO ROUND  -->
+
+							<div class="col-md-6 col-xl-6 col-lg-6">
+								<!-- class="align" -->
+								<table class="table-responsive-md-6 table-bordered" width="100%" cellspacing="0">
+									<thead>
+										<tr>
+											<th scope="col" colspan="7" class="table-active">2º Round </th>
+											<th scope="col" class="table-active">Total </th>
+											<th scope="col" class="table-active">Ações </th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php
+											$i = 6;
+											$contadorEnd = 1;
+											while ($i < 12) {
+												if (empty($pontuacao[$i])) {
+													?>
+												<tr>
+													<th scope="row"><?php echo $contadorEnd ?>º End</th>
+													<td>&nbsp;</td>
+													<td>&nbsp;</td>
+													<td>&nbsp;</td>
+													<td>&nbsp;</td>
+													<td>&nbsp;</td>
+													<td>&nbsp;</td>
+													<td>&nbsp;</td>
+													<td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
+												</tr>
+											<?php } /*FIM IF*/ else { ?>
+												<tr>
+													<th scope="row"><?php echo $contadorEnd ?>º End</th>
+													<td><?php echo $pontuacao[$i]->getPrimeiroDisparo(); ?></td>
+													<td><?php echo $pontuacao[$i]->getSegundoDisparo(); ?></td>
+													<td><?php echo $pontuacao[$i]->getTerceiroDisparo(); ?></td>
+													<td><?php echo $pontuacao[$i]->getQuartoDisparo(); ?></td>
+													<td><?php echo $pontuacao[$i]->getQuintoDisparo(); ?></td>
+													<td><?php echo $pontuacao[$i]->getSextoDisparo(); ?></td>
+													<td><?php echo $pontuacao[$i]->getEndTotal(); ?></td>
+													<td>Alterar <a href="#"><i class="fa fa-edit"></i></a> </td>
+												</tr>
+											<?php } /*FIM ELSE*/ ?>
+										<?php
+												$contadorEnd++;
+												$i++;
+											}  /*FIM WHILE*/ ?>
+										<tr>
+											<th scope="row" colspan="8" class="table-secondary">Total: </th>
+											<td class="table-secondary">265</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+						</div>
+					</div>
 				</div>
 			</div>
+		</div>
+	</div>
 
 	</div>
-	<!-- FIM TABELA OUTDOOR SEGUNDO ROUND-->
-	<!--  PONTUACAO TOTAL -->
-	<table class="table table-bordered">
-		<thead>
-			<tr>
-				<th scope="col" colspan="4" class="table-success"><i class="fas fa-crosshairs"></i> PONTUAÇÃO TOTAL:</th>
-				<th scope="col" class="table-success">640</th>
-			</tr>
-		</thead>
-	</table>
+
 	<!--  FIM PONTUACAO TOTAL -->
-<?php }
-} //Fim do código da categoria OUTDOOR
-?>
-<!--  incluindo rodapé-->
+	<!--  incluindo rodapé-->
+
 <?php
+
+} //fim do else para categoria OUTDOOR (linha 400)
 include 'inc.rodape.php';
 ?>

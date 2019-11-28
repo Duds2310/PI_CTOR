@@ -54,12 +54,10 @@ $i = 0;
 					</select>
 				</div>
 				<div class="form-group col-md-4">
-				<label for="colFormLabelSm" class="col-sm-4 col-form-label col-form-label-sm">Situação</label>
-					<select name="situacao" id="situacao"
+					<label for="colFormLabelSm" class="col-sm-4 col-form-label col-form-label-sm"></label>
+					<input type="hidden" name="situacao" id="situacao" value="Ativo"
 						class="form-control">
-						<option>Ativo</option>
-						<option>Inativo</option>
-					</select>
+					
 				</div>
 			</div>
 			<div class="form-group form-row">
@@ -72,13 +70,6 @@ $i = 0;
 				<div class="col-md-4">
 					<input type="date" name="data" class="form-control"
 						placeholder="Data">
-				</div>
-
-			</div>
-			<div class="form-group form-row">
-				<div class="col-md-4">
-					<input type="text" name="idusuario" id="idusuario" class="form-control"
-						placeholder="id Usuário">
 				</div>
 
 			</div>
