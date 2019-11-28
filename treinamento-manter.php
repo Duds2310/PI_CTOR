@@ -89,7 +89,7 @@ $i = 0;
 				<thead>
 					<tr>
 						<th>Categoria</th>
-						<th>Descrição</th>
+						<th>Situação</th>
 						<th>Data</th>
 						<th>Ações</th>
 					</tr>
@@ -98,7 +98,7 @@ $i = 0;
 						<?php while($i < $quantidade) { ?> 
 					<tr>
 						<td><?php echo $ListaTreinamentos[$i]->getCategoria(); ?></td>
-						<td><?php echo $ListaTreinamentos[$i]->getDescricao(); ?></td>
+						<td><?php echo $ListaTreinamentos[$i]->getSituacao(); ?></td>
 						
 						<?php $data = date_create($ListaTreinamentos[$i]->getData());?>
 						<td><?php echo date_format($data, 'd/m/y'); ?></td>

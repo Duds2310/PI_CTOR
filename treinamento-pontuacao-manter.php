@@ -19,53 +19,6 @@ $repositorioPontuacao = new RepositorioPontuacao();
 $treinamento = $repositorioTreinamento->consultarTreinamentoPorId($idTreinamento);
 /*$pontuacao = $repositorioPontuacao->consultarPontuacaoPorId($idPontuacao); */
 $pontuacao = $repositorioPontuacao->consultarPontuacaoPorTreino($idTreinamento);
-/*
-$validador = $listaTela == false ? false : $listaTela;
-
-if ($validador) {
-	while ($c < count($listaTela)) {
-		$total = $total + $listaTela[$c]->getValor();
-		$c++;
-	}
-}
-*/
-
-//var_dump($pontuacao);
-//die();
-//Criando variável para soma dos pontos
-$totalPontos1 = 0;
-$cont = 0;
-$cont2 = 10;
-
-var_dump($pontuacao);
-die();
-
-/*
-if ($pontuacao == true) {
-	$teste = count($pontuacao);
-
-	
-
-	if ($cont < $teste) {
-		while ($cont < 11) {
-			$controleSoma = $pontuacao[$cont]->getEndTotal();
-			$totalPontos1 = $totalPontos1 + $controleSoma;
-			$cont++;
-		}
-	} else {
-		while ($cont2 < 11) {
-			$contSoma = $pontuacao[$cont2]->getEndTotal();
-			$totalPontos2 = $totalPontos2 + $contSoma;
-
-			$cont2++;
-		}
-	}
-}
-*/
-
-
-
-
 
 
 //$pontRound = $repositorioPontuacao->consultarRoundEndAtual($idTreinamento);
@@ -284,8 +237,8 @@ if ($pontuacao == true) {
 							</div>
 							<!-- PASSANDO A CATEGORIA PARA O CADASTRO DA PONTUAÇÃO -->
 							<input type="hidden" name="categoriaHidden" id="categoriaHidden" class="form-control" value="<?php echo $treinamento->getCategoria(); ?>">
-
-							<!--  OUTROS DISPAROS 4o AO 6o- COLOCAR HIDDEN E NULL -->
+							
+						<!--  OUTROS DISPAROS 4o AO 6o- COLOCAR HIDDEN E NULL -->
 							<div class="col-md-2">
 								<input type="hidden" name="quartoDisparo" id="quartoDisparo" class="form-control" value="0" readonly>
 							</div>
@@ -311,7 +264,7 @@ if ($pontuacao == true) {
 	<div class="row">
 		<div class="col-md-6 col-xl-6 col-lg-6">
 			<div class="card mb-3">
-				<table class="table-responsive-md-6 table-bordered" width="100%" cellspacing="0">
+				<table class="table table-bordered" width="100%" cellspacing="0">
 					<thead>
 						<tr>
 							<th scope="col" colspan="4" class="table-active">1º Round </th>
@@ -321,7 +274,7 @@ if ($pontuacao == true) {
 					</thead>
 					<tbody>
 						<?php
-
+							$somaEnds = 0;
 
 							$i = 0;
 							$contadorEnd = 1;
@@ -347,20 +300,20 @@ if ($pontuacao == true) {
 								</tr>
 							<?php } /*FIM ELSE*/ ?>
 						<?php
-								/*
+							/*
 								if(empty($pontuacao)){
 								$somaEnds = 0;
 								}else{$somaEnds = $somaEnds + $pontuacao[$i]->getEndTotal();
 								}
+							*/	
 
 								$contadorEnd++;
 								$i++;
 							}  /*FIM WHILE*/ ?>
 						<tr>
+							<th scope="row" colspan="5" class="table-secondary">Total: </th>
 
-							<th scope="row" colspan="4" class="table-secondary">Total: </th>
-							<td class="table-secondary"><?php echo $totalPontos1; ?></td>
-							<td class="table-secondary"></td>
+							<td class="table-secondary"><?php /*echo $somaEnds; */?></td>
 
 						</tr>
 					</tbody>
@@ -374,7 +327,7 @@ if ($pontuacao == true) {
 			?>
 		<div class="col-md-6 col-sm-12">
 			<div class="card mb-3">
-				<table class="table-responsive-md-6 table-bordered" width="100%" cellspacing="0">
+				<table class="table table-bordered" width="100%" cellspacing="0">
 
 					<thead>
 						<tr>
@@ -411,21 +364,8 @@ if ($pontuacao == true) {
 							$contadorEnd++;
 							$i++;
 						}  /*FIM WHILE*/ ?>
-
-					<?php /* SOMA ROUND 2
-    				$totalPontos2 = 0;
-                            $cont = 0;
-                            if ($pontuacao) {
-                            	while ($cont < count($pontuacao)){
-                            		$totalPontos1 = 	$totalPontos1 + $pontuacao[$cont]->getEndTotal();
-                            		
-                            
-                            		$cont++;
-                            	} 
-                      }*/ ?>
 					<tr>
-						<th scope="row" colspan="4" class="table-secondary">Total: </th>
-						<td class="table-secondary"><?php ?> Total </td>
+						<th scope="row" colspan="5" class="table-secondary">Total: </th>
 						<td class="table-secondary"></td>
 					</tr>
 					</tbody>
@@ -767,7 +707,7 @@ if ($pontuacao == true) {
 		</div>
 	</div>
 
-
+	</div>
 
 	<!--  FIM PONTUACAO TOTAL -->
 	<!--  incluindo rodapé-->
