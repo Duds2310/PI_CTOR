@@ -5,6 +5,7 @@ use src\ConexaoMySQL;
 use src\modelo\Receita;
 use src\Usuario;
 use src\modelo\ReceitaOTD;
+
 require_once 'src/ConexaoMySQL.php';
 require_once 'src/modelo/Receita.php';
 require_once 'src/modelo/ReceitaOTD.php';
@@ -284,6 +285,42 @@ class RepositorioReceita
 
     }
     
+
+    public function somarReceita()
+    {
+        $retornoReceita = null; // vari�vel respons�vel por armazenar as despesas
+        
+        $query = "SELECT SUM(REC_VALOR) as REC_VALOR FROM TB_RECEITAS"; // vari�vel respons�vel por armazenar a query do banco
+        
+        $conexao = $this->ConexaoMySQL->abrirBanco(); // vari�vel respons�vel por abrir o link de conexao
+        
+        $resultado = $conexao->query($query); // respons�vel por executar a query no banco de dados
+        
+       
+        // verificar se retornou o valor
+        
+        if ($resultado->num_rows > 0) {
+            
+            $linha = $resultado->fetch_assoc();
+            $Receita = new Receita();
+            
+            $Receita->setValor($linha['REC_VALOR']);
+            
+            $retornoReceita = $Receita;
+            
+            
+        } else {
+            $retornoReceita = false;
+        }
+        $this->ConexaoMySQL->fecharBanco();
+        
+        return $retornoReceita;
+    }
+    
+    
+    
+    
+    
     
     public function listarMensalidadePorIdUsuario($idUsuarioLogado)
     {
@@ -322,7 +359,7 @@ class RepositorioReceita
         return $Receitas;
         
     }
-    
+
 
 }
 
