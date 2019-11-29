@@ -1,4 +1,5 @@
 <?php
+
 use src\RepositorioTreinamento;
 
 include 'inc.cabecalho.php';
@@ -24,8 +25,8 @@ $i = 0;
 */
 
 
-if ($ListaTreinamentos != FALSE){
-    $quantidade = count($ListaTreinamentos);
+if ($ListaTreinamentos != FALSE) {
+	$quantidade = count($ListaTreinamentos);
 }
 $i = 0;
 ?>
@@ -43,40 +44,31 @@ $i = 0;
 		<i class="fas fa-address-card"></i> Novo Treino
 	</div>
 	<div class="card-body">
+
 		<form action="treinamento-manter-cadastrar-action.php" method="post">
 			<div class="form-group form-row">
-				<div class="form-group col-md-4">
-				<label for="colFormLabelSm" class="col-sm-4 col-form-label col-form-label-sm">Categoria</label>
-					<select name="categoria" id="categoria"
-						class="form-control">
+				<div class="form-group col-md-6">
+					<label for="colFormLabelSm" class="col-sm-4 col-form-label col-form-label-sm">Categoria</label>
+					<select name="categoria" id="categoria" class="form-control">
+						<option>-- Selecione uma categoria --</option>
 						<option>Indoor</option>
 						<option>Outdoor</option>
 					</select>
 				</div>
-				<div class="form-group col-md-4">
-					<label for="colFormLabelSm" class="col-sm-4 col-form-label col-form-label-sm"></label>
-					<input type="hidden" name="situacao" id="situacao" value="Ativo"
-						class="form-control">
-					
+				<div class="col-md-6">
+					<label>Data</label>
+					<input type="date" name="data" id="data" class="form-control" placeholder="Data" required="required">
 				</div>
 			</div>
 			<div class="form-group form-row">
 				<div class="col-md-12">
-					<input type="text" name="descricao" class="form-control"
-						placeholder="Descrição">
+					<textarea class="form-control" name="descricao" id="descricao" type="text" rows="3" placeholder="Descrição"></textarea>
 				</div>
-			</div>
-			<div class="form-group form-row">
-				<div class="col-md-4">
-					<input type="date" name="data" class="form-control"
-						placeholder="Data">
-				</div>
-
 			</div>
 			<button type="submit" class="btn btn-primary mb-2">Cadastrar</button>
 		</form>
 	</div>
-</div>  
+</div>
 <!-- DataTables Example -->
 <div class="card mb-3">
 	<div class="card-header">
@@ -84,8 +76,7 @@ $i = 0;
 	</div>
 	<div class="card-body">
 		<div class="table-responsive">
-			<table class="table table-bordered" id="MyTableID" width="100%"
-				cellspacing="0">
+			<table class="table table-bordered" id="MyTableID" width="100%" cellspacing="0">
 				<thead>
 					<tr>
 						<th>Categoria</th>
@@ -95,28 +86,25 @@ $i = 0;
 					</tr>
 				</thead>
 				<tbody>
-						<?php while($i < $quantidade) { ?> 
-					<tr>
-						<td><?php echo $ListaTreinamentos[$i]->getCategoria(); ?></td>
-						<td><?php echo $ListaTreinamentos[$i]->getDescricao(); ?></td>
-						
-						<?php $data = date_create($ListaTreinamentos[$i]->getData());?>
-						<td><?php echo date_format($data, 'd/m/y'); ?></td>
-						<td><a
-							href="treinamento-pontuacao-manter.php?id=<?php echo $ListaTreinamentos[$i]->getID(); ?>"><i
-								class="fa fa-edit"></i></a> |<a
-							href="treinamento-manter-deletar-action.php?id=<?php echo $ListaTreinamentos[$i]->getID(); ?>">
-								<i class="fa fa-trash"></i>
-						</a></td>
-					</tr>
-				<?php $i++; } ?>	
+					<?php while ($i < $quantidade) { ?>
+						<tr>
+							<td><?php echo $ListaTreinamentos[$i]->getCategoria(); ?></td>
+							<td><?php echo $ListaTreinamentos[$i]->getDescricao(); ?></td>
+
+							<?php $data = date_create($ListaTreinamentos[$i]->getData()); ?>
+							<td><?php echo date_format($data, 'd/m/y'); ?></td>
+							<td><a href="treinamento-pontuacao-manter.php?id=<?php echo $ListaTreinamentos[$i]->getID(); ?>"><i class="fa fa-edit"></i></a> |<a href="treinamento-manter-deletar-action.php?id=<?php echo $ListaTreinamentos[$i]->getID(); ?>">
+									<i class="fa fa-trash"></i>
+								</a></td>
+						</tr>
+					<?php $i++;
+					} ?>
 				</tbody>
 			</table>
 		</div>
 	</div>
 </div>
 
-<?php
 
-include 'inc.rodape.php';
-?>
+
+<?php include 'inc.rodape.php'; ?>

@@ -37,7 +37,13 @@ if ($UsuarioLogado != false) {
     $_SESSION['catUsuario'] = $UsuarioLogado->getCategoriaid();
     
     // caso usuario exista ent�o redireciona para pagina inicial
-    header("Location: dashboard.php?usuario=" . $UsuarioLogado->getNome());
+
+    if($_SESSION['catUsuario'] == 2){
+        header("Location: dashboard.php?usuario=" . $UsuarioLogado->getNome());
+    } else if ($_SESSION['catUsuario'] == 1){
+        header("Location: treinamento-manter.php?usuario=" . $UsuarioLogado->getNome());
+    }
+    
 } else {
     // caso n�o exista dever� voltar a pagina de login passando parametro login = 0
     header('Location: login.php?login=0');
