@@ -21,11 +21,10 @@ $retornoTotal = $retornoReceita->getValor() - $retornoDespesa->getValor();
 $retornoCor = null;
 
 if ($retornoReceita->getValor() < $retornoDespesa->getValor()) {
-    
-    $retornoCor = "danger";
-       
+
+	$retornoCor = "danger";
 } else {
-    $retornoCor = "success";
+	$retornoCor = "success";
 }
 
 
@@ -46,12 +45,10 @@ if ($retornoReceita->getValor() < $retornoDespesa->getValor()) {
 				<div class="card-body-icon">
 					<i class="fas fa-fw fa-money-bill-wave"></i>
 				</div>
-				<div class="mr-5"><?php echo "$".$retornoReceita->getValor(); ?></div>
+				<div class="mr-5"><?php echo "$" . $retornoReceita->getValor(); ?></div>
 			</div>
-			<a class="card-footer text-white clearfix small z-1" href="#"> <span
-				class="float-left">Receita</span> <span class="float-right"> <i
-					class="fas fa-angle-right"></i>
-			</span>
+			<a class="card-footer text-white clearfix small z-1" href="receita-manter.php"> <span class="float-left">Receita</span> <span class="float-right"> <i class="fas fa-angle-right"></i>
+				</span>
 			</a>
 		</div>
 	</div>
@@ -62,34 +59,30 @@ if ($retornoReceita->getValor() < $retornoDespesa->getValor()) {
 				<div class="card-body-icon">
 					<i class="fas fa-fw fa-wallet"></i>
 				</div>
-				<div class="mr-5"><?php echo "$".$retornoDespesa->getValor(); ?></div>
+				<div class="mr-5"><?php echo "$" . $retornoDespesa->getValor(); ?></div>
 			</div>
-			<a class="card-footer text-white clearfix small z-1" href="#"> <span
-				class="float-left">Despesa</span> <span class="float-right"> <i
-					class="fas fa-angle-right"></i>
-			</span>
+			<a class="card-footer text-white clearfix small z-1" href="despesa-manter.php"> <span class="float-left">Despesa</span> <span class="float-right"> <i class="fas fa-angle-right"></i>
+				</span>
 			</a>
 		</div>
 	</div>
 
 	<div class="col-xl-4 col-sm-6 mb-3">
-		<div class="card text-white bg-<?php echo $retornoCor;?> o-hidden h-100">
+		<div class="card text-white bg-<?php echo $retornoCor; ?> o-hidden h-100">
 			<div class="card-body">
 				<div class="card-body-icon">
 					<i class="fas fa-fw fa-cash-register"></i>
 				</div>
-				<div class="mr-5"><?php echo "$".$retornoTotal; ?></div>
+				<div class="mr-5"><?php echo "$" . $retornoTotal; ?></div>
 			</div>
-			<a class="card-footer text-white clearfix small z-1" href="#"> <span
-				class="float-left">Caixa</span> <span class="float-right"> <i
-					class="fas fa-angle-right"></i>
-			</span>
+			<a class="card-footer text-white clearfix small z-1" href="#"> <span class="float-left">Caixa</span> <span class="float-right"> <i class="fas fa-angle-right"></i>
+				</span>
 			</a>
 		</div>
 	</div>
 </div>
 
-<!-- Area Chart Example-->
+<!-- Area Chart Example
 <div class="card mb-3">
   <div class="card-header">
     <i class="fas fa-chart-area"></i>
@@ -98,10 +91,10 @@ if ($retornoReceita->getValor() < $retornoDespesa->getValor()) {
     <canvas id="myAreaChart" width="100%" height="30"></canvas>
   </div>
   <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-</div>
+</div> -->
 
 
-<?php 
+<?php /*
 
 //$res = json_encode($array);
 
@@ -112,10 +105,10 @@ $res = "$variavel1, $variavel2, 12324, 123, 18287, 2131, 31274, 33259, 25849, 24
 
 echo $res;
 
-
+*/
 ?>
 
-<input type="hidden" value="<?php echo $res;?>" id="dataSetChart"/>
+<input type="hidden" value="<?php echo $res; ?>" id="dataSetChart" />
 
 
 <?php

@@ -7,7 +7,6 @@ use src\RepositorioDespesa;
 
 require_once 'src/repositorios/RepositorioDespesa.php';
 
-include 'inc.cabecalho.php';
 
 $repositorioDespesa = new RepositorioDespesa();
 

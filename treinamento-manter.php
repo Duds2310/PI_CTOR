@@ -93,9 +93,7 @@ $i = 0;
 
 							<?php $data = date_create($ListaTreinamentos[$i]->getData()); ?>
 							<td><?php echo date_format($data, 'd/m/y'); ?></td>
-							<td><a href="treinamento-pontuacao-manter.php?id=<?php echo $ListaTreinamentos[$i]->getID(); ?>"><i class="fa fa-edit"></i></a> |<a href="treinamento-manter-deletar-action.php?id=<?php echo $ListaTreinamentos[$i]->getID(); ?>">
-									<i class="fa fa-trash"></i>
-								</a></td>
+							<td><a href="treinamento-pontuacao-manter.php?id=<?php echo $ListaTreinamentos[$i]->getID(); ?>"><i class="fa fa-edit"></i></a></td>
 						</tr>
 					<?php $i++;
 					} ?>

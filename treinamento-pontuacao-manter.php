@@ -95,7 +95,7 @@ if ($pontuacao == true) {
 			<div class="card-body">
 				<form action="treinamento-alterar.php" method="post">
 					<input type="hidden" value="<?php echo $treinamento->getId(); ?>" name="id">
-					
+
 
 					<!-- CATEGORIA E DATA -->
 					<div class="form-group">
@@ -141,7 +141,7 @@ if ($pontuacao == true) {
 
 						</div>
 					</div>
-					<a class="btn btn-primary" href="treinamento-alterar.php?id=<?php echo $treinamento->getId();?>">Alterar</a>
+					<a class="btn btn-primary" href="treinamento-alterar.php?id=<?php echo $treinamento->getId(); ?>">Alterar</a>
 				</form>
 
 			</div>
@@ -348,7 +348,7 @@ if ($pontuacao == true) {
 							}  /*FIM WHILE*/ ?>
 						<tr>
 							<th scope="row" colspan="4" class="table-secondary">Total: </th>
-							<td class="table-secondary"><?php echo $totalPontos1; ?></td>
+							<td class="table-secondary"></td>
 							<td class="table-secondary"></td>
 						</tr>
 					</tbody>
@@ -413,7 +413,7 @@ if ($pontuacao == true) {
                       }*/ ?>
 					<tr>
 						<th scope="row" colspan="4" class="table-secondary">Total: </th>
-						<td class="table-secondary"><?php ?> Total </td>
+						<td class="table-secondary"><?php ?> Total:</td>
 						<td class="table-secondary"></td>
 					</tr>
 					</tbody>
@@ -681,7 +681,7 @@ if ($pontuacao == true) {
 											}  /*FIM WHILE*/ ?>
 										<tr>
 											<th scope="row" colspan="8" class="table-secondary">Total: </th>
-											<td class="table-secondary">265</td>
+											<td class="table-secondary"></td>
 										</tr>
 									</tbody>
 								</table>
@@ -736,7 +736,7 @@ if ($pontuacao == true) {
 											}  /*FIM WHILE*/ ?>
 										<tr>
 											<th scope="row" colspan="8" class="table-secondary">Total: </th>
-											<td class="table-secondary">265</td>
+											<td class="table-secondary"></td>
 										</tr>
 									</tbody>
 								</table>

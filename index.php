@@ -21,8 +21,8 @@
 		</button>
 		<div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
 			<div class="navbar-nav">
-				<a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a> <a class="nav-item nav-link" href="#missao-valores">Valores</a> <a class="nav-item nav-link" href="#missao-valores">Missão</a> <a class="nav-item nav-link" href="#map-responsive">Mapa</a> <a class="nav-item nav-link" href="#contato">Contato</a>
-				<a class="nav-item nav-link" href="login.php">Area membros</a>
+				<a class="nav-item nav-link active" id="home" href="#">Home <span class="sr-only">(current)</span></a> <a class="nav-item nav-link" href="#missao-valores">Valores</a> <a class="nav-item nav-link" href="#missao-valores">Missão</a> <a class="nav-item nav-link" href="#mapa">Mapa</a>
+				<a class="nav-item nav-link" href="login.php">Área membros</a>
 
 
 			</div>
@@ -30,9 +30,42 @@
 	</nav>
 	<!-- Fim Navbar -->
 
+	<!-- Inicio Modal -->
+
+	<div class="modal fade" id="modalContato" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Contato</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form class="form-contact" tabindex="1" action="envia.php" method="post">
+						<div class="form-group">
+							<label for="exampleFormControlInput1">Nome</label> <input type="text" class="form-control" name="nome" id="nome" placeholder="nome">
+						</div>
+						<div class="form-group">
+							<label for="exampleFormControlInput1">Email</label> <input type="email" class="form-control" name="email" id="email" placeholder="email">
+						</div>
+						<div class="form-group">
+							<label for="exampleFormControlTextarea1">Deixe seu comentario</label>
+							<textarea class="form-control" name="msg" id="comentario" rows="3"></textarea>
+						</div>
+
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+						<button type="submit" class="btn btn-primary">Enviar</button>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Fim Modal -->
 
 	<!-- Inicio Carrosel -->
-	<section class="row justify-content-md-center">
+	<section class="row justify-content-md-center ">
 		<img src="src/ctor.jpg">
 	</section>
 	<!-- Fim Carrosel -->
@@ -44,10 +77,10 @@
 	<!-- Fim Titulo -->
 
 	<!-- Inicio Card Atletas -->
-	<section id="fotos" class="container-fluid px-md-4  p-3">
+	<section id="fotos" class="container-fluid px-md-4 p-3 ">
 		<div class="row justify-content-md-center bg-dark rounded p-2 border border-primary ">
 			<article class="col-12">
-				<img src="src/img/ctor1.jpeg" width="200" height="200" alt="..." class="rounded-circle">
+				<img alt="" src="src/img/ctor1.jpeg" width="200" height="200" alt="..." class="rounded-circle">
 				<img alt="" src="src/img/ctor2.jpeg" width="200" height="200" class="rounded-circle">
 				<img alt="" src="src/img/ctor3.jpeg" width="200" height="200" class="rounded-circle">
 				<img alt="" src="src/img/ctor4.jpeg" width="200" height="200" class="rounded-circle">
@@ -67,9 +100,9 @@
 
 
 	<!--Inicio valores -->
-	<section id="missao-valores" class="container-fluid px-md-4 p-3">
+	<section id="missao-valores" class="container-fluid px-md-4 p-3  col-md-12 col-sm-6">
 		<div class="row justify-content-md-center">
-			<article class="col-6 ">
+			<article class="col-sm-6 ">
 				<div class="jumbotron border border-secondary">
 					<h1 class="display-4 text-center">Valores</h1>
 					<p class="lead">* Ensinar e praticar o tiro com arco composto dentro das normas
@@ -96,7 +129,7 @@
 	<!-- Inicio valores -->
 	<section id="missao-valores" class="container-fluid">
 		<div class="row justify-content-md-center">
-			<article class="col-6">
+			<article class="col-md-6 col-sm-6">
 				<div class="jumbotron border border-secondary">
 					<h1 class="display-4 text-center">Missão</h1>
 					<p class="lead">Divulgar e ajudar aqueles que se interessam pela
@@ -111,20 +144,24 @@
 	<!-- Fim valores -->
 
 
-
-	<div class="container-fluid">
-		<div class="map-responsive">
-			<iframe src="https://maps.google.com/maps?q=rua%20coletora%202&t=&z=13&ie=UTF8&iwloc=&output=embed" width="1880" height="500" frameborder="0" style="border: 0" class="rounded border border-secondary " allowfullscreen></iframe>
+	<section id="mapa">
+		<div class="container-fluid col-sm-12">
+			<div class="map-responsive">
+				<iframe src="https://maps.google.com/maps?q=rua%20coletora%202&t=&z=13&ie=UTF8&iwloc=&output=embed" width="1880" height="450" frameborder="0" style="border: 0" class="rounded border border-secondary col-sm-12" allowfullscreen></iframe>
+			</div>
 		</div>
-	</div>
-
-	<section id="contato">
-		<footer class="bg-secondary p-3 m-2 border border-primary">
-			<p class="text-light m-0 text-center">
-				contato: <a class="text-light" href="mailto:email@educfinanc.com.br">email@educfinanc.com.br</a>
-			</p>
-		</footer>
 	</section>
+
+	<footer id="myFooter">
+		<div class="container bg-dark text-white col-sm-12 ">
+			<ul></a>
+			</ul>
+			<p class="footer-copyright" align="center">© 2019 Copyright - Alyelson Silva, Eduardo Santana, Emmanuel Barbosa, Filipe Tavares,
+				João Vitor Ferreira, Hermógenes Felisberto e Nilo Rodrigues.</p>
+
+			<a class="nav-item nav-link active text-white" align="right" href="#">Voltar ao topo <span class="sr-only">(current)</span></a>
+		</div>
+	</footer>
 
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

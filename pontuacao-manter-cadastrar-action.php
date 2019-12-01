@@ -3,7 +3,6 @@
 use src\RepositorioPontuacao;
 use src\Pontuacao;
 
-include 'inc.cabecalho.php';
 
 require_once 'src/repositorios/RepositorioPontuacao.php';
 

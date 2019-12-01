@@ -2,7 +2,6 @@
 
 use src\repositorios\RepositorioReceita;
 
-include 'inc.cabecalho.php';
 
 require_once 'src/repositorios/RepositorioReceita.php';
 

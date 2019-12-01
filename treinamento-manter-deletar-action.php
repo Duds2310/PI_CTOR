@@ -5,7 +5,6 @@ use src\RepositorioTreinamento;
 use src\Treinamento;
 
 
-include 'inc.cabecalho.php';
 require_once 'src/repositorios/RepositorioTreinamento.php';
 
 $repositorioTreinamento = new RepositorioTreinamento();

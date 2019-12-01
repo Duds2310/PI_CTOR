@@ -3,7 +3,6 @@
 use src\RepositorioUsuario;
 use src\Usuario;
 
-include 'inc.cabecalho.php';
 require_once 'src/repositorios/RepositorioUsuario.php';
 
 $repositorioUsuario = new RepositorioUsuario();

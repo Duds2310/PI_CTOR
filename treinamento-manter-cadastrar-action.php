@@ -4,7 +4,6 @@
 use src\RepositorioTreinamento;
 use src\Treinamento;
 
-include 'inc.cabecalho.php';
 
 require_once 'src/repositorios/RepositorioTreinamento.php';
 
@@ -28,13 +27,10 @@ $treinamento->setIdUsuario($idUsuario);
 $resultado = $repoTreinamento->cadastrarTreinamento($treinamento);
 
 if ($resultado == true) {
-    header('Location: treinamento-manter.php');
-} else{
-   ?>
-   <div class="alert alert-danger" role="alert">
-    <?php  echo "Falha ao cadastrar o Treinamento!"; ?>
-   </div>
- <?php } ?>
-
-
-
+  header('Location: treinamento-manter.php');
+} else {
+  ?>
+  <div class="alert alert-danger" role="alert">
+    <?php echo "Falha ao cadastrar o Treinamento!"; ?>
+  </div>
+<?php } ?>

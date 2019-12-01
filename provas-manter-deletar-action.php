@@ -3,7 +3,6 @@
 use src\repositorios\RepositorioProvas;
 use src\modelo\Provas;
 
-include 'inc.cabecalho.php';
 
 require_once 'src/repositorios/RepositorioProvas.php';
 
